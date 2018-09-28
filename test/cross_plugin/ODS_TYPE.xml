@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cross_plugin>
+  <log>
+    <logging_level>3</logging_level>
+    <type>async</type>
+    <cross_plugin_log_enabled>y</cross_plugin_log_enabled>
+    <cross_plugin_log_prefix>/aux1/occonnectors/logs/ODS_TYPE/ipcconnector_</cross_plugin_log_prefix>
+    <cross_plugin_log_suffix>.log</cross_plugin_log_suffix>
+    <cross_plugin_err_log_enabled>n</cross_plugin_err_log_enabled>
+    <cross_plugin_err_log_prefix>/aux1/occonnectors/logs/ODS_TYPE/error_</cross_plugin_err_log_prefix>
+    <cross_plugin_err_log_suffix>.log</cross_plugin_err_log_suffix>
+  </log>
+  <watchdog_enabled>n</watchdog_enabled>
+  <connection_ccb>
+    <so_file>/opt/opencode/lib64//libplugin_ipc2.so</so_file>
+    <config>
+      <ipc>
+        <connection>
+          <enabled>Y</enabled>
+          <type>client</type>
+          <account_id>4680</account_id>
+          <ip>127.0.0.1</ip>
+          <port>5049</port>
+          <login>ODS_TYPE</login>
+          <password>4680</password>
+          <system_type>ORACLE</system_type>
+        </connection>
+      </ipc>
+      <alarms>
+        <broken_connection>
+          <name>/aux0/alarms/ORACLE_ipc2_broken_connection.alarm</name>
+          <text>ODS_TYPE</text>
+        </broken_connection>
+      </alarms>
+      <default_dialog_timeout_msec>900000</default_dialog_timeout_msec>
+    </config>
+  </connection_ccb>
+  <plugin>
+    <so_file>/opt/occonnectors/lib64/libocoracle_connector.so</so_file>
+    <domain_name>ORACLE</domain_name>
+    <enabled>Y</enabled>
+    <last_enabled/>
+    <enabled_marker/>
+    <mode>N</mode>
+    <id>4680</id>
+    <name>ODS_TYPE</name>
+    <type>ORACLE</type>
+    <lastmodified>2018-02-23 09:29:37</lastmodified>
+    <fifodir>/opt/occonnectors/run/connector_pipes/</fifodir>
+    <config>
+      <conn_config>/aux0/customer/connectors/external/ORACLE-4680-ODS_TYPE.xml</conn_config>
+    </config>
+  </plugin>
+</cross_plugin>

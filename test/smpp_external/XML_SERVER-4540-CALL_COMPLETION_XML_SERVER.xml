@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2007-2017. Opencode Systems Ltd.-->
+<connector>
+  <enabled>N</enabled>
+  <last_enabled/>
+  <enabled_marker>${ipgw3only}</enabled_marker>
+  <mode>Y</mode>
+  <id>4540</id>
+  <name>CALL_COMPLETION_XML_SERVER</name>
+  <type>XML_SERVER</type>
+  <lastmodified>2017-07-20 02:06:24</lastmodified>
+  <description>Call Completion XML Server to Process CBS WO</description>
+  <debug_level>3</debug_level>
+  <logdir>/aux1/occonnectors/logs/CALL_COMPLETION_XML_SERVER/</logdir>
+  <hidden_parameters/>
+  <suppressed_alarms/>
+  <fifodir>/opt/occonnectors/run/connector_pipes/</fifodir>
+  <alarmdir>/aux0/alarms/</alarmdir>
+  <statustimeout>10000</statustimeout>
+  <max_status_timeouts>4</max_status_timeouts>
+  <reconnectinterval>60</reconnectinterval>
+  <messageexpiretime>40</messageexpiretime>
+  <dialoginactivitytime>60</dialoginactivitytime>
+  <maxexpireddialogs>1000</maxexpireddialogs>
+  <speed_limit>1000</speed_limit>
+  <speed_limit_conn>1000</speed_limit_conn>
+  <limit_app_requests>10000</limit_app_requests>
+  <pre_congestion_limit>60</pre_congestion_limit>
+  <round_robin_app_requests>Y</round_robin_app_requests>
+  <should_reject_app_requests>Y</should_reject_app_requests>
+  <stop_subconn_on_ipc_lost>N</stop_subconn_on_ipc_lost>
+  <encode_special_characters>N</encode_special_characters>
+  <retry_sending_requests>N</retry_sending_requests>
+  <synchronous_logging>N</synchronous_logging>
+  <write_error_log>N</write_error_log>
+  <opcdipc>
+    <accountid>4540</accountid>
+    <hosts>
+      <host>
+        <ipaddress>10.0.0.177</ipaddress>
+        <port>5049</port>
+      </host>
+      <host>
+        <ipaddress>10.0.0.171</ipaddress>
+        <port>5049</port>
+      </host>
+      <host>
+        <ipaddress>10.0.0.173</ipaddress>
+        <port>5049</port>
+      </host>
+      <host>
+        <ipaddress>10.0.0.175</ipaddress>
+        <port>5049</port>
+      </host>
+      <host>
+        <ipaddress>10.0.0.179</ipaddress>
+        <port>5049</port>
+      </host>
+    </hosts>
+    <login>CALL_COMPLETION_XML_SERVER</login>
+    <messageexpiretime>40</messageexpiretime>
+    <password>4540</password>
+    <systemtype>XML_SERVER</systemtype>
+  </opcdipc>
+  <protocolspecific>
+    <subconnectors>
+      <subconnector>
+        <id>1</id>
+        <enabled>Y</enabled>
+        <Operations>
+          <Operation>
+            <id>1</id>
+            <operationName>WORequest</operationName>
+            <operationRequest>&lt;request_processing&gt;&#13;
+  &lt;operation_service_parameter&gt;WORequest&lt;/operation_service_parameter&gt;&#13;
+  &lt;operation_xpath&gt;/soapenv:Envelope/soapenv:Body/tns:WORequest&lt;/operation_xpath&gt;&#13;
+  &lt;originator_xpath&gt;/soapenv:Envelope/soapenv:Body/tns:WORequest/tns:CallingPartyNumber&lt;/originator_xpath&gt;&#13;
+  &lt;param&gt;&#13;
+  &lt;name&gt;CallingPartyNumber&lt;/name&gt;&#13;
+  &lt;path&gt;/soapenv:Envelope/soapenv:Body/tns:WORequest/tns:CallingPartyNumber&lt;/path&gt;&#13;
+  &lt;/param&gt;&#13;
+  &lt;param&gt;&#13;
+  &lt;name&gt;CalledPartyNumber&lt;/name&gt;&#13;
+  &lt;path&gt;/soapenv:Envelope/soapenv:Body/tns:WORequest/tns:CalledPartyNumber&lt;/path&gt;&#13;
+  &lt;/param&gt;&#13;
+  &lt;param&gt;&#13;
+  &lt;name&gt;Scenario&lt;/name&gt;&#13;
+  &lt;path&gt;/soapenv:Envelope/soapenv:Body/tns:WORequest/tns:ServiceScenario&lt;/path&gt;&#13;
+  &lt;/param&gt;&#13;
+  &lt;param&gt;&#13;
+  &lt;name&gt;ServiceType&lt;/name&gt;&#13;
+  &lt;path&gt;/soapenv:Envelope/soapenv:Body/tns:WORequest/tns:ServiceType&lt;/path&gt;&#13;
+  &lt;/param&gt;&#13;
+  &lt;param&gt;&#13;
+  &lt;name&gt;CallingRoamCountryCode&lt;/name&gt;&#13;
+  &lt;path&gt;/soapenv:Envelope/soapenv:Body/tns:WORequest/tns:CallingRoamCountryCode&lt;/path&gt;&#13;
+  &lt;/param&gt;&#13;
+  &lt;param&gt;&#13;
+  &lt;name&gt;CallingRoamNetworkCode&lt;/name&gt;&#13;
+  &lt;path&gt;/soapenv:Envelope/soapenv:Body/tns:WORequest/tns:CallingRoamNetworkCode&lt;/path&gt;&#13;
+  &lt;/param&gt;&#13;
+  &lt;param&gt;&#13;
+  &lt;name&gt;CurrentPointAmt&lt;/name&gt;&#13;
+  &lt;path&gt;/soapenv:Envelope/soapenv:Body/tns:WORequest/tns:CurrentPointAmt&lt;/path&gt;&#13;
+  &lt;/param&gt;&#13;
+  &lt;param&gt;&#13;
+  &lt;name&gt;DataETUGrade5&lt;/name&gt;&#13;
+  &lt;path&gt;/soapenv:Envelope/soapenv:Body/tns:WORequest/tns:ETUInfoList/tns:ETUGrade[text()='5']/self::tns:ETUGrade&lt;/path&gt;&#13;
+  &lt;/param&gt;&#13;
+  &lt;param&gt;&#13;
+  &lt;name&gt;AirtimeETUGrade6&lt;/name&gt;&#13;
+  &lt;path&gt;/soapenv:Envelope/soapenv:Body/tns:WORequest/tns:ETUInfoList/tns:ETUGrade[text()='6']/self::tns:ETUGrade&lt;/path&gt;&#13;
+  &lt;/param&gt;&#13;
+  &lt;param&gt;&#13;
+  &lt;name&gt;CurrentBalance&lt;/name&gt;&#13;
+  &lt;path&gt;/soapenv:Envelope/soapenv:Body/tns:WORequest/tns:CurrentBalance&lt;/path&gt;&#13;
+  &lt;/param&gt; &#13;
+&lt;/request_processing&gt;</operationRequest>
+            <operationResponse>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&#13;
+&lt;tns:WOResponse&gt;&#13;
+  &lt;tns:response&gt;&lt;/tns:response&gt;&#13;
+&lt;/tns:WOResponse&gt;</operationResponse>
+            <operationRespProcessingRules>&lt;response_processing&gt;&#13;
+&lt;param&gt;&#13;
+&lt;name&gt;RESPONSE&lt;/name&gt;&#13;
+&lt;parent&gt;/tns:WOResponse&lt;/parent&gt;&#13;
+&lt;element&gt;tns:response&lt;/element&gt;&#13;
+&lt;/param&gt;&#13;
+&lt;/response_processing&gt;</operationRespProcessingRules>
+          </Operation>
+        </Operations>
+        <Exceptions>
+          <Exception>
+            <id>1</id>
+            <exceptionName>soapFault</exceptionName>
+            <exceptionTemplate>&lt;SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="urn:ussdb"&gt;&#13;
+   &lt;SOAP-ENV:Header/&gt;&#13;
+   &lt;SOAP-ENV:Body SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"&gt;&#13;
+      &lt;SOAP-ENV:Fault&gt;&#13;
+      &lt;/SOAP-ENV:Fault&gt;&#13;
+   &lt;/SOAP-ENV:Body&gt;&#13;
+&lt;/SOAP-ENV:Envelope&gt;</exceptionTemplate>
+            <exceptionProcessingRules>&lt;response_processing&gt;&#13;
+&lt;param&gt;&#13;
+&lt;name&gt;faultcode&lt;/name&gt;&#13;
+&lt;parent&gt;/SOAP-ENV:Envelope/SOAP-ENV:Body/SOAP-ENV:Fault&lt;/parent&gt;&#13;
+&lt;element&gt;faultcode&lt;/element&gt;&#13;
+&lt;/param&gt;&#13;
+&lt;param&gt;&#13;
+&lt;name&gt;faultstring&lt;/name&gt;&#13;
+&lt;parent&gt;/SOAP-ENV:Envelope/SOAP-ENV:Body/SOAP-ENV:Fault&lt;/parent&gt;&#13;
+&lt;element&gt;faultstring&lt;/element&gt;&#13;
+&lt;/param&gt;&#13;
+&lt;/response_processing&gt;</exceptionProcessingRules>
+          </Exception>
+        </Exceptions>
+        <Common>
+          <port>8484</port>
+          <MaxAcceptedConnections>100000</MaxAcceptedConnections>
+          <ConnectionInactivityTimeout>60</ConnectionInactivityTimeout>
+          <IPAddrWhiteList></IPAddrWhiteList>
+          <destination>CALL_COMPLETION</destination>
+          <RepresentationOfRequestParameters>1</RepresentationOfRequestParameters>
+          <wsdlfile>/aux0/customer/connectors/external/additional/SC_KE_XML_SRV_Service_E02.wsdl</wsdlfile>
+          <RequireAuthentication>N</RequireAuthentication>
+        </Common>
+        <UserAccounts>
+          <UserAccount>
+            <id>1</id>
+            <enabled>Y</enabled>
+            <username>cbs_cc</username>
+            <password>cbs_cc</password>
+            <services></services>
+          </UserAccount>
+        </UserAccounts>
+        <SSL>
+          <UseSSL>N</UseSSL>
+          <Password></Password>
+          <PrivateKeyFile></PrivateKeyFile>
+          <CertificateChainFile></CertificateChainFile>
+          <TMPDHFile></TMPDHFile>
+        </SSL>
+      </subconnector>
+    </subconnectors>
+  </protocolspecific>
+</connector>

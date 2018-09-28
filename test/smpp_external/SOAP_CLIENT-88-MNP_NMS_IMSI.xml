@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2007-2017. Opencode Systems Ltd.-->
+<connector>
+  <enabled>Y</enabled>
+  <last_enabled/>
+  <enabled_marker/>
+  <mode>Y</mode>
+  <id>88</id>
+  <name>MNP_NMS_IMSI</name>
+  <type>SOAP_CLIENT</type>
+  <lastmodified>2017-07-20 02:09:50</lastmodified>
+  <description>MNP_NMS_IMSI</description>
+  <debug_level>1</debug_level>
+  <logdir>/aux1/occonnectors/logs/MNP_NMS_IMSI/</logdir>
+  <hidden_parameters/>
+  <suppressed_alarms/>
+  <fifodir>/opt/occonnectors/run/connector_pipes/</fifodir>
+  <alarmdir>/aux0/alarms/</alarmdir>
+  <statustimeout>10000</statustimeout>
+  <max_status_timeouts>4</max_status_timeouts>
+  <reconnectinterval>60</reconnectinterval>
+  <messageexpiretime>40</messageexpiretime>
+  <dialoginactivitytime>60</dialoginactivitytime>
+  <maxexpireddialogs>1000</maxexpireddialogs>
+  <speed_limit>1000</speed_limit>
+  <speed_limit_conn>1000</speed_limit_conn>
+  <limit_app_requests>10000</limit_app_requests>
+  <pre_congestion_limit>60</pre_congestion_limit>
+  <round_robin_app_requests>N</round_robin_app_requests>
+  <should_reject_app_requests>Y</should_reject_app_requests>
+  <stop_subconn_on_ipc_lost>N</stop_subconn_on_ipc_lost>
+  <encode_special_characters>N</encode_special_characters>
+  <retry_sending_requests>N</retry_sending_requests>
+  <synchronous_logging>N</synchronous_logging>
+  <write_error_log>N</write_error_log>
+  <opcdipc>
+    <accountid>88</accountid>
+    <hosts>
+      <host>
+        <ipaddress>10.0.0.177</ipaddress>
+        <port>5049</port>
+      </host>
+      <host>
+        <ipaddress>10.0.0.171</ipaddress>
+        <port>5049</port>
+      </host>
+      <host>
+        <ipaddress>10.0.0.173</ipaddress>
+        <port>5049</port>
+      </host>
+      <host>
+        <ipaddress>10.0.0.175</ipaddress>
+        <port>5049</port>
+      </host>
+      <host>
+        <ipaddress>10.0.0.179</ipaddress>
+        <port>5049</port>
+      </host>
+    </hosts>
+    <login>MNP_NMS_IMSI</login>
+    <messageexpiretime>40</messageexpiretime>
+    <password>88</password>
+    <systemtype>SOAP_CLIENT</systemtype>
+  </opcdipc>
+  <protocolspecific>
+    <subconnectors>
+      <Operations>
+        <Operation>
+          <id>1</id>
+          <operationName>QueryIMSI</operationName>
+          <operationXML>&lt;soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.evolving.com/NumeriTrack/xsd"&gt;&#13;
+   &lt;soapenv:Header/&gt;&#13;
+   &lt;soapenv:Body&gt;&#13;
+      &lt;xsd:NTService.QueryIMSI&gt;&#13;
+         &lt;msgId&gt;&#13;
+            &lt;userId&gt;crmUser&lt;/userId&gt;&#13;
+         &lt;/msgId&gt;&#13;
+         &lt;startingImsi&gt;&lt;/startingImsi&gt;&#13;
+         &lt;endingImsi&gt;&lt;/endingImsi&gt;&#13;
+         &lt;quantity&gt;1&lt;/quantity&gt;&#13;
+         &lt;resourceState&gt;Available&lt;/resourceState&gt;&#13;
+         &lt;namedGroup&gt;&lt;/namedGroup&gt;&#13;
+         &lt;customer&gt;&lt;/customer&gt;&#13;
+         &lt;retUserData&gt;true&lt;/retUserData&gt;&#13;
+         &lt;retNamedGroup&gt;true&lt;/retNamedGroup&gt;&#13;
+         &lt;retMiscData&gt;true&lt;/retMiscData&gt;&#13;
+         &lt;retAssocResources&gt;true&lt;/retAssocResources&gt;&#13;
+      &lt;/xsd:NTService.QueryIMSI&gt;&#13;
+   &lt;/soapenv:Body&gt;&#13;
+&lt;/soapenv:Envelope&gt;</operationXML>
+          <operationHeaders></operationHeaders>
+          <operationResponse>&lt;response_processing&gt;&#13;
+ &lt;response_element&gt;&#13;
+  &lt;varname&gt;retCode&lt;/varname&gt;&#13;
+  &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+  &lt;element&gt;/soapenv:Envelope/soapenv:Body/NTService.QueryIMSIResult/retData/retCode&lt;/element&gt;&#13;
+  &lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+  &lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+ &lt;/response_element&gt;&#13;
+  &lt;response_element&gt;&#13;
+  &lt;varname&gt;retMsg&lt;/varname&gt;&#13;
+  &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+  &lt;element&gt;/soapenv:Envelope/soapenv:Body/NTService.QueryIMSIResult/retData/retMsg&lt;/element&gt;&#13;
+  &lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+  &lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+ &lt;/response_element&gt;&#13;
+&lt;response_element&gt;&#13;
+  &lt;varname&gt;resourceState&lt;/varname&gt;&#13;
+  &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+  &lt;element&gt;/soapenv:Envelope/soapenv:Body/NTService.QueryIMSIResult/queryIMSIReplyList/item/resourceState&lt;/element&gt;&#13;
+  &lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+  &lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+ &lt;/response_element&gt;&#13;
+&lt;/response_processing&gt;</operationResponse>
+        </Operation>
+        <Operation>
+          <id>2</id>
+          <operationName>QueryDN</operationName>
+          <operationXML>&lt;soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.evolving.com/NumeriTrack/xsd"&gt;&#13;
+   &lt;soapenv:Header/&gt;&#13;
+   &lt;soapenv:Body&gt;&#13;
+      &lt;xsd:NTService.QueryDN&gt;&#13;
+         &lt;msgId&gt;&#13;
+            &lt;userId&gt;crmUser&lt;/userId&gt;&#13;
+         &lt;/msgId&gt;&#13;
+         &lt;startingDn&gt;&lt;/startingDn&gt;&#13;
+         &lt;endingDn&gt;&lt;/endingDn&gt;&#13;
+         &lt;quantity&gt;1&lt;/quantity&gt;&#13;
+         &lt;retUserData&gt;1&lt;/retUserData&gt;&#13;
+         &lt;retAssocResources&gt;1&lt;/retAssocResources&gt;&#13;
+         &lt;retNamedGroup&gt;1&lt;/retNamedGroup&gt;&#13;
+         &lt;retMiscData&gt;1&lt;/retMiscData&gt;&#13;
+      &lt;/xsd:NTService.QueryDN&gt;&#13;
+   &lt;/soapenv:Body&gt;&#13;
+&lt;/soapenv:Envelope&gt;</operationXML>
+          <operationHeaders></operationHeaders>
+          <operationResponse>&lt;response_processing&gt;&#13;
+&lt;response_element&gt;&#13;
+&lt;varname&gt;item&lt;/varname&gt;&#13;
+&lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+&lt;element&gt;/soapenv:Envelope/soapenv:Body/NTService.QueryDNResult/queryDNReplyList/item/iccidList/item&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;/response_processing&gt;</operationResponse>
+        </Operation>
+        <Operation>
+          <id>3</id>
+          <operationName>QuerySIM</operationName>
+          <operationXML>&lt;soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.evolving.com/NumeriTrack/xsd"&gt;&#13;
+   &lt;soapenv:Header/&gt;&#13;
+   &lt;soapenv:Body&gt;&#13;
+      &lt;xsd:NTService.QuerySIM&gt;&#13;
+         &lt;msgId&gt;&#13;
+            &lt;userId&gt;simOTA&lt;/userId&gt;&#13;
+         &lt;/msgId&gt;&#13;
+         &lt;startingIccId&gt;&lt;/startingIccId&gt;&#13;
+         &lt;endingIccId&gt;&lt;/endingIccId&gt;&#13;
+         &lt;quantity&gt;1&lt;/quantity&gt;&#13;
+         &lt;!--resourceState&gt;Available&lt;/resourceState--&gt;&#13;
+         &lt;!--namedGroup&gt;?&lt;/namedGroup&gt;&#13;
+         &lt;customer&gt;?&lt;/customer--&gt;&#13;
+         &lt;retUserData&gt;1&lt;/retUserData&gt;&#13;
+         &lt;retNamedGroup&gt;1&lt;/retNamedGroup&gt;&#13;
+         &lt;retMiscData&gt;1&lt;/retMiscData&gt;&#13;
+         &lt;retAssocResources&gt;1&lt;/retAssocResources&gt;&#13;
+         &lt;multiUserDataOperand&gt;AND&lt;/multiUserDataOperand&gt;&#13;
+      &lt;/xsd:NTService.QuerySIM&gt;&#13;
+   &lt;/soapenv:Body&gt;&#13;
+&lt;/soapenv:Envelope&gt;</operationXML>
+          <operationHeaders></operationHeaders>
+          <operationResponse>&lt;response_processing&gt;&#13;
+&lt;response_element&gt;&#13;
+&lt;varname&gt;userDataValue&lt;/varname&gt;&#13;
+&lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+&lt;element&gt;/soapenv:Envelope/soapenv:Body/NTService.QuerySIMResult/querySIMReplyList/item/userDataList/item[position()=5]/userDataValue&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;/response_processing&gt;</operationResponse>
+        </Operation>
+      </Operations>
+      <Common>
+        <UseSubconnectorPath>N</UseSubconnectorPath>
+        <PreserveWhitespaces>N</PreserveWhitespaces>
+      </Common>
+      <ResponseProcessing>
+        <ResponseHeaders></ResponseHeaders>
+      </ResponseProcessing>
+      <HTTPHeaders/>
+      <IgnoreErrors>
+        <Errors></Errors>
+      </IgnoreErrors>
+      <PostProcessingParams>
+        <PostProcessingResponseType>0</PostProcessingResponseType>
+      </PostProcessingParams>
+      <PostProcessings/>
+      <subconnector>
+        <id>1</id>
+        <enabled>Y</enabled>
+        <URL>http://172.29.213.149:8081/axis2/services/NTSOAPService</URL>
+        <NumSessions>100</NumSessions>
+        <KeepAlive>Y</KeepAlive>
+        <send_head>N</send_head>
+        <HTTPMethod>POST</HTTPMethod>
+        <Encoding>curl-style</Encoding>
+        <HTTPVersion>1.1</HTTPVersion>
+        <ProxyURL></ProxyURL>
+        <Auth></Auth>
+        <max_error_responses>10</max_error_responses>
+        <ProcessErrorResponse>N</ProcessErrorResponse>
+        <HTTPTimeout>30</HTTPTimeout>
+        <PostOnlyActionParams></PostOnlyActionParams>
+        <SSLVerifyPeer>N</SSLVerifyPeer>
+        <SSLClientCert></SSLClientCert>
+        <SSLClientKey></SSLClientKey>
+        <SSLClientPassphrase></SSLClientPassphrase>
+        <SSLCACert></SSLCACert>
+      </subconnector>
+    </subconnectors>
+  </protocolspecific>
+</connector>

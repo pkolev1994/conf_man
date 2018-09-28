@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2007-2016. Opencode Systems Ltd.-->
+<connector>
+  <enabled>Y</enabled>
+  <last_enabled/>
+  <enabled_marker/>
+  <mode>Y</mode>
+  <id>4808</id>
+  <name>CBS_CUMULATOR_UPSELL</name>
+  <type>SOAP_CLIENT</type>
+  <lastmodified>2016-08-30 19:17:24</lastmodified>
+  <description>CBS_CUMULATOR_UPSELL</description>
+  <debug_level>1</debug_level>
+  <logdir>/aux1/occonnectors/logs/CBS_CUMULATOR_UPSELL/</logdir>
+  <hidden_parameters/>
+  <suppressed_alarms/>
+  <fifodir>/opt/occonnectors/run/connector_pipes/</fifodir>
+  <alarmdir>/aux0/alarms/</alarmdir>
+  <statustimeout>10000</statustimeout>
+  <max_status_timeouts>4</max_status_timeouts>
+  <reconnectinterval>60</reconnectinterval>
+  <messageexpiretime>40</messageexpiretime>
+  <dialoginactivitytime>60</dialoginactivitytime>
+  <maxexpireddialogs>1000</maxexpireddialogs>
+  <speed_limit>1000</speed_limit>
+  <speed_limit_conn>1000</speed_limit_conn>
+  <limit_app_requests>10000</limit_app_requests>
+  <pre_congestion_limit>60</pre_congestion_limit>
+  <round_robin_app_requests>N</round_robin_app_requests>
+  <should_reject_app_requests>Y</should_reject_app_requests>
+  <stop_subconn_on_ipc_lost>N</stop_subconn_on_ipc_lost>
+  <encode_special_characters>N</encode_special_characters>
+  <retry_sending_requests>N</retry_sending_requests>
+  <synchronous_logging>N</synchronous_logging>
+  <write_error_log>N</write_error_log>
+  <opcdipc>
+    <accountid>4808</accountid>
+    <hosts>
+      <host>
+        <ipaddress>10.0.0.177</ipaddress>
+        <port>5049</port>
+      </host>
+      <host>
+        <ipaddress>10.0.0.171</ipaddress>
+        <port>5049</port>
+      </host>
+      <host>
+        <ipaddress>10.0.0.173</ipaddress>
+        <port>5049</port>
+      </host>
+      <host>
+        <ipaddress>10.0.0.175</ipaddress>
+        <port>5049</port>
+      </host>
+    <host>
+ <ipaddress>10.0.0.179</ipaddress>
+ <port>5049</port> 
+ </host> 
+ </hosts> 
+    <login>CBS_CUMULATOR_UPSELL</login>
+    <messageexpiretime>40</messageexpiretime>
+    <password>4808</password>
+    <systemtype>SOAP_CLIENT</systemtype>
+  </opcdipc>
+  <protocolspecific>
+    <subconnectors>
+      <Operations>
+        <Operation>
+          <id>1</id>
+          <operationName>IntegrationEnquiry</operationName>
+          <operationXML>&lt;soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:bus="http://www.huawei.com/bme/cbsinterface/cbs/businessmgrmsg" xmlns:com="http://www.huawei.com/bme/cbsinterface/common" xmlns:bus1="http://www.huawei.com/bme/cbsinterface/cbs/businessmgr"&gt;&#13;
+   &lt;soapenv:Header/&gt;&#13;
+   &lt;soapenv:Body&gt;&#13;
+      &lt;bus:IntegrationEnquiryRequestMsg&gt;&#13;
+         &lt;RequestHeader&gt;&#13;
+            &lt;com:CommandId&gt;IntegrationEnquiry&lt;/com:CommandId&gt;&#13;
+            &lt;com:Version&gt;1&lt;/com:Version&gt;&#13;
+            &lt;com:TransactionId&gt;1&lt;/com:TransactionId&gt;&#13;
+            &lt;com:SequenceId&gt;1&lt;/com:SequenceId&gt;&#13;
+            &lt;com:RequestType&gt;Event&lt;/com:RequestType&gt;&#13;
+            &lt;com:SessionEntity&gt;&#13;
+               &lt;com:Name&gt;ussd_gw&lt;/com:Name&gt;&#13;
+               &lt;com:Password&gt;Abc1234&lt;/com:Password&gt;&#13;
+               &lt;com:RemoteAddress&gt;localhost&lt;/com:RemoteAddress&gt;&#13;
+            &lt;/com:SessionEntity&gt;&#13;
+            &lt;com:SerialNo&gt;&lt;/com:SerialNo&gt;&#13;
+         &lt;/RequestHeader&gt;&#13;
+         &lt;IntegrationEnquiryRequest&gt;&#13;
+            &lt;bus1:SubscriberNo&gt;&lt;/bus1:SubscriberNo&gt;&#13;
+	    &lt;bus1:QueryType&gt;0&lt;/bus1:QueryType&gt;&#13;
+         &lt;/IntegrationEnquiryRequest&gt;&#13;
+      &lt;/bus:IntegrationEnquiryRequestMsg&gt;&#13;
+   &lt;/soapenv:Body&gt;&#13;
+&lt;/soapenv:Envelope&gt;</operationXML>
+          <operationHeaders>SOAPAction: "IntegrationEnquiry"</operationHeaders>
+          <operationResponse>&lt;response_processing&gt;&#13;
+ &lt;response_element&gt;&#13;
+&lt;varname&gt;ResultCode&lt;/varname&gt;&#13;
+  &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+  &lt;element&gt;/soapenv:Envelope/soapenv:Body/IntegrationEnquiryResultMsg/ResultHeader/ResultCode&lt;/element&gt;&#13;
+  &lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+  &lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+ &lt;/response_element&gt;&#13;
+  &lt;response_element&gt;  &lt;varname&gt;ResultDesc&lt;/varname&gt;&#13;
+  &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+  &lt;element&gt;/soapenv:Envelope/soapenv:Body/IntegrationEnquiryResultMsg/ResultHeader/ResultDesc&lt;/element&gt;&#13;
+  &lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+  &lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+ &lt;/response_element&gt;&#13;
+  &lt;response_element&gt;&#13;
+  &lt;varname&gt;LoanAmout&lt;/varname&gt;&#13;
+  &lt;nexturl&gt;&lt;/nexturl&gt;  &lt;element&gt;/soapenv:Envelope/soapenv:Body/IntegrationEnquiryResultMsg/IntegrationEnquiryResult/SubAttachedInfo/LoanAmout&lt;/element&gt;&#13;
+  &lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+  &lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+ &lt;/response_element&gt;&#13;
+  &lt;response_element&gt;&#13;
+  &lt;varname&gt;LoanPoundage&lt;/varname&gt;&#13;
+  &lt;nexturl&gt;&lt;/nexturl&gt;  &lt;element&gt;/soapenv:Envelope/soapenv:Body/IntegrationEnquiryResultMsg/IntegrationEnquiryResult/SubAttachedInfo/LoanPoundage&lt;/element&gt;&#13;
+  &lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+  &lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+ &lt;/response_element&gt;&#13;
+&#13;
+&lt;response_element&gt;    &lt;varname&gt;CumulateID1&lt;/varname&gt;&#13;
+   &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+   &lt;element&gt;/soapenv:Envelope/soapenv:Body/IntegrationEnquiryResultMsg/IntegrationEnquiryResult/CumulativeItemList/CumulativeItem[position()=1]/CumulateID&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;response_element&gt;&#13;
+    &lt;varname&gt;CumulativeAmt1&lt;/varname&gt;&#13;
+   &lt;nexturl&gt;&lt;/nexturl&gt;   &lt;element&gt;/soapenv:Envelope/soapenv:Body/IntegrationEnquiryResultMsg/IntegrationEnquiryResult/CumulativeItemList/CumulativeItem[position()=1]/CumulativeAmt&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;response_element&gt;    &lt;varname&gt;CumulateID2&lt;/varname&gt;&#13;
+   &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+   &lt;element&gt;/soapenv:Envelope/soapenv:Body/IntegrationEnquiryResultMsg/IntegrationEnquiryResult/CumulativeItemList/CumulativeItem[position()=2]/CumulateID&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;response_element&gt;&#13;
+    &lt;varname&gt;CumulativeAmt2&lt;/varname&gt;&#13;
+   &lt;nexturl&gt;&lt;/nexturl&gt;   &lt;element&gt;/soapenv:Envelope/soapenv:Body/IntegrationEnquiryResultMsg/IntegrationEnquiryResult/CumulativeItemList/CumulativeItem[position()=2]/CumulativeAmt&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;response_element&gt;    &lt;varname&gt;CumulateID3&lt;/varname&gt;&#13;
+   &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+   &lt;element&gt;/soapenv:Envelope/soapenv:Body/IntegrationEnquiryResultMsg/IntegrationEnquiryResult/CumulativeItemList/CumulativeItem[position()=3]/CumulateID&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;response_element&gt;&#13;
+    &lt;varname&gt;CumulativeAmt3&lt;/varname&gt;&#13;
+   &lt;nexturl&gt;&lt;/nexturl&gt;   &lt;element&gt;/soapenv:Envelope/soapenv:Body/IntegrationEnquiryResultMsg/IntegrationEnquiryResult/CumulativeItemList/CumulativeItem[position()=3]/CumulativeAmt&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;response_element&gt;    &lt;varname&gt;CumulateID4&lt;/varname&gt;&#13;
+   &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+   &lt;element&gt;/soapenv:Envelope/soapenv:Body/IntegrationEnquiryResultMsg/IntegrationEnquiryResult/CumulativeItemList/CumulativeItem[position()=4]/CumulateID&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;response_element&gt;&#13;
+    &lt;varname&gt;CumulativeAmt4&lt;/varname&gt;&#13;
+   &lt;nexturl&gt;&lt;/nexturl&gt;   &lt;element&gt;/soapenv:Envelope/soapenv:Body/IntegrationEnquiryResultMsg/IntegrationEnquiryResult/CumulativeItemList/CumulativeItem[position()=4]/CumulativeAmt&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;response_element&gt;    &lt;varname&gt;CumulateID5&lt;/varname&gt;&#13;
+   &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+   &lt;element&gt;/soapenv:Envelope/soapenv:Body/IntegrationEnquiryResultMsg/IntegrationEnquiryResult/CumulativeItemList/CumulativeItem[position()=5]/CumulateID&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;response_element&gt;&#13;
+    &lt;varname&gt;CumulativeAmt5&lt;/varname&gt;&#13;
+   &lt;nexturl&gt;&lt;/nexturl&gt;   &lt;element&gt;/soapenv:Envelope/soapenv:Body/IntegrationEnquiryResultMsg/IntegrationEnquiryResult/CumulativeItemList/CumulativeItem[position()=5]/CumulativeAmt&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;response_element&gt;    &lt;varname&gt;CumulateID6&lt;/varname&gt;&#13;
+   &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+   &lt;element&gt;/soapenv:Envelope/soapenv:Body/IntegrationEnquiryResultMsg/IntegrationEnquiryResult/CumulativeItemList/CumulativeItem[position()=6]/CumulateID&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;response_element&gt;&#13;
+    &lt;varname&gt;CumulativeAmt6&lt;/varname&gt;&#13;
+   &lt;nexturl&gt;&lt;/nexturl&gt;   &lt;element&gt;/soapenv:Envelope/soapenv:Body/IntegrationEnquiryResultMsg/IntegrationEnquiryResult/CumulativeItemList/CumulativeItem[position()=6]/CumulativeAmt&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;response_element&gt;    &lt;varname&gt;CumulateID7&lt;/varname&gt;&#13;
+   &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+   &lt;element&gt;/soapenv:Envelope/soapenv:Body/IntegrationEnquiryResultMsg/IntegrationEnquiryResult/CumulativeItemList/CumulativeItem[position()=7]/CumulateID&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;response_element&gt;&#13;
+    &lt;varname&gt;CumulativeAmt7&lt;/varname&gt;&#13;
+   &lt;nexturl&gt;&lt;/nexturl&gt;   &lt;element&gt;/soapenv:Envelope/soapenv:Body/IntegrationEnquiryResultMsg/IntegrationEnquiryResult/CumulativeItemList/CumulativeItem[position()=7]/CumulativeAmt&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;response_element&gt;    &lt;varname&gt;CumulateID8&lt;/varname&gt;&#13;
+   &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+   &lt;element&gt;/soapenv:Envelope/soapenv:Body/IntegrationEnquiryResultMsg/IntegrationEnquiryResult/CumulativeItemList/CumulativeItem[position()=8]/CumulateID&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;response_element&gt;&#13;
+    &lt;varname&gt;CumulativeAmt8&lt;/varname&gt;&#13;
+   &lt;nexturl&gt;&lt;/nexturl&gt;   &lt;element&gt;/soapenv:Envelope/soapenv:Body/IntegrationEnquiryResultMsg/IntegrationEnquiryResult/CumulativeItemList/CumulativeItem[position()=8]/CumulativeAmt&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;response_element&gt;    &lt;varname&gt;CumulateID9&lt;/varname&gt;&#13;
+   &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+   &lt;element&gt;/soapenv:Envelope/soapenv:Body/IntegrationEnquiryResultMsg/IntegrationEnquiryResult/CumulativeItemList/CumulativeItem[position()=9]/CumulateID&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;response_element&gt;&#13;
+    &lt;varname&gt;CumulativeAmt9&lt;/varname&gt;&#13;
+   &lt;nexturl&gt;&lt;/nexturl&gt;   &lt;element&gt;/soapenv:Envelope/soapenv:Body/IntegrationEnquiryResultMsg/IntegrationEnquiryResult/CumulativeItemList/CumulativeItem[position()=9]/CumulativeAmt&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;response_element&gt;    &lt;varname&gt;CumulateID10&lt;/varname&gt;&#13;
+   &lt;nexturl&gt;&lt;/nexturl&gt;   &lt;element&gt;/soapenv:Envelope/soapenv:Body/IntegrationEnquiryResultMsg/IntegrationEnquiryResult/CumulativeItemList/CumulativeItem[position()=10]/CumulateID&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;response_element&gt;&#13;
+    &lt;varname&gt;CumulativeAmt10&lt;/varname&gt;&#13;
+   &lt;nexturl&gt;&lt;/nexturl&gt;   &lt;element&gt;/soapenv:Envelope/soapenv:Body/IntegrationEnquiryResultMsg/IntegrationEnquiryResult/CumulativeItemList/CumulativeItem[position()=10]/CumulativeAmt&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;response_element&gt;    &lt;varname&gt;CumulateID11&lt;/varname&gt;&#13;
+   &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+   &lt;element&gt;/soapenv:Envelope/soapenv:Body/IntegrationEnquiryResultMsg/IntegrationEnquiryResult/CumulativeItemList/CumulativeItem[position()=11]/CumulateID&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;response_element&gt;&#13;
+    &lt;varname&gt;CumulativeAmt11&lt;/varname&gt;&#13;
+   &lt;nexturl&gt;&lt;/nexturl&gt;   &lt;element&gt;/soapenv:Envelope/soapenv:Body/IntegrationEnquiryResultMsg/IntegrationEnquiryResult/CumulativeItemList/CumulativeItem[position()=11]/CumulativeAmt&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;response_element&gt;    &lt;varname&gt;CumulateID12&lt;/varname&gt;&#13;
+   &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+   &lt;element&gt;/soapenv:Envelope/soapenv:Body/IntegrationEnquiryResultMsg/IntegrationEnquiryResult/CumulativeItemList/CumulativeItem[position()=12]/CumulateID&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;response_element&gt;&#13;
+    &lt;varname&gt;CumulativeAmt12&lt;/varname&gt;&#13;
+   &lt;nexturl&gt;&lt;/nexturl&gt;   &lt;element&gt;/soapenv:Envelope/soapenv:Body/IntegrationEnquiryResultMsg/IntegrationEnquiryResult/CumulativeItemList/CumulativeItem[position()=12]/CumulativeAmt&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;response_element&gt;    &lt;varname&gt;CumulateID13&lt;/varname&gt;&#13;
+   &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+   &lt;element&gt;/soapenv:Envelope/soapenv:Body/IntegrationEnquiryResultMsg/IntegrationEnquiryResult/CumulativeItemList/CumulativeItem[position()=13]/CumulateID&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;response_element&gt;&#13;
+    &lt;varname&gt;CumulativeAmt13&lt;/varname&gt;&#13;
+   &lt;nexturl&gt;&lt;/nexturl&gt;   &lt;element&gt;/soapenv:Envelope/soapenv:Body/IntegrationEnquiryResultMsg/IntegrationEnquiryResult/CumulativeItemList/CumulativeItem[position()=13]/CumulativeAmt&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;response_element&gt;    &lt;varname&gt;CumulateID14&lt;/varname&gt;&#13;
+   &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+   &lt;element&gt;/soapenv:Envelope/soapenv:Body/IntegrationEnquiryResultMsg/IntegrationEnquiryResult/CumulativeItemList/CumulativeItem[position()=14]/CumulateID&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;response_element&gt;&#13;
+    &lt;varname&gt;CumulativeAmt14&lt;/varname&gt;&#13;
+   &lt;nexturl&gt;&lt;/nexturl&gt;   &lt;element&gt;/soapenv:Envelope/soapenv:Body/IntegrationEnquiryResultMsg/IntegrationEnquiryResult/CumulativeItemList/CumulativeItem[position()=14]/CumulativeAmt&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;response_element&gt;    &lt;varname&gt;CumulateID15&lt;/varname&gt;&#13;
+   &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+   &lt;element&gt;/soapenv:Envelope/soapenv:Body/IntegrationEnquiryResultMsg/IntegrationEnquiryResult/CumulativeItemList/CumulativeItem[position()=15]/CumulateID&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;response_element&gt;&#13;
+    &lt;varname&gt;CumulativeAmt15&lt;/varname&gt;&#13;
+   &lt;nexturl&gt;&lt;/nexturl&gt;   &lt;element&gt;/soapenv:Envelope/soapenv:Body/IntegrationEnquiryResultMsg/IntegrationEnquiryResult/CumulativeItemList/CumulativeItem[position()=15]/CumulativeAmt&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;response_element&gt;    &lt;varname&gt;CumulateID16&lt;/varname&gt;&#13;
+   &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+   &lt;element&gt;/soapenv:Envelope/soapenv:Body/IntegrationEnquiryResultMsg/IntegrationEnquiryResult/CumulativeItemList/CumulativeItem[position()=16]/CumulateID&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;response_element&gt;&#13;
+    &lt;varname&gt;CumulativeAmt16&lt;/varname&gt;&#13;
+   &lt;nexturl&gt;&lt;/nexturl&gt;   &lt;element&gt;/soapenv:Envelope/soapenv:Body/IntegrationEnquiryResultMsg/IntegrationEnquiryResult/CumulativeItemList/CumulativeItem[position()=16]/CumulativeAmt&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;response_element&gt;    &lt;varname&gt;CumulateID17&lt;/varname&gt;&#13;
+   &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+   &lt;element&gt;/soapenv:Envelope/soapenv:Body/IntegrationEnquiryResultMsg/IntegrationEnquiryResult/CumulativeItemList/CumulativeItem[position()=17]/CumulateID&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;response_element&gt;&#13;
+    &lt;varname&gt;CumulativeAmt17&lt;/varname&gt;&#13;
+   &lt;nexturl&gt;&lt;/nexturl&gt;   &lt;element&gt;/soapenv:Envelope/soapenv:Body/IntegrationEnquiryResultMsg/IntegrationEnquiryResult/CumulativeItemList/CumulativeItem[position()=17]/CumulativeAmt&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;response_element&gt;    &lt;varname&gt;CumulateID18&lt;/varname&gt;&#13;
+   &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+   &lt;element&gt;/soapenv:Envelope/soapenv:Body/IntegrationEnquiryResultMsg/IntegrationEnquiryResult/CumulativeItemList/CumulativeItem[position()=18]/CumulateID&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;response_element&gt;&#13;
+    &lt;varname&gt;CumulativeAmt18&lt;/varname&gt;&#13;
+   &lt;nexturl&gt;&lt;/nexturl&gt;   &lt;element&gt;/soapenv:Envelope/soapenv:Body/IntegrationEnquiryResultMsg/IntegrationEnquiryResult/CumulativeItemList/CumulativeItem[position()=18]/CumulativeAmt&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;response_element&gt;    &lt;varname&gt;CumulateID19&lt;/varname&gt;&#13;
+   &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+   &lt;element&gt;/soapenv:Envelope/soapenv:Body/IntegrationEnquiryResultMsg/IntegrationEnquiryResult/CumulativeItemList/CumulativeItem[position()=19]/CumulateID&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;response_element&gt;&#13;
+    &lt;varname&gt;CumulativeAmt19&lt;/varname&gt;&#13;
+   &lt;nexturl&gt;&lt;/nexturl&gt;   &lt;element&gt;/soapenv:Envelope/soapenv:Body/IntegrationEnquiryResultMsg/IntegrationEnquiryResult/CumulativeItemList/CumulativeItem[position()=19]/CumulativeAmt&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;response_element&gt;    &lt;varname&gt;CumulateID20&lt;/varname&gt;&#13;
+   &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+   &lt;element&gt;/soapenv:Envelope/soapenv:Body/IntegrationEnquiryResultMsg/IntegrationEnquiryResult/CumulativeItemList/CumulativeItem[position()=20]/CumulateID&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;response_element&gt;&#13;
+    &lt;varname&gt;CumulativeAmt20&lt;/varname&gt;&#13;
+   &lt;nexturl&gt;&lt;/nexturl&gt;   &lt;element&gt;/soapenv:Envelope/soapenv:Body/IntegrationEnquiryResultMsg/IntegrationEnquiryResult/CumulativeItemList/CumulativeItem[position()=20]/CumulativeAmt&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+ &lt;response_element&gt;&#13;
+  &lt;varname&gt;PaidMode&lt;/varname&gt;&#13;
+  &lt;nexturl&gt;&lt;/nexturl&gt;  &lt;element&gt;/soapenv:Envelope/soapenv:Body/IntegrationEnquiryResultMsg/IntegrationEnquiryResult/SubscriberInfo/Subscriber/PaidMode&lt;/element&gt;&#13;
+  &lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+  &lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+ &lt;/response_element&gt;&#13;
+&lt;response_element&gt;&#13;
+  &lt;varname&gt;State&lt;/varname&gt;&#13;
+  &lt;nexturl&gt;&lt;/nexturl&gt;  &lt;element&gt;/soapenv:Envelope/soapenv:Body/IntegrationEnquiryResultMsg/IntegrationEnquiryResult/SubscriberState/LifeCycleState&lt;/element&gt;&#13;
+  &lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+  &lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+ &lt;/response_element&gt;&#13;
+ &lt;response_element&gt;&#13;
+  &lt;varname&gt;DPFlag&lt;/varname&gt;&#13;
+  &lt;nexturl&gt;&lt;/nexturl&gt;  &lt;element&gt;/soapenv:Envelope/soapenv:Body/IntegrationEnquiryResultMsg/IntegrationEnquiryResult/SubscriberState/DPFlag&lt;/element&gt;&#13;
+  &lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+  &lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+ &lt;/response_element&gt;&#13;
+&lt;/response_processing&gt;</operationResponse>
+        </Operation>
+      </Operations>
+      <Common>
+        <UseSubconnectorPath>N</UseSubconnectorPath>
+        <PreserveWhitespaces>N</PreserveWhitespaces>
+      </Common>
+      <ResponseProcessing>
+        <ResponseHeaders></ResponseHeaders>
+      </ResponseProcessing>
+      <HTTPHeaders>
+        <HTTPHeader>
+          <id>1</id>
+          <enabled>N</enabled>
+          <header>SOAPAction: "IntegrationEnquiry"</header>
+        </HTTPHeader>
+      </HTTPHeaders>
+      <IgnoreErrors>
+        <Errors></Errors>
+      </IgnoreErrors>
+      <PostProcessingParams>
+        <PostProcessingResponseType>0</PostProcessingResponseType>
+      </PostProcessingParams>
+      <PostProcessings/>
+      <subconnector>
+        <id>1</id>
+        <enabled>N</enabled>
+        <URL>http://10.66.39.200:17782/services/CBSInterfaceBusinessMgrService</URL>
+        <NumSessions>100</NumSessions>
+        <KeepAlive>Y</KeepAlive>
+        <send_head>Y</send_head>
+        <HTTPMethod>POST</HTTPMethod>
+        <Encoding>curl-style</Encoding>
+        <HTTPVersion>1.1</HTTPVersion>
+        <ProxyURL></ProxyURL>
+        <Auth></Auth>
+        <max_error_responses>10</max_error_responses>
+        <ProcessErrorResponse>N</ProcessErrorResponse>
+        <HTTPTimeout>30</HTTPTimeout>
+        <PostOnlyActionParams>Y</PostOnlyActionParams>
+        <SSLVerifyPeer>N</SSLVerifyPeer>
+        <SSLClientCert></SSLClientCert>
+        <SSLClientKey></SSLClientKey>
+        <SSLClientPassphrase></SSLClientPassphrase>
+        <SSLCACert></SSLCACert>
+      </subconnector>
+      <subconnector>
+        <id>2</id>
+        <enabled>Y</enabled>
+        <URL>http://10.66.38.160:7782/services/CBSInterfaceBusinessMgrService</URL>
+        <NumSessions>100</NumSessions>
+        <KeepAlive>Y</KeepAlive>
+        <send_head>N</send_head>
+        <HTTPMethod>POST</HTTPMethod>
+        <Encoding>curl-style</Encoding>
+        <HTTPVersion>1.1</HTTPVersion>
+        <ProxyURL></ProxyURL>
+        <Auth></Auth>
+        <max_error_responses></max_error_responses>
+        <ProcessErrorResponse>N</ProcessErrorResponse>
+        <HTTPTimeout>30</HTTPTimeout>
+        <PostOnlyActionParams>Y</PostOnlyActionParams>
+        <SSLVerifyPeer>N</SSLVerifyPeer>
+        <SSLClientCert></SSLClientCert>
+        <SSLClientKey></SSLClientKey>
+        <SSLClientPassphrase></SSLClientPassphrase>
+        <SSLCACert></SSLCACert>
+      </subconnector>
+    </subconnectors>
+  </protocolspecific>
+</connector>

@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2007-2017. Opencode Systems Ltd.-->
+<connector>
+  <enabled>Y</enabled>
+  <last_enabled/>
+  <enabled_marker/>
+  <mode>Y</mode>
+  <id>4672</id>
+  <name>NI_USSD_PUSH_SERVICE</name>
+  <type>XML_SERVER</type>
+  <lastmodified>2017-07-20 02:09:46</lastmodified>
+  <description>NI_USSD_PUSH_SERVICE</description>
+  <debug_level>3</debug_level>
+  <logdir>/aux1/occonnectors/logs/NI_USSD_PUSH_SERVICE/</logdir>
+  <hidden_parameters/>
+  <suppressed_alarms/>
+  <fifodir>/opt/occonnectors/run/connector_pipes/</fifodir>
+  <alarmdir>/aux0/alarms/</alarmdir>
+  <statustimeout>10000</statustimeout>
+  <max_status_timeouts>4</max_status_timeouts>
+  <reconnectinterval>60</reconnectinterval>
+  <messageexpiretime>40</messageexpiretime>
+  <dialoginactivitytime>60</dialoginactivitytime>
+  <maxexpireddialogs>1000</maxexpireddialogs>
+  <speed_limit>1000</speed_limit>
+  <speed_limit_conn>1000</speed_limit_conn>
+  <limit_app_requests>10000</limit_app_requests>
+  <pre_congestion_limit>60</pre_congestion_limit>
+  <round_robin_app_requests>Y</round_robin_app_requests>
+  <should_reject_app_requests>Y</should_reject_app_requests>
+  <stop_subconn_on_ipc_lost>N</stop_subconn_on_ipc_lost>
+  <encode_special_characters>N</encode_special_characters>
+  <retry_sending_requests>N</retry_sending_requests>
+  <synchronous_logging>N</synchronous_logging>
+  <write_error_log>N</write_error_log>
+  <opcdipc>
+    <accountid>4672</accountid>
+    <hosts>
+      <host>
+        <ipaddress>10.0.0.177</ipaddress>
+        <port>5049</port>
+      </host>
+      <host>
+        <ipaddress>10.0.0.171</ipaddress>
+        <port>5049</port>
+      </host>
+      <host>
+        <ipaddress>10.0.0.173</ipaddress>
+        <port>5049</port>
+      </host>
+      <host>
+        <ipaddress>10.0.0.175</ipaddress>
+        <port>5049</port>
+      </host>
+      <host>
+        <ipaddress>10.0.0.179</ipaddress>
+        <port>5049</port>
+      </host>
+    </hosts>
+    <login>NI_USSD_PUSH_SERVICE</login>
+    <messageexpiretime>40</messageexpiretime>
+    <password>4672</password>
+    <systemtype>XML_SERVER</systemtype>
+  </opcdipc>
+  <protocolspecific>
+    <subconnectors>
+      <subconnector>
+        <id>1</id>
+        <enabled>Y</enabled>
+        <Operations>
+          <Operation>
+            <id>1</id>
+            <operationName>NetworkInitiatedUSSDPushRequestMsg</operationName>
+            <operationRequest>&lt;request_processing&gt;&#13;
+  &lt;operation_service_parameter&gt;NetworkInitiatedUSSDPushRequestMsg&lt;/operation_service_parameter&gt;&#13;
+  &lt;operation_xpath&gt;/soapenv:Envelope/soapenv:Body/tns:NetworkInitiatedUSSDPushRequestMsg&lt;/operation_xpath&gt;&#13;
+  &lt;originator_xpath&gt;/soapenv:Envelope/soapenv:Body/tns:NetworkInitiatedUSSDPushRequestMsg/tns:RequestHeader/tns:CallerIdentity/tns:UserName&lt;/originator_xpath&gt;&#13;
+  &lt;param&gt;&#13;
+  &lt;name&gt;TimeStamp&lt;/name&gt;&#13;
+  &lt;path&gt;/soapenv:Envelope/soapenv:Body/tns:NetworkInitiatedUSSDPushRequestMsg/tns:RequestHeader/tns:TimeStamp&lt;/path&gt;&#13;
+  &lt;/param&gt;&#13;
+  &lt;param&gt;&#13;
+  &lt;name&gt;CommandID&lt;/name&gt;&#13;
+  &lt;path&gt;/soapenv:Envelope/soapenv:Body/tns:NetworkInitiatedUSSDPushRequestMsg/tns:RequestHeader/tns:CommandID&lt;/path&gt;&#13;
+  &lt;/param&gt;&#13;
+  &lt;param&gt;&#13;
+  &lt;name&gt;RequestID&lt;/name&gt;&#13;
+  &lt;path&gt;/soapenv:Envelope/soapenv:Body/tns:NetworkInitiatedUSSDPushRequestMsg/tns:RequestHeader/tns:RequestID&lt;/path&gt;&#13;
+  &lt;/param&gt;&#13;
+  &lt;param&gt;&#13;
+  &lt;name&gt;CallerUserName&lt;/name&gt;&#13;
+  &lt;path&gt;/soapenv:Envelope/soapenv:Body/tns:NetworkInitiatedUSSDPushRequestMsg/tns:RequestHeader/tns:CallerIdentity/tns:UserName&lt;/path&gt;&#13;
+  &lt;/param&gt;&#13;
+  &lt;param&gt;&#13;
+  &lt;name&gt;CallerPassword&lt;/name&gt;&#13;
+  &lt;path&gt;/soapenv:Envelope/soapenv:Body/tns:NetworkInitiatedUSSDPushRequestMsg/tns:RequestHeader/tns:CallerIdentity/tns:Password&lt;/path&gt;&#13;
+  &lt;/param&gt;&#13;
+  &lt;param&gt;&#13;
+  &lt;name&gt;CallerRemoteAddress&lt;/name&gt;&#13;
+  &lt;path&gt;/soapenv:Envelope/soapenv:Body/tns:NetworkInitiatedUSSDPushRequestMsg/tns:RequestHeader/tns:CallerIdentity/tns:RemoteAddress&lt;/path&gt;&#13;
+  &lt;/param&gt;&#13;
+  &lt;param&gt;&#13;
+  &lt;name&gt;InitiatorPartyType&lt;/name&gt;&#13;
+  &lt;path&gt;/soapenv:Envelope/soapenv:Body/tns:NetworkInitiatedUSSDPushRequestMsg/tns:NetworkInitiatedUSSDPushRequest/tns:InitiatorParty/tns:InitiatorPartyType&lt;/path&gt;&#13;
+  &lt;/param&gt;&#13;
+  &lt;param&gt;&#13;
+  &lt;name&gt;InitiatorPartyDesc&lt;/name&gt;&#13;
+  &lt;path&gt;/soapenv:Envelope/soapenv:Body/tns:NetworkInitiatedUSSDPushRequestMsg/tns:NetworkInitiatedUSSDPushRequest/tns:InitiatorParty/tns:InitiatorPartyDesc&lt;/path&gt;&#13;
+  &lt;/param&gt;&#13;
+  &lt;param&gt;&#13;
+  &lt;name&gt;InitiatorUserName&lt;/name&gt;&#13;
+  &lt;path&gt;/soapenv:Envelope/soapenv:Body/tns:NetworkInitiatedUSSDPushRequestMsg/tns:NetworkInitiatedUSSDPushRequest/tns:InitiatorParty/tns:InitiatorIdentity/tns:UserName&lt;/path&gt;&#13;
+  &lt;/param&gt;&#13;
+  &lt;param&gt;&#13;
+  &lt;name&gt;InitiatorPassword&lt;/name&gt;&#13;
+  &lt;path&gt;/soapenv:Envelope/soapenv:Body/tns:NetworkInitiatedUSSDPushRequestMsg/tns:NetworkInitiatedUSSDPushRequest/tns:InitiatorParty/tns:InitiatorIdentity/tns:Password&lt;/path&gt;&#13;
+  &lt;/param&gt;&#13;
+  &lt;param&gt;&#13;
+  &lt;name&gt;InitiatorRemoteAddress&lt;/name&gt;&#13;
+  &lt;path&gt;/soapenv:Envelope/soapenv:Body/tns:NetworkInitiatedUSSDPushRequestMsg/tns:NetworkInitiatedUSSDPushRequest/tns:InitiatorParty/tns:InitiatorIdentity/tns:RemoteAddress&lt;/path&gt;&#13;
+  &lt;/param&gt;&#13;
+  &lt;param&gt;&#13;
+  &lt;name&gt;InitiatorResultURL&lt;/name&gt;&#13;
+  &lt;path&gt;/soapenv:Envelope/soapenv:Body/tns:NetworkInitiatedUSSDPushRequestMsg/tns:NetworkInitiatedUSSDPushRequest/tns:InitiatorParty/tns:InitiatorIdentity/tns:ResultURL&lt;/path&gt;&#13;
+  &lt;/param&gt;&#13;
+  &lt;param&gt;&#13;
+  &lt;name&gt;ReceiverPartyType&lt;/name&gt;&#13;
+  &lt;path&gt;/soapenv:Envelope/soapenv:Body/tns:NetworkInitiatedUSSDPushRequestMsg/tns:NetworkInitiatedUSSDPushRequest/tns:ReceiverParty/tns:ReceiverPartyType&lt;/path&gt;&#13;
+  &lt;/param&gt;&#13;
+  &lt;param&gt;&#13;
+  &lt;name&gt;ReceiverPartyDesc&lt;/name&gt;&#13;
+  &lt;path&gt;/soapenv:Envelope/soapenv:Body/tns:NetworkInitiatedUSSDPushRequestMsg/tns:NetworkInitiatedUSSDPushRequest/tns:ReceiverParty/tns:ReceiverPartyDesc&lt;/path&gt;&#13;
+  &lt;/param&gt;&#13;
+  &lt;param&gt;&#13;
+  &lt;name&gt;ReceiverPartyIdentifier&lt;/name&gt;&#13;
+  &lt;path&gt;/soapenv:Envelope/soapenv:Body/tns:NetworkInitiatedUSSDPushRequestMsg/tns:NetworkInitiatedUSSDPushRequest/tns:ReceiverParty/tns:ReceiverPartyIdentifier&lt;/path&gt;&#13;
+  &lt;/param&gt;&#13;
+  &lt;param&gt;&#13;
+  &lt;name&gt;TransactionType&lt;/name&gt;&#13;
+  &lt;path&gt;/soapenv:Envelope/soapenv:Body/tns:NetworkInitiatedUSSDPushRequestMsg/tns:NetworkInitiatedUSSDPushRequest/tns:Transaction/tns:TransactionType&lt;/path&gt;&#13;
+  &lt;/param&gt;&#13;
+  &lt;param&gt;&#13;
+  &lt;name&gt;TransactionDesc&lt;/name&gt;&#13;
+  &lt;path&gt;/soapenv:Envelope/soapenv:Body/tns:NetworkInitiatedUSSDPushRequestMsg/tns:NetworkInitiatedUSSDPushRequest/tns:Transaction/tns:TransactionDesc&lt;/path&gt;&#13;
+  &lt;/param&gt;&#13;
+  &lt;param&gt;&#13;
+  &lt;name&gt;TransactionMode&lt;/name&gt;&#13;
+  &lt;path&gt;/soapenv:Envelope/soapenv:Body/tns:NetworkInitiatedUSSDPushRequestMsg/tns:NetworkInitiatedUSSDPushRequest/tns:Transaction/tns:TransactionMode&lt;/path&gt;&#13;
+  &lt;/param&gt;&#13;
+  &lt;param&gt;&#13;
+  &lt;name&gt;TransactionParameters&lt;/name&gt;&#13;
+  &lt;path&gt;/soapenv:Envelope/soapenv:Body/tns:NetworkInitiatedUSSDPushRequestMsg/tns:NetworkInitiatedUSSDPushRequest/tns:Transaction/tns:TransactionParameters/*.&lt;/path&gt;&#13;
+  &lt;/param&gt;&#13;
+  &lt;param&gt;&#13;
+  &lt;name&gt;AdditionalInfo&lt;/name&gt;&#13;
+  &lt;path&gt;/soapenv:Envelope/soapenv:Body/tns:NetworkInitiatedUSSDPushRequestMsg/tns:NetworkInitiatedUSSDPushRequest/tns:Transaction/tns:AdditionalInfo&lt;/path&gt;&#13;
+  &lt;/param&gt;&#13;
+&lt;param&gt;&#13;
+  &lt;name&gt;TextPrompt&lt;/name&gt;&#13;
+  &lt;path&gt;/soapenv:Envelope/soapenv:Body/tns:NetworkInitiatedUSSDPushRequestMsg/tns:NetworkInitiatedUSSDPushRequest/tns:Transaction/tns:TransactionParameters/tns:Param[position()=1]/tns:Value&lt;/path&gt;&#13;
+  &lt;/param&gt;&#13;
+&lt;/request_processing&gt;</operationRequest>
+            <operationResponse>&lt;soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tns="tns:ns"&gt;&#13;
+&lt;soapenv:Header&gt;&lt;/soapenv:Header&gt;&#13;
+&lt;soapenv:Body&gt;&#13;
+&lt;tns:NetworkInitiatedUSSDPushResponseMsg&gt;&#13;
+ &lt;tns:ResponseHeader&gt;&lt;/tns:ResponseHeader&gt;&#13;
+  &lt;tns:NetworkInitiatedUSSDPushResponse&gt;&lt;/tns:NetworkInitiatedUSSDPushResponse&gt;&#13;
+&lt;/tns:NetworkInitiatedUSSDPushResponseMsg&gt;&#13;
+&lt;/soapenv:Body&gt;&#13;
+&lt;/soapenv:Envelope&gt;</operationResponse>
+            <operationRespProcessingRules>&lt;response_processing&gt;&#13;
+&lt;param&gt;&#13;
+&lt;name&gt;COMMANDID&lt;/name&gt;&#13;
+&lt;parent&gt;/soapenv:Envelope/soapenv:Body/tns:NetworkInitiatedUSSDPushResponseMsg/tns:ResponseHeader&lt;/parent&gt;&#13;
+&lt;element&gt;tns:CommandID&lt;/element&gt;&#13;
+&lt;/param&gt;&#13;
+&lt;param&gt;&#13;
+&lt;name&gt;ORIGINALREQUESTID&lt;/name&gt;&#13;
+&lt;parent&gt;/soapenv:Envelope/soapenv:Body/tns:NetworkInitiatedUSSDPushResponseMsg/tns:ResponseHeader&lt;/parent&gt;&#13;
+&lt;element&gt;tns:OriginalRequestID&lt;/element&gt;&#13;
+&lt;/param&gt;&#13;
+&lt;param&gt;&#13;
+&lt;name&gt;USSDSESSIONID&lt;/name&gt;&#13;
+&lt;parent&gt;/soapenv:Envelope/soapenv:Body/tns:NetworkInitiatedUSSDPushResponseMsg/tns:ResponseHeader&lt;/parent&gt;&#13;
+&lt;element&gt;tns:USSDSessionID&lt;/element&gt;&#13;
+&lt;/param&gt;&#13;
+&lt;param&gt;&#13;
+&lt;name&gt;RESP_CODE&lt;/name&gt;&#13;
+&lt;parent&gt;/soapenv:Envelope/soapenv:Body/tns:NetworkInitiatedUSSDPushResponseMsg/tns:NetworkInitiatedUSSDPushResponse&lt;/parent&gt;&#13;
+&lt;element&gt;tns:ResponseCode&lt;/element&gt;&#13;
+&lt;/param&gt;&#13;
+&lt;param&gt;&#13;
+&lt;name&gt;RESP_DESC&lt;/name&gt;&#13;
+&lt;parent&gt;/soapenv:Envelope/soapenv:Body/tns:NetworkInitiatedUSSDPushResponseMsg/tns:NetworkInitiatedUSSDPushResponse&lt;/parent&gt;&#13;
+&lt;element&gt;tns:ResponseDesc&lt;/element&gt;&#13;
+&lt;/param&gt;&#13;
+&lt;param&gt;&#13;
+&lt;name&gt;TRANSACTIONTYPE&lt;/name&gt;&#13;
+&lt;parent&gt;/soapenv:Envelope/soapenv:Body/tns:NetworkInitiatedUSSDPushResponseMsg/tns:NetworkInitiatedUSSDPushResponse&lt;/parent&gt;&#13;
+&lt;element&gt;tns:TransactionType&lt;/element&gt;&#13;
+&lt;/param&gt;&#13;
+&lt;param&gt;&#13;
+&lt;name&gt;RESP_PARAMS&lt;/name&gt;&#13;
+&lt;parent&gt;/soapenv:Envelope/soapenv:Body/tns:NetworkInitiatedUSSDPushResponseMsg/tns:NetworkInitiatedUSSDPushResponse&lt;/parent&gt;&#13;
+&lt;element&gt;tns:ResponseParameters&lt;/element&gt;&#13;
+&lt;/param&gt;&#13;
+&lt;param&gt;&#13;
+&lt;name&gt;ADDITIONAL_INFO&lt;/name&gt;&#13;
+&lt;parent&gt;/soapenv:Envelope/soapenv:Body/tns:NetworkInitiatedUSSDPushResponseMsg/tns:NetworkInitiatedUSSDPushResponse&lt;/parent&gt;&#13;
+&lt;element&gt;tns:AdditionalInfo&lt;/element&gt;&#13;
+&lt;/param&gt;&#13;
+&lt;/response_processing&gt;</operationRespProcessingRules>
+          </Operation>
+        </Operations>
+        <Exceptions>
+          <Exception>
+            <id>1</id>
+            <exceptionName>SOAPFAULT</exceptionName>
+            <exceptionTemplate>&lt;SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="urn:ussdb"&gt;&#13;
+   &lt;SOAP-ENV:Header/&gt;&#13;
+   &lt;SOAP-ENV:Body SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"&gt;&#13;
+      &lt;SOAP-ENV:Fault&gt;&#13;
+      &lt;/SOAP-ENV:Fault&gt;&#13;
+   &lt;/SOAP-ENV:Body&gt;&#13;
+&lt;/SOAP-ENV:Envelope&gt;</exceptionTemplate>
+            <exceptionProcessingRules>&lt;response_processing&gt;&#13;
+&lt;param&gt;&#13;
+&lt;name&gt;faultcode&lt;/name&gt;&#13;
+&lt;parent&gt;/SOAP-ENV:Envelope/SOAP-ENV:Body/SOAP-ENV:Fault&lt;/parent&gt;&#13;
+&lt;element&gt;faultcode&lt;/element&gt;&#13;
+&lt;/param&gt;&#13;
+&lt;param&gt;&#13;
+&lt;name&gt;faultstring&lt;/name&gt;&#13;
+&lt;parent&gt;/SOAP-ENV:Envelope/SOAP-ENV:Body/SOAP-ENV:Fault&lt;/parent&gt;&#13;
+&lt;element&gt;faultstring&lt;/element&gt;&#13;
+&lt;/param&gt;&#13;
+&lt;/response_processing&gt;</exceptionProcessingRules>
+          </Exception>
+        </Exceptions>
+        <Common>
+          <port>8888</port>
+          <MaxAcceptedConnections>500</MaxAcceptedConnections>
+          <ConnectionInactivityTimeout>60</ConnectionInactivityTimeout>
+          <IPAddrWhiteList></IPAddrWhiteList>
+          <destination>8888</destination>
+          <RepresentationOfRequestParameters>2</RepresentationOfRequestParameters>
+          <wsdlfile>/aux0/customer/connectors/external/additional/NI_USSD_PUSH_SERVICE_v1_1.wsdl</wsdlfile>
+          <RequireAuthentication>N</RequireAuthentication>
+        </Common>
+        <UserAccounts>
+          <UserAccount>
+            <id>1</id>
+            <enabled>N</enabled>
+            <username>modongo</username>
+            <password>Winjearfo*14</password>
+            <services></services>
+          </UserAccount>
+        </UserAccounts>
+        <SSL>
+          <UseSSL>N</UseSSL>
+          <Password></Password>
+          <PrivateKeyFile></PrivateKeyFile>
+          <CertificateChainFile></CertificateChainFile>
+          <TMPDHFile></TMPDHFile>
+        </SSL>
+      </subconnector>
+    </subconnectors>
+  </protocolspecific>
+</connector>

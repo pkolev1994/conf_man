@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2007-2016. Opencode Systems Ltd.-->
+<connector>
+  <enabled>N</enabled>
+  <last_enabled/>
+  <enabled_marker/>
+  <mode>Y</mode>
+  <id>4800</id>
+  <name>CO_OP_BANK_667_2</name>
+  <type>SOAP_CLIENT</type>
+  <lastmodified>2016-08-30 19:17:03</lastmodified>
+  <description>COOP_SOAP</description>
+  <debug_level>1</debug_level>
+  <logdir>/aux1/occonnectors/logs/CO_OP_BANK_667_2/</logdir>
+  <hidden_parameters/>
+  <suppressed_alarms/>
+  <fifodir>/opt/occonnectors/run/connector_pipes/</fifodir>
+  <alarmdir>/aux0/alarms/</alarmdir>
+  <statustimeout>10000</statustimeout>
+  <max_status_timeouts>4</max_status_timeouts>
+  <reconnectinterval>60</reconnectinterval>
+  <messageexpiretime>40</messageexpiretime>
+  <dialoginactivitytime>60</dialoginactivitytime>
+  <maxexpireddialogs>1000</maxexpireddialogs>
+  <speed_limit>1000</speed_limit>
+  <speed_limit_conn>1000</speed_limit_conn>
+  <limit_app_requests>10000</limit_app_requests>
+  <pre_congestion_limit>60</pre_congestion_limit>
+  <round_robin_app_requests>N</round_robin_app_requests>
+  <should_reject_app_requests>Y</should_reject_app_requests>
+  <stop_subconn_on_ipc_lost>N</stop_subconn_on_ipc_lost>
+  <encode_special_characters>N</encode_special_characters>
+  <retry_sending_requests>N</retry_sending_requests>
+  <synchronous_logging>N</synchronous_logging>
+  <write_error_log>N</write_error_log>
+  <opcdipc>
+    <accountid>4800</accountid>
+    <hosts>
+      <host>
+        <ipaddress>10.0.0.177</ipaddress>
+        <port>5049</port>
+      </host>
+      <host>
+        <ipaddress>10.0.0.171</ipaddress>
+        <port>5049</port>
+      </host>
+      <host>
+        <ipaddress>10.0.0.173</ipaddress>
+        <port>5049</port>
+      </host>
+      <host>
+        <ipaddress>10.0.0.175</ipaddress>
+        <port>5049</port>
+      </host>
+    <host>
+ <ipaddress>10.0.0.179</ipaddress>
+ <port>5049</port> 
+ </host> 
+ </hosts> 
+    <login>CO_OP_BANK_667_2</login>
+    <messageexpiretime>40</messageexpiretime>
+    <password>4800</password>
+    <systemtype>SOAP_CLIENT</systemtype>
+  </opcdipc>
+  <protocolspecific>
+    <subconnectors>
+      <Operations>
+        <Operation>
+          <id>1</id>
+          <operationName>USSDRequest</operationName>
+          <operationXML>&lt;soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:air"&gt;&#13;
+   &lt;soapenv:Header/&gt;&#13;
+   &lt;soapenv:Body&gt;&#13;
+      &lt;urn:start soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"&gt;&#13;
+         &lt;service_code xsi:type="xsd:string"&gt;&lt;/service_code&gt;&#13;
+         &lt;msisdn xsi:type="xsd:string"&gt;&lt;/msisdn&gt;&#13;
+	&lt;imsi xsi:type="xsd:string"&gt;&lt;/imsi&gt;&#13;
+         &lt;session_id xsi:type="xsd:string"&gt;&lt;/session_id&gt;&#13;
+         &lt;ussd_string xsi:type="xsd:string"&gt;&lt;/ussd_string&gt;&#13;
+      &lt;/urn:start&gt;&#13;
+   &lt;/soapenv:Body&gt;&#13;
+&lt;/soapenv:Envelope&gt;</operationXML>
+          <operationHeaders/>
+          <operationResponse>&lt;response_processing&gt;&#13;
+&lt;response_element&gt;&#13;
+&lt;varname&gt;ResponseText&lt;/varname&gt;&#13;
+&lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+&lt;element&gt;/SOAP-ENV:Envelope/SOAP-ENV:Body/ns1:startResponse/return&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;/response_processing&gt;</operationResponse>
+        </Operation>
+      </Operations>
+      <Common>
+        <UseSubconnectorPath>N</UseSubconnectorPath>
+        <PreserveWhitespaces>N</PreserveWhitespaces>
+      </Common>
+      <ResponseProcessing>
+        <ResponseHeaders/>
+      </ResponseProcessing>
+      <HTTPHeaders/>
+      <IgnoreErrors>
+        <Errors/>
+      </IgnoreErrors>
+      <PostProcessingParams>
+        <PostProcessingResponseType>0</PostProcessingResponseType>
+      </PostProcessingParams>
+      <PostProcessings/>
+      <subconnector>
+        <id>1</id>
+        <enabled>Y</enabled>
+        <URL>http://172.31.180.173:8080</URL>
+        <NumSessions>200</NumSessions>
+        <KeepAlive>N</KeepAlive>
+        <send_head>N</send_head>
+        <HTTPMethod>POST</HTTPMethod>
+        <Encoding>curl-style</Encoding>
+        <HTTPVersion>1.1</HTTPVersion>
+        <ProxyURL/>
+        <Auth/>
+        <max_error_responses>10</max_error_responses>
+        <ProcessErrorResponse>N</ProcessErrorResponse>
+        <HTTPTimeout>30</HTTPTimeout>
+        <PostOnlyActionParams>Y</PostOnlyActionParams>
+        <SSLVerifyPeer>N</SSLVerifyPeer>
+        <SSLClientCert/>
+        <SSLClientKey/>
+        <SSLClientPassphrase/>
+        <SSLCACert/>
+      </subconnector>
+    </subconnectors>
+  </protocolspecific>
+</connector>

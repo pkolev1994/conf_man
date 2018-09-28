@@ -1,0 +1,1128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2007-2017. Opencode Systems Ltd.-->
+<connector>
+  <enabled>Y</enabled>
+  <last_enabled/>
+  <enabled_marker/>
+  <mode>Y</mode>
+  <id>4582</id>
+  <name>CBS_LMS</name>
+  <type>SOAP_CLIENT</type>
+  <lastmodified>2017-06-26 19:55:47</lastmodified>
+  <description>CBS_LMS - 28.08 logging level is set to Normal</description>
+  <debug_level>1</debug_level>
+  <logdir>/aux1/occonnectors/logs/CBS_LMS/</logdir>
+  <hidden_parameters/>
+  <suppressed_alarms/>
+  <fifodir>/opt/occonnectors/run/connector_pipes/</fifodir>
+  <alarmdir>/aux0/alarms/</alarmdir>
+  <statustimeout>10000</statustimeout>
+  <max_status_timeouts>4</max_status_timeouts>
+  <reconnectinterval>60</reconnectinterval>
+  <messageexpiretime>40</messageexpiretime>
+  <dialoginactivitytime>60</dialoginactivitytime>
+  <maxexpireddialogs>1000</maxexpireddialogs>
+  <speed_limit>1000</speed_limit>
+  <speed_limit_conn>1000</speed_limit_conn>
+  <limit_app_requests>10000</limit_app_requests>
+  <pre_congestion_limit>60</pre_congestion_limit>
+  <round_robin_app_requests>N</round_robin_app_requests>
+  <should_reject_app_requests>Y</should_reject_app_requests>
+  <stop_subconn_on_ipc_lost>N</stop_subconn_on_ipc_lost>
+  <encode_special_characters>N</encode_special_characters>
+  <retry_sending_requests>N</retry_sending_requests>
+  <synchronous_logging>N</synchronous_logging>
+  <write_error_log>N</write_error_log>
+  <opcdipc>
+    <accountid>4582</accountid>
+    <hosts>
+      <host>
+        <ipaddress>10.0.0.177</ipaddress>
+        <port>5049</port>
+      </host>
+      <host>
+        <ipaddress>10.0.0.171</ipaddress>
+        <port>5049</port>
+      </host>
+      <host>
+        <ipaddress>10.0.0.173</ipaddress>
+        <port>5049</port>
+      </host>
+      <host>
+        <ipaddress>10.0.0.175</ipaddress>
+        <port>5049</port>
+      </host>
+    <host>
+ <ipaddress>10.0.0.179</ipaddress>
+ <port>5049</port> 
+ </host> 
+ </hosts> 
+    <login>CBS_LMS</login>
+    <messageexpiretime>40</messageexpiretime>
+    <password>4582</password>
+    <systemtype>SOAP_CLIENT</systemtype>
+  </opcdipc>
+  <protocolspecific>
+    <subconnectors>
+      <Operations>
+        <Operation>
+          <id>1</id>
+          <operationName>Enroll</operationName>
+          <operationXML>&lt;SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:m0="http://www.huawei.com/bme/cbsinterface/common" xmlns:m1="http://www.huawei.com/bme/cbsinterface/cbs/businessmgr"&gt;&#13;
+	&lt;SOAP-ENV:Body&gt;&#13;
+		&lt;m:ManPointRequestMsg xmlns:m="http://www.huawei.com/bme/cbsinterface/cbs/businessmgrmsg"&gt;&#13;
+			&lt;RequestHeader&gt;&#13;
+				&lt;m0:CommandId&gt;ManPoint&lt;/m0:CommandId&gt;&#13;
+				&lt;m0:Version&gt;1&lt;/m0:Version&gt;&#13;
+				&lt;m0:TransactionId&gt;&lt;/m0:TransactionId&gt;&#13;
+				&lt;m0:SequenceId&gt;1&lt;/m0:SequenceId&gt;&#13;
+				&lt;m0:RequestType&gt;Event&lt;/m0:RequestType&gt;&#13;
+				&lt;m0:SessionEntity&gt;&#13;
+					&lt;m0:Name&gt;ussd_gw&lt;/m0:Name&gt;&#13;
+					&lt;m0:Password&gt;Abc1234&lt;/m0:Password&gt;&#13;
+					&lt;m0:RemoteAddress&gt;127.0.0.1&lt;/m0:RemoteAddress&gt;&#13;
+				&lt;/m0:SessionEntity&gt;&#13;
+				&lt;m0:SerialNo&gt;&lt;/m0:SerialNo&gt;&#13;
+				&lt;m0:Remark&gt;String&lt;/m0:Remark&gt;&#13;
+			&lt;/RequestHeader&gt;&#13;
+			&lt;ManPointRequest&gt;&#13;
+				&lt;m1:SubscriberNo&gt;&lt;/m1:SubscriberNo&gt;&#13;
+				&lt;m1:OperateType&gt;1&lt;/m1:OperateType&gt;&#13;
+				&lt;m1:HandleSubAcct&gt;1&lt;/m1:HandleSubAcct&gt;&#13;
+                           &lt;m1:AdditionalInfo2&gt;&lt;/m1:AdditionalInfo2&gt;&#13;
+			&lt;/ManPointRequest&gt;&#13;
+		&lt;/m:ManPointRequestMsg&gt;&#13;
+	&lt;/SOAP-ENV:Body&gt;&#13;
+&lt;/SOAP-ENV:Envelope&gt;</operationXML>
+          <operationHeaders></operationHeaders>
+          <operationResponse>&lt;response_processing&gt;&#13;
+ &lt;response_element&gt;&#13;
+  &lt;varname&gt;ResultCode&lt;/varname&gt;&#13;
+  &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+  &lt;element&gt;/soapenv:Envelope/soapenv:Body/ManPointResultMsg/ResultHeader/ResultCode&lt;/element&gt;&#13;
+  &lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+  &lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+ &lt;/response_element&gt;&#13;
+ &lt;response_element&gt;&#13;
+  &lt;varname&gt;ResultDesc&lt;/varname&gt;&#13;
+  &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+  &lt;element&gt;/soapenv:Envelope/soapenv:Body/ManPointResultMsg/ResultHeader/ResultDesc&lt;/element&gt;&#13;
+  &lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+  &lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+ &lt;/response_element&gt;&#13;
+&lt;/response_processing&gt;</operationResponse>
+        </Operation>
+        <Operation>
+          <id>2</id>
+          <operationName>Enquire</operationName>
+          <operationXML>&lt;SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:m0="http://www.huawei.com/bme/cbsinterface/common" xmlns:m1="http://www.huawei.com/bme/cbsinterface/cbs/businessmgr"&gt;&#13;
+	&lt;SOAP-ENV:Body&gt;&#13;
+		&lt;m:ManPointRequestMsg xmlns:m="http://www.huawei.com/bme/cbsinterface/cbs/businessmgrmsg"&gt;&#13;
+			&lt;RequestHeader&gt;&#13;
+				&lt;m0:CommandId&gt;ManPoint&lt;/m0:CommandId&gt;&#13;
+				&lt;m0:Version&gt;1&lt;/m0:Version&gt;&#13;
+				&lt;m0:TransactionId&gt;&lt;/m0:TransactionId&gt;&#13;
+				&lt;m0:SequenceId&gt;1&lt;/m0:SequenceId&gt;&#13;
+				&lt;m0:RequestType&gt;Event&lt;/m0:RequestType&gt;&#13;
+				&lt;m0:SessionEntity&gt;&#13;
+					&lt;m0:Name&gt;ussd_gw&lt;/m0:Name&gt;&#13;
+					&lt;m0:Password&gt;Abc1234&lt;/m0:Password&gt;&#13;
+					&lt;m0:RemoteAddress&gt;127.0.0.1&lt;/m0:RemoteAddress&gt;&#13;
+				&lt;/m0:SessionEntity&gt;&#13;
+				&lt;m0:SerialNo&gt;&lt;/m0:SerialNo&gt;&#13;
+				&lt;m0:Remark&gt;String&lt;/m0:Remark&gt;&#13;
+			&lt;/RequestHeader&gt;&#13;
+			&lt;ManPointRequest&gt;&#13;
+				&lt;m1:SubscriberNo&gt;&lt;/m1:SubscriberNo&gt;&#13;
+				&lt;m1:OperateType&gt;9&lt;/m1:OperateType&gt;&#13;
+				&lt;m1:SmsNotify&gt;&lt;/m1:SmsNotify&gt;&#13;
+			&lt;/ManPointRequest&gt;&#13;
+		&lt;/m:ManPointRequestMsg&gt;&#13;
+	&lt;/SOAP-ENV:Body&gt;&#13;
+&lt;/SOAP-ENV:Envelope&gt;</operationXML>
+          <operationHeaders></operationHeaders>
+          <operationResponse>&lt;response_processing&gt;&#13;
+ &lt;response_element&gt;&#13;
+  &lt;varname&gt;ResultCode&lt;/varname&gt;&#13;
+  &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+  &lt;element&gt;/soapenv:Envelope/soapenv:Body/ManPointResultMsg/ResultHeader/ResultCode&lt;/element&gt;&#13;
+  &lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+  &lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+ &lt;/response_element&gt;&#13;
+ &lt;response_element&gt;&#13;
+  &lt;varname&gt;ResultDesc&lt;/varname&gt;&#13;
+  &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+  &lt;element&gt;/soapenv:Envelope/soapenv:Body/ManPointResultMsg/ResultHeader/ResultDesc&lt;/element&gt;&#13;
+  &lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+  &lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+ &lt;/response_element&gt;&#13;
+ &lt;response_element&gt;&#13;
+  &lt;varname&gt;CurrPointAmount&lt;/varname&gt;&#13;
+  &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+  &lt;element&gt;/soapenv:Envelope/soapenv:Body/ManPointResultMsg/ManPointResult/CurrPointAmount&lt;/element&gt;&#13;
+  &lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+  &lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+ &lt;/response_element&gt;&#13;
+&lt;/response_processing&gt;</operationResponse>
+        </Operation>
+        <Operation>
+          <id>16</id>
+          <operationName>Adjustbonga</operationName>
+          <operationXML>&lt;SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:m0="http://www.huawei.com/bme/cbsinterface/common" xmlns:m1="http://www.huawei.com/bme/cbsinterface/cbs/businessmgr"&gt;&#13;
+        &lt;SOAP-ENV:Body&gt;&#13;
+                &lt;m:ManPointRequestMsg xmlns:m="http://www.huawei.com/bme/cbsinterface/cbs/businessmgrmsg"&gt;&#13;
+                        &lt;RequestHeader&gt;&#13;
+                                &lt;m0:CommandId&gt;ManPoint&lt;/m0:CommandId&gt;&#13;
+                                &lt;m0:Version&gt;1&lt;/m0:Version&gt;&#13;
+                                &lt;m0:TransactionId&gt;&lt;/m0:TransactionId&gt;&#13;
+                                &lt;m0:SequenceId&gt;1&lt;/m0:SequenceId&gt;&#13;
+                                &lt;m0:RequestType&gt;Event&lt;/m0:RequestType&gt;&#13;
+                                &lt;m0:SessionEntity&gt;&#13;
+                                        &lt;m0:Name&gt;ussd_gw&lt;/m0:Name&gt;&#13;
+                                        &lt;m0:Password&gt;Abc1234&lt;/m0:Password&gt;&#13;
+                                        &lt;m0:RemoteAddress&gt;127.0.0.1&lt;/m0:RemoteAddress&gt;&#13;
+                                &lt;/m0:SessionEntity&gt;&#13;
+                                &lt;m0:SerialNo&gt;&lt;/m0:SerialNo&gt;&#13;
+                                &lt;m0:Remark&gt;String&lt;/m0:Remark&gt;&#13;
+                        &lt;/RequestHeader&gt;&#13;
+                        &lt;ManPointRequest&gt;&#13;
+                                &lt;m1:SubscriberNo&gt;&lt;/m1:SubscriberNo&gt;&#13;
+                                &lt;m1:OperateType&gt;3&lt;/m1:OperateType&gt;&#13;
+                                &lt;m1:ResourceType&gt;&lt;/m1:ResourceType&gt;&#13;
+                                &lt;m1:PointAmount&gt;&lt;/m1:PointAmount&gt;&#13;
+								&lt;m1:Remark&gt;Flex Redemption&lt;/m1:Remark&gt;&#13;
+                                &lt;m1:SmsNotify&gt;0&lt;/m1:SmsNotify&gt;&#13;
+                &lt;m1:AdditionalInfo2&gt;&lt;/m1:AdditionalInfo2&gt;&#13;
+                        &lt;/ManPointRequest&gt;&#13;
+                &lt;/m:ManPointRequestMsg&gt;&#13;
+        &lt;/SOAP-ENV:Body&gt;&#13;
+&lt;/SOAP-ENV:Envelope&gt;</operationXML>
+          <operationHeaders></operationHeaders>
+          <operationResponse>&lt;response_processing&gt;&#13;
+ &lt;response_element&gt;&#13;
+  &lt;varname&gt;ResultCode&lt;/varname&gt;&#13;
+  &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+  &lt;element&gt;/soapenv:Envelope/soapenv:Body/ManPointResultMsg/ResultHeader/ResultCode&lt;/element&gt;&#13;
+  &lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+  &lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+ &lt;/response_element&gt;&#13;
+ &lt;response_element&gt;&#13;
+  &lt;varname&gt;ResultDesc&lt;/varname&gt;&#13;
+  &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+  &lt;element&gt;/soapenv:Envelope/soapenv:Body/ManPointResultMsg/ResultHeader/ResultDesc&lt;/element&gt;&#13;
+  &lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+  &lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+ &lt;/response_element&gt;&#13;
+ &lt;response_element&gt;&#13;
+  &lt;varname&gt;CurrPointAmount&lt;/varname&gt;&#13;
+  &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+  &lt;element&gt;/soapenv:Envelope/soapenv:Body/ManPointResultMsg/ManPointResult/CurrPointAmount&lt;/element&gt;&#13;
+  &lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+  &lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+ &lt;/response_element&gt;&#13;
+ &lt;response_element&gt;&#13;
+  &lt;varname&gt;ChgPointAmount&lt;/varname&gt;&#13;
+  &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+  &lt;element&gt;/soapenv:Envelope/soapenv:Body/ManPointResultMsg/ManPointResult/ChgPointAmount&lt;/element&gt;&#13;
+  &lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+  &lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+ &lt;/response_element&gt;&#13;
+&lt;/response_processing&gt;</operationResponse>
+        </Operation>
+        <Operation>
+          <id>17</id>
+          <operationName>subscribeflex</operationName>
+          <operationXML>&lt;soap:Envelope xmlns:soap='http://schemas.xmlsoap.org/soap/envelope/'&#13;
+        xmlns:bus='http://www.huawei.com/bme/cbsinterface/cbs/businessmgrmsg'&#13;
+        xmlns:com='http://www.huawei.com/bme/cbsinterface/common' xmlns:bus1='http://www.huawei.com/bme/cbsinterface/cbs/businessmgr'&gt;&#13;
+        &lt;soap:Header /&gt;&#13;
+        &lt;soap:Body&gt;&#13;
+                &lt;bus:SubscribeAppendantProductRequestMsg&gt;&#13;
+                        &lt;RequestHeader&gt;&#13;
+                                &lt;com:CommandId&gt;SubscribeAppendantProduct&lt;/com:CommandId&gt;&#13;
+                                &lt;com:Version&gt;1&lt;/com:Version&gt;&#13;
+                                &lt;com:TransactionId&gt;&lt;/com:TransactionId&gt;&#13;
+                                &lt;com:SequenceId&gt;1&lt;/com:SequenceId&gt;&#13;
+                                &lt;com:RequestType&gt;Event&lt;/com:RequestType&gt;&#13;
+                                &lt;com:SessionEntity&gt;&#13;
+                                        &lt;com:Name&gt;ussd_gw&lt;/com:Name&gt;&#13;
+                                        &lt;com:Password&gt;Abc1234&lt;/com:Password&gt;&#13;
+                                        &lt;com:RemoteAddress&gt;127.0.0.1&lt;/com:RemoteAddress&gt;&#13;
+                                &lt;/com:SessionEntity&gt;&#13;
+                                &lt;com:SerialNo&gt;&lt;/com:SerialNo&gt;&#13;
+                        &lt;/RequestHeader&gt;&#13;
+                        &lt;SubscribeAppendantProductRequest&gt;&#13;
+                                &lt;bus1:SubscriberNo&gt;&lt;/bus1:SubscriberNo&gt;&#13;
+                                &lt;bus1:Product&gt;&#13;
+          &lt;bus1:Id&gt;&lt;/bus1:Id&gt;&#13;
+          &lt;bus1:SimpleProperty&gt;&#13;
+            &lt;bus1:Id&gt;RENTDISCOUNTRATE&lt;/bus1:Id&gt;&#13;
+            &lt;bus1:Value&gt;10000&lt;/bus1:Value&gt;&#13;
+          &lt;/bus1:SimpleProperty&gt;&#13;
+          &lt;bus1:ValidMode&gt;4050000&lt;/bus1:ValidMode&gt;&#13;
+        &lt;/bus1:Product&gt;&#13;
+&lt;bus1:HandlingChargeFlag&gt;0&lt;/bus1:HandlingChargeFlag&gt;&#13;
+&lt;bus1:AdditionalInfo&gt;Flex Redemption&lt;/bus1:AdditionalInfo&gt;&#13;
+                        &lt;/SubscribeAppendantProductRequest&gt;&#13;
+                &lt;/bus:SubscribeAppendantProductRequestMsg&gt;&#13;
+        &lt;/soap:Body&gt;&#13;
+&lt;/soap:Envelope&gt;</operationXML>
+          <operationHeaders>SOAPAction: "SubscribeAppendantProduct"</operationHeaders>
+          <operationResponse>&lt;response_processing&gt;&#13;
+&lt;response_element&gt;&#13;
+&lt;varname&gt;CommandId&lt;/varname&gt;&#13;
+&lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+&lt;element&gt;/soapenv:Envelope/soapenv:Body/SubscribeAppendantProductResultMsg/ResultHeader/CommandId&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;response_element&gt;&#13;
+&lt;varname&gt;ResultCode&lt;/varname&gt;&#13;
+&lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+&lt;element&gt;/soapenv:Envelope/soapenv:Body/SubscribeAppendantProductResultMsg/ResultHeader/ResultCode&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;response_element&gt;&#13;
+&lt;varname&gt;ResultDesc&lt;/varname&gt;&#13;
+&lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+&lt;element&gt;/soapenv:Envelope/soapenv:Body/SubscribeAppendantProductResultMsg/ResultHeader/ResultDesc&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;/response_processing&gt;</operationResponse>
+        </Operation>
+        <Operation>
+          <id>3</id>
+          <operationName>Redeem</operationName>
+          <operationXML>&lt;SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:m0="http://www.huawei.com/bme/cbsinterface/common" xmlns:m1="http://www.huawei.com/bme/cbsinterface/cbs/businessmgr"&gt;&#13;
+	&lt;SOAP-ENV:Body&gt;&#13;
+		&lt;m:ManPointRequestMsg xmlns:m="http://www.huawei.com/bme/cbsinterface/cbs/businessmgrmsg"&gt;&#13;
+			&lt;RequestHeader&gt;&#13;
+				&lt;m0:CommandId&gt;ManPoint&lt;/m0:CommandId&gt;&#13;
+				&lt;m0:Version&gt;1&lt;/m0:Version&gt;&#13;
+				&lt;m0:TransactionId&gt;&lt;/m0:TransactionId&gt;&#13;
+				&lt;m0:SequenceId&gt;1&lt;/m0:SequenceId&gt;&#13;
+				&lt;m0:RequestType&gt;Event&lt;/m0:RequestType&gt;&#13;
+				&lt;m0:SessionEntity&gt;&#13;
+					&lt;m0:Name&gt;ussd_gw&lt;/m0:Name&gt;&#13;
+					&lt;m0:Password&gt;Abc1234&lt;/m0:Password&gt;&#13;
+					&lt;m0:RemoteAddress&gt;127.0.0.1&lt;/m0:RemoteAddress&gt;&#13;
+				&lt;/m0:SessionEntity&gt;&#13;
+				&lt;m0:SerialNo&gt;&lt;/m0:SerialNo&gt;&#13;
+				&lt;m0:Remark&gt;String&lt;/m0:Remark&gt;&#13;
+			&lt;/RequestHeader&gt;&#13;
+			&lt;ManPointRequest&gt;&#13;
+				&lt;m1:SubscriberNo&gt;&lt;/m1:SubscriberNo&gt;&#13;
+				&lt;m1:OperateType&gt;4&lt;/m1:OperateType&gt;&#13;
+				&lt;m1:ResourceType&gt;&lt;/m1:ResourceType&gt;&#13;
+				&lt;m1:PointAmount&gt;&lt;/m1:PointAmount&gt;&#13;
+                                &lt;m1:AdditionalInfo2&gt;&lt;/m1:AdditionalInfo2&gt;&#13;
+			&lt;/ManPointRequest&gt;&#13;
+		&lt;/m:ManPointRequestMsg&gt;&#13;
+	&lt;/SOAP-ENV:Body&gt;&#13;
+&lt;/SOAP-ENV:Envelope&gt;</operationXML>
+          <operationHeaders></operationHeaders>
+          <operationResponse>&lt;response_processing&gt;&#13;
+ &lt;response_element&gt;&#13;
+  &lt;varname&gt;ResultCode&lt;/varname&gt;&#13;
+  &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+  &lt;element&gt;/soapenv:Envelope/soapenv:Body/ManPointResultMsg/ResultHeader/ResultCode&lt;/element&gt;&#13;
+  &lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+  &lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+ &lt;/response_element&gt;&#13;
+ &lt;response_element&gt;&#13;
+  &lt;varname&gt;ResultDesc&lt;/varname&gt;&#13;
+  &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+  &lt;element&gt;/soapenv:Envelope/soapenv:Body/ManPointResultMsg/ResultHeader/ResultDesc&lt;/element&gt;&#13;
+  &lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+  &lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+ &lt;/response_element&gt;&#13;
+ &lt;response_element&gt;&#13;
+  &lt;varname&gt;CurrPointAmount&lt;/varname&gt;&#13;
+  &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+  &lt;element&gt;/soapenv:Envelope/soapenv:Body/ManPointResultMsg/ManPointResult/CurrPointAmount&lt;/element&gt;&#13;
+  &lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+  &lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+ &lt;/response_element&gt;&#13;
+ &lt;response_element&gt;&#13;
+  &lt;varname&gt;ChgPointAmount&lt;/varname&gt;&#13;
+  &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+  &lt;element&gt;/soapenv:Envelope/soapenv:Body/ManPointResultMsg/ManPointResult/ChgPointAmount&lt;/element&gt;&#13;
+  &lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+  &lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+ &lt;/response_element&gt;&#13;
+&lt;/response_processing&gt;</operationResponse>
+        </Operation>
+        <Operation>
+          <id>4</id>
+          <operationName>GeneratePassword</operationName>
+          <operationXML>&lt;SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:m0="http://www.huawei.com/bme/cbsinterface/common" xmlns:m1="http://www.huawei.com/bme/cbsinterface/cbs/businessmgr"&gt;&#13;
+	&lt;SOAP-ENV:Body&gt;&#13;
+		&lt;m:ManPointRequestMsg xmlns:m="http://www.huawei.com/bme/cbsinterface/cbs/businessmgrmsg"&gt;&#13;
+			&lt;RequestHeader&gt;&#13;
+				&lt;m0:CommandId&gt;ManPoint&lt;/m0:CommandId&gt;&#13;
+				&lt;m0:Version&gt;1&lt;/m0:Version&gt;&#13;
+				&lt;m0:TransactionId&gt;&lt;/m0:TransactionId&gt;&#13;
+				&lt;m0:SequenceId&gt;1&lt;/m0:SequenceId&gt;&#13;
+				&lt;m0:RequestType&gt;Event&lt;/m0:RequestType&gt;&#13;
+				&lt;m0:SessionEntity&gt;&#13;
+					&lt;m0:Name&gt;ussd_gw&lt;/m0:Name&gt;&#13;
+					&lt;m0:Password&gt;Abc1234&lt;/m0:Password&gt;&#13;
+					&lt;m0:RemoteAddress&gt;127.0.0.1&lt;/m0:RemoteAddress&gt;&#13;
+				&lt;/m0:SessionEntity&gt;&#13;
+				&lt;m0:SerialNo&gt;&lt;/m0:SerialNo&gt;&#13;
+			&lt;/RequestHeader&gt;&#13;
+			&lt;ManPointRequest&gt;&#13;
+				&lt;m1:SubscriberNo&gt;&lt;/m1:SubscriberNo&gt;&#13;
+				&lt;m1:OperateType&gt;6&lt;/m1:OperateType&gt;&#13;
+			&lt;/ManPointRequest&gt;&#13;
+		&lt;/m:ManPointRequestMsg&gt;&#13;
+	&lt;/SOAP-ENV:Body&gt;&#13;
+&lt;/SOAP-ENV:Envelope&gt;</operationXML>
+          <operationHeaders></operationHeaders>
+          <operationResponse>&lt;response_processing&gt;&#13;
+ &lt;response_element&gt;&#13;
+  &lt;varname&gt;ResultCode&lt;/varname&gt;&#13;
+  &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+  &lt;element&gt;/soapenv:Envelope/soapenv:Body/ManPointResultMsg/ResultHeader/ResultCode&lt;/element&gt;&#13;
+  &lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+  &lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+ &lt;/response_element&gt;&#13;
+ &lt;response_element&gt;&#13;
+  &lt;varname&gt;ResultDesc&lt;/varname&gt;&#13;
+  &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+  &lt;element&gt;/soapenv:Envelope/soapenv:Body/ManPointResultMsg/ResultHeader/ResultDesc&lt;/element&gt;&#13;
+  &lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+  &lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+ &lt;/response_element&gt;&#13;
+ &lt;response_element&gt;&#13;
+  &lt;varname&gt;Password&lt;/varname&gt;&#13;
+  &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+  &lt;element&gt;/soapenv:Envelope/soapenv:Body/ManPointResultMsg/ManPointResult/Password&lt;/element&gt;&#13;
+  &lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+  &lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+ &lt;/response_element&gt;&#13;
+&lt;/response_processing&gt;</operationResponse>
+        </Operation>
+        <Operation>
+          <id>5</id>
+          <operationName>Transfer</operationName>
+          <operationXML>&lt;soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:bus="http://www.huawei.com/bme/cbsinterface/cbs/businessmgrmsg" xmlns:com="http://www.huawei.com/bme/cbsinterface/common" xmlns:bus1="http://www.huawei.com/bme/cbsinterface/cbs/businessmgr"&gt;&#13;
+   &lt;soapenv:Header/&gt;&#13;
+   &lt;soapenv:Body&gt;&#13;
+      &lt;bus:ManPointRequestMsg&gt;&#13;
+         &lt;RequestHeader&gt;&#13;
+            &lt;com:CommandId&gt;ManPoint&lt;/com:CommandId&gt;&#13;
+            &lt;com:Version&gt;1&lt;/com:Version&gt;&#13;
+            &lt;com:TransactionId&gt;1&lt;/com:TransactionId&gt;&#13;
+            &lt;com:SequenceId&gt;1&lt;/com:SequenceId&gt;&#13;
+            &lt;com:RequestType&gt;Event&lt;/com:RequestType&gt;&#13;
+            &lt;com:SessionEntity&gt;&#13;
+               &lt;com:Name&gt;ussd_gw&lt;/com:Name&gt;&#13;
+               &lt;com:Password&gt;Abc1234&lt;/com:Password&gt;&#13;
+               &lt;com:RemoteAddress&gt;127.0.0.1&lt;/com:RemoteAddress&gt;&#13;
+            &lt;/com:SessionEntity&gt;&#13;
+            &lt;com:SerialNo&gt;&lt;/com:SerialNo&gt;&#13;
+         &lt;/RequestHeader&gt;&#13;
+         &lt;ManPointRequest&gt;&#13;
+            &lt;bus1:SubscriberNo&gt;&lt;/bus1:SubscriberNo&gt;&#13;
+            &lt;bus1:OperateType&gt;15&lt;/bus1:OperateType&gt;&#13;
+            &lt;bus1:PointAmount&gt;&lt;/bus1:PointAmount&gt;&#13;
+            &lt;bus1:Password&gt;&lt;/bus1:Password&gt;&#13;
+            &lt;bus1:TransferInSubscriberNo&gt;&lt;/bus1:TransferInSubscriberNo&gt;&#13;
+            &lt;bus1:PasswordCheckFlag&gt;0&lt;/bus1:PasswordCheckFlag&gt;&#13;
+            &lt;bus1:AdditionalInfo2&gt;&lt;/bus1:AdditionalInfo2&gt;&#13;
+         &lt;/ManPointRequest&gt;&#13;
+      &lt;/bus:ManPointRequestMsg&gt;&#13;
+   &lt;/soapenv:Body&gt;&#13;
+&lt;/soapenv:Envelope&gt;</operationXML>
+          <operationHeaders></operationHeaders>
+          <operationResponse>&lt;response_processing&gt;&#13;
+ &lt;response_element&gt;&#13;
+  &lt;varname&gt;ResultCode&lt;/varname&gt;&#13;
+  &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+  &lt;element&gt;/soapenv:Envelope/soapenv:Body/ManPointResultMsg/ResultHeader/ResultCode&lt;/element&gt;&#13;
+  &lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+  &lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+ &lt;/response_element&gt;&#13;
+ &lt;response_element&gt;&#13;
+  &lt;varname&gt;ResultDesc&lt;/varname&gt;&#13;
+  &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+  &lt;element&gt;/soapenv:Envelope/soapenv:Body/ManPointResultMsg/ResultHeader/ResultDesc&lt;/element&gt;&#13;
+  &lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+  &lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+ &lt;/response_element&gt;&#13;
+ &lt;response_element&gt;&#13;
+  &lt;varname&gt;TransferOutCurrPointAmt&lt;/varname&gt;&#13;
+  &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+  &lt;element&gt;/soapenv:Envelope/soapenv:Body/ManPointResultMsg/ManPointResult/TransferOutCurrPointAmt&lt;/element&gt;&#13;
+  &lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+  &lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+ &lt;/response_element&gt;&#13;
+&lt;response_element&gt;&#13;
+  &lt;varname&gt;ExpireDate&lt;/varname&gt;&#13;
+  &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+  &lt;element&gt;/soapenv:Envelope/soapenv:Body/ManPointResultMsg/ManPointResult/ExpiredDate&lt;/element&gt;&#13;
+  &lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+  &lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+ &lt;/response_element&gt;&#13;
+&lt;/response_processing&gt;</operationResponse>
+        </Operation>
+        <Operation>
+          <id>6</id>
+          <operationName>Redeem_KQ</operationName>
+          <operationXML>&lt;soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:bus="http://www.huawei.com/bme/cbsinterface/cbs/businessmgrmsg" xmlns:com="http://www.huawei.com/bme/cbsinterface/common" xmlns:bus1="http://www.huawei.com/bme/cbsinterface/cbs/businessmgr"&gt;&#13;
+   &lt;soapenv:Header/&gt;&#13;
+   &lt;soapenv:Body&gt;&#13;
+      &lt;bus:ManPointRequestMsg&gt;&#13;
+         &lt;RequestHeader&gt;&#13;
+            &lt;com:CommandId&gt;ManPoint&lt;/com:CommandId&gt;&#13;
+            &lt;com:Version&gt;1&lt;/com:Version&gt;&#13;
+            &lt;com:TransactionId&gt;1&lt;/com:TransactionId&gt;&#13;
+            &lt;com:SequenceId&gt;1&lt;/com:SequenceId&gt;&#13;
+            &lt;com:RequestType&gt;Event&lt;/com:RequestType&gt;&#13;
+            &lt;com:SessionEntity&gt;&#13;
+               &lt;com:Name&gt;PSD_User9&lt;/com:Name&gt;&#13;
+               &lt;com:Password&gt;rN90pOzpyjYMsIzF56RO&lt;/com:Password&gt;&#13;
+               &lt;com:RemoteAddress&gt;127.0.0.1&lt;/com:RemoteAddress&gt;&#13;
+            &lt;/com:SessionEntity&gt;&#13;
+            &lt;com:SerialNo&gt;&lt;/com:SerialNo&gt;&#13;
+         &lt;/RequestHeader&gt;&#13;
+         &lt;ManPointRequest&gt;&#13;
+            &lt;bus1:SubscriberNo&gt;&lt;/bus1:SubscriberNo&gt;&#13;
+            &lt;bus1:OperateType&gt;&lt;/bus1:OperateType&gt;&#13;
+            &lt;bus1:ResourceType&gt;&lt;/bus1:ResourceType&gt;&#13;
+            &lt;bus1:PointAmount&gt;&lt;/bus1:PointAmount&gt;&#13;
+            &lt;bus1:Password&gt;&lt;/bus1:Password&gt;&#13;
+            &lt;bus1:SmsNotify&gt;&lt;/bus1:SmsNotify&gt;&#13;
+			&lt;bus1:AdditionalInfo2&gt;&lt;/bus1:AdditionalInfo2&gt;&#13;
+         &lt;/ManPointRequest&gt;&#13;
+      &lt;/bus:ManPointRequestMsg&gt;&#13;
+   &lt;/soapenv:Body&gt;&#13;
+&lt;/soapenv:Envelope&gt;</operationXML>
+          <operationHeaders></operationHeaders>
+          <operationResponse>&lt;response_processing&gt;&#13;
+ &lt;response_element&gt;&#13;
+  &lt;varname&gt;ResultCode&lt;/varname&gt;&#13;
+  &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+  &lt;element&gt;/soapenv:Envelope/soapenv:Body/ManPointResultMsg/ResultHeader/ResultCode&lt;/element&gt;&#13;
+  &lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+  &lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+ &lt;/response_element&gt;&#13;
+ &lt;response_element&gt;&#13;
+  &lt;varname&gt;ResultDesc&lt;/varname&gt;&#13;
+  &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+  &lt;element&gt;/soapenv:Envelope/soapenv:Body/ManPointResultMsg/ResultHeader/ResultDesc&lt;/element&gt;&#13;
+  &lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+  &lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+ &lt;/response_element&gt;&#13;
+ &lt;response_element&gt;&#13;
+  &lt;varname&gt;CurrPointAmount&lt;/varname&gt;&#13;
+  &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+  &lt;element&gt;/soapenv:Envelope/soapenv:Body/ManPointResultMsg/ManPointResult/CurrPointAmount&lt;/element&gt;&#13;
+  &lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+  &lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+ &lt;/response_element&gt;&#13;
+ &lt;response_element&gt;&#13;
+  &lt;varname&gt;ChgPointAmount&lt;/varname&gt;&#13;
+  &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+  &lt;element&gt;/soapenv:Envelope/soapenv:Body/ManPointResultMsg/ManPointResult/ChgPointAmount&lt;/element&gt;&#13;
+  &lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+  &lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+ &lt;/response_element&gt;&#13;
+ &lt;response_element&gt;&#13;
+  &lt;varname&gt;SerialNo&lt;/varname&gt;&#13;
+  &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+  &lt;element&gt;/soapenv:Envelope/soapenv:Body/ManPointResultMsg/ManPointResult/SerialNo&lt;/element&gt;&#13;
+  &lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+  &lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+ &lt;/response_element&gt;&#13;
+&lt;/response_processing&gt;</operationResponse>
+        </Operation>
+        <Operation>
+          <id>7</id>
+          <operationName>GeneratePassword_KQ</operationName>
+          <operationXML>&lt;soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:bus="http://www.huawei.com/bme/cbsinterface/cbs/businessmgrmsg" xmlns:com="http://www.huawei.com/bme/cbsinterface/common" xmlns:bus1="http://www.huawei.com/bme/cbsinterface/cbs/businessmgr"&gt;&#13;
+   &lt;soapenv:Header/&gt;&#13;
+   &lt;soapenv:Body&gt;&#13;
+      &lt;bus:ManPointRequestMsg&gt;&#13;
+         &lt;RequestHeader&gt;&#13;
+            &lt;com:CommandId&gt;ManPoint&lt;/com:CommandId&gt;&#13;
+            &lt;com:Version&gt;1&lt;/com:Version&gt;&#13;
+            &lt;com:TransactionId&gt;1&lt;/com:TransactionId&gt;&#13;
+            &lt;com:SequenceId&gt;1&lt;/com:SequenceId&gt;&#13;
+            &lt;com:RequestType&gt;Event&lt;/com:RequestType&gt;&#13;
+            &lt;com:SessionEntity&gt;&#13;
+               &lt;com:Name&gt;ussd_gw&lt;/com:Name&gt;&#13;
+               &lt;com:Password&gt;Abc1234&lt;/com:Password&gt;&#13;
+               &lt;com:RemoteAddress&gt;127.0.0.1&lt;/com:RemoteAddress&gt;&#13;
+            &lt;/com:SessionEntity&gt;&#13;
+            &lt;com:SerialNo&gt;&lt;/com:SerialNo&gt;&#13;
+         &lt;/RequestHeader&gt;&#13;
+         &lt;ManPointRequest&gt;&#13;
+            &lt;bus1:SubscriberNo&gt;&lt;/bus1:SubscriberNo&gt;&#13;
+            &lt;bus1:OperateType&gt;&lt;/bus1:OperateType&gt;&#13;
+            &lt;bus1:SmsNotify&gt;&lt;/bus1:SmsNotify&gt;&#13;
+          &lt;/ManPointRequest&gt;&#13;
+      &lt;/bus:ManPointRequestMsg&gt;&#13;
+   &lt;/soapenv:Body&gt;&#13;
+&lt;/soapenv:Envelope&gt;</operationXML>
+          <operationHeaders></operationHeaders>
+          <operationResponse>&lt;response_processing&gt;&#13;
+ &lt;response_element&gt;&#13;
+  &lt;varname&gt;ResultCode&lt;/varname&gt;&#13;
+  &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+  &lt;element&gt;/soapenv:Envelope/soapenv:Body/ManPointResultMsg/ResultHeader/ResultCode&lt;/element&gt;&#13;
+  &lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+  &lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+ &lt;/response_element&gt;&#13;
+ &lt;response_element&gt;&#13;
+  &lt;varname&gt;ResultDesc&lt;/varname&gt;&#13;
+  &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+  &lt;element&gt;/soapenv:Envelope/soapenv:Body/ManPointResultMsg/ResultHeader/ResultDesc&lt;/element&gt;&#13;
+  &lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+  &lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+ &lt;/response_element&gt;&#13;
+ &lt;response_element&gt;&#13;
+  &lt;varname&gt;Password&lt;/varname&gt;&#13;
+  &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+  &lt;element&gt;/soapenv:Envelope/soapenv:Body/ManPointResultMsg/ManPointResult/Password&lt;/element&gt;&#13;
+  &lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+  &lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+ &lt;/response_element&gt;&#13;
+&lt;/response_processing&gt;</operationResponse>
+        </Operation>
+        <Operation>
+          <id>8</id>
+          <operationName>BongaReversal</operationName>
+          <operationXML>&lt;soapenv:Envelope&#13;
+    xmlns:soapenv = "http://schemas.xmlsoap.org/soap/envelope/"&#13;
+    xmlns:bus = "http://www.huawei.com/bme/cbsinterface/cbs/businessmgrmsg"&#13;
+    xmlns:com = "http://www.huawei.com/bme/cbsinterface/common"&#13;
+    xmlns:bus1 = "http://www.huawei.com/bme/cbsinterface/cbs/businessmgr"&gt;&#13;
+    &lt;soapenv:Header/&gt;&#13;
+    &lt;soapenv:Body&gt;&#13;
+        &lt;bus:ManPointRequestMsg&gt;&#13;
+            &lt;RequestHeader&gt;&#13;
+                &lt;com:CommandId&gt;ManPoint&lt;/com:CommandId&gt;&#13;
+                &lt;com:Version&gt;1&lt;/com:Version&gt;&#13;
+                &lt;com:TransactionId&gt;1&lt;/com:TransactionId&gt;&#13;
+                &lt;com:SequenceId&gt;1&lt;/com:SequenceId&gt;&#13;
+                &lt;com:RequestType&gt;Event&lt;/com:RequestType&gt;&#13;
+                &lt;com:SessionEntity&gt;&#13;
+                    &lt;com:Name&gt; PSD_User9&lt;/com:Name&gt;&#13;
+                    &lt;com:Password&gt;rN90pOzpyjYMsIzF56RO&lt;/com:Password&gt;&#13;
+                    &lt;com:RemoteAddress&gt;localhost&lt;/com:RemoteAddress&gt;&#13;
+                &lt;/com:SessionEntity&gt;&#13;
+                &lt;com:SerialNo&gt;&lt;/com:SerialNo&gt;&#13;
+           &lt;/RequestHeader&gt;&#13;
+            &lt;ManPointRequest&gt;&#13;
+                &lt;bus1:SubscriberNo&gt;&lt;/bus1:SubscriberNo&gt;&#13;
+                &lt;bus1:OperateType&gt;17&lt;/bus1:OperateType&gt;&#13;
+                &lt;bus1:SerialNo&gt;&lt;/bus1:SerialNo&gt;&#13;
+                &lt;bus1:AdditionalInfo2&gt;&lt;/bus1:AdditionalInfo2&gt;&#13;
+            &lt;/ManPointRequest&gt;&#13;
+        &lt;/bus:ManPointRequestMsg&gt;&#13;
+    &lt;/soapenv:Body&gt;&#13;
+&lt;/soapenv:Envelope&gt;</operationXML>
+          <operationHeaders></operationHeaders>
+          <operationResponse>&lt;response_processing&gt;&#13;
+&lt;response_element&gt;&#13;
+  &lt;varname&gt;ResultCode&lt;/varname&gt;&#13;
+  &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+  &lt;element&gt;/soapenv:Envelope/soapenv:Body/ManPointResultMsg/ResultHeader/ResultCode&lt;/element&gt;&#13;
+  &lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+  &lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;response_element&gt;&#13;
+  &lt;varname&gt;ResultDesc&lt;/varname&gt;&#13;
+  &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+  &lt;element&gt;/soapenv:Envelope/soapenv:Body/ManPointResultMsg/ResultHeader/ResultDesc&lt;/element&gt;&#13;
+  &lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+  &lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;response_element&gt;&#13;
+  &lt;varname&gt;CurrPointAmount&lt;/varname&gt;&#13;
+  &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+  &lt;element&gt;/soapenv:Envelope/soapenv:Body/ManPointResultMsg/ManPointResult/CurrPointAmount&lt;/element&gt;&#13;
+  &lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+  &lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;/response_processing&gt;</operationResponse>
+        </Operation>
+        <Operation>
+          <id>9</id>
+          <operationName>ChangeSubBasicInfo</operationName>
+          <operationXML>&lt;soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:bus="http://www.huawei.com/bme/cbsinterface/cbs/businessmgrmsg" xmlns:com="http://www.huawei.com/bme/cbsinterface/common" xmlns:bus1="http://www.huawei.com/bme/cbsinterface/cbs/businessmgr"&gt;&#13;
+   &lt;soapenv:Header/&gt;&#13;
+   &lt;soapenv:Body&gt;&#13;
+      &lt;bus:ChangeSubscriberBasicInforRequestMsg&gt;&#13;
+         &lt;RequestHeader&gt;&#13;
+            &lt;com:CommandId&gt;ChangeSubscriberBasicInfor&lt;/com:CommandId&gt;&#13;
+            &lt;com:Version&gt;1&lt;/com:Version&gt;&#13;
+            &lt;com:TransactionId/&gt;&#13;
+            &lt;com:SequenceId&gt;1&lt;/com:SequenceId&gt;&#13;
+            &lt;com:RequestType&gt;Event&lt;/com:RequestType&gt;&#13;
+            &lt;com:SessionEntity&gt;&#13;
+               &lt;com:Name&gt;ussd_gw&lt;/com:Name&gt;&#13;
+               &lt;com:Password&gt;Abc1234&lt;/com:Password&gt;&#13;
+               &lt;com:RemoteAddress&gt;127.0.0.1&lt;/com:RemoteAddress&gt;&#13;
+            &lt;/com:SessionEntity&gt;&#13;
+            &lt;com:SerialNo&gt;&lt;/com:SerialNo&gt;&#13;
+         &lt;/RequestHeader&gt;&#13;
+         &lt;ChangeSubscriberBasicInforRequest&gt;&#13;
+            &lt;bus1:SubscriberNo&gt;&lt;/bus1:SubscriberNo&gt;&#13;
+            &lt;bus1:SimpleProperty&gt;&#13;
+               &lt;bus1:Id&gt;DEDUCTPOINTFORRENT&lt;/bus1:Id&gt;&#13;
+               &lt;bus1:Value&gt;&lt;/bus1:Value&gt;&#13;
+            &lt;/bus1:SimpleProperty&gt;&#13;
+         &lt;/ChangeSubscriberBasicInforRequest&gt;&#13;
+      &lt;/bus:ChangeSubscriberBasicInforRequestMsg&gt;&#13;
+   &lt;/soapenv:Body&gt;&#13;
+&lt;/soapenv:Envelope&gt;</operationXML>
+          <operationHeaders>SOAPAction: "ChangeSubscriberBasicInfor"</operationHeaders>
+          <operationResponse>&lt;response_processing&gt;&#13;
+ &lt;response_element&gt;&#13;
+  &lt;varname&gt;ResultCode&lt;/varname&gt;&#13;
+  &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+  &lt;element&gt;/soapenv:Envelope/soapenv:Body/ChangeSubscriberBasicInforResultMsg/ResultHeader/ResultCode&lt;/element&gt;&#13;
+  &lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+  &lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+ &lt;/response_element&gt;&#13;
+&lt;/response_processing&gt;</operationResponse>
+        </Operation>
+        <Operation>
+          <id>10</id>
+          <operationName>ChangeSubBasic</operationName>
+          <operationXML>&lt;soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:bus="http://www.huawei.com/bme/cbsinterface/cbs/businessmgrmsg" xmlns:com="http://www.huawei.com/bme/cbsinterface/common" xmlns:bus1="http://www.huawei.com/bme/cbsinterface/cbs/businessmgr"&gt;&#13;
+   &lt;soapenv:Header/&gt;&#13;
+   &lt;soapenv:Body&gt;&#13;
+     &lt;bus:ChangeSubscriberBasicInforRequestMsg&gt;&#13;
+         &lt;RequestHeader&gt;&#13;
+            &lt;com:CommandId&gt;ChangeSubscriberBasicInfor&lt;/com:CommandId&gt;&#13;
+            &lt;com:Version&gt;1&lt;/com:Version&gt;&#13;
+            &lt;com:TransactionId&gt;1&lt;/com:TransactionId&gt;&#13;
+            &lt;com:SequenceId&gt;1&lt;/com:SequenceId&gt;&#13;
+            &lt;com:RequestType&gt;Event&lt;/com:RequestType&gt;&#13;
+            &lt;com:SessionEntity&gt;&#13;
+               &lt;com:Name&gt;ussd_gw&lt;/com:Name&gt;&#13;
+               &lt;com:Password&gt;Abc1234&lt;/com:Password&gt;&#13;
+               &lt;com:RemoteAddress&gt;127.0.0.1&lt;/com:RemoteAddress&gt;&#13;
+            &lt;/com:SessionEntity&gt;&#13;
+            &lt;com:SerialNo&gt;&lt;/com:SerialNo&gt;&#13;
+         &lt;/RequestHeader&gt;&#13;
+         &lt;ChangeSubscriberBasicInforRequest&gt;&#13;
+            &lt;bus1:SubscriberNo&gt;&lt;/bus1:SubscriberNo&gt;&#13;
+            &lt;bus1:SimpleProperty&gt;&#13;
+               &lt;bus1:Id&gt;UsergroupID&lt;/bus1:Id&gt;&#13;
+               &lt;bus1:Value&gt;&lt;/bus1:Value&gt;&#13;
+            &lt;/bus1:SimpleProperty&gt;&#13;
+         &lt;/ChangeSubscriberBasicInforRequest&gt;&#13;
+      &lt;/bus:ChangeSubscriberBasicInforRequestMsg&gt;&#13;
+   &lt;/soapenv:Body&gt;&#13;
+&lt;/soapenv:Envelope&gt;</operationXML>
+          <operationHeaders>SOAPAction: "ChangeSubscriberBasicInfor"</operationHeaders>
+          <operationResponse>&lt;response_processing&gt;  &#13;
+ &lt;response_element&gt;&#13;
+  &lt;varname&gt;ResultCode&lt;/varname&gt;&#13;
+  &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+  &lt;element&gt;/soapenv:Envelope/soapenv:Body/ChangeSubscriberBasicInforResultMsg/ResultHeader/ResultCode&lt;/element&gt;&#13;
+  &lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+  &lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+  &lt;/response_element&gt;  &#13;
+  &lt;response_element&gt;&#13;
+  &lt;varname&gt;ResultDesc&lt;/varname&gt;&#13;
+  &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+  &lt;element&gt;/soapenv:Envelope/soapenv:Body/ChangeSubscriberBasicInforResultMsg/ResultHeader/ResultDesc&lt;/element&gt;&#13;
+  &lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+  &lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+ &lt;/response_element&gt;  &#13;
+&lt;/response_processing&gt;</operationResponse>
+        </Operation>
+        <Operation>
+          <id>11</id>
+          <operationName>Register</operationName>
+          <operationXML>&lt;SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:m0="http://www.huawei.com/bme/cbsinterface/common" xmlns:m1="http://www.huawei.com/bme/cbsinterface/cbs/businessmgr"&gt;&#13;
+	&lt;SOAP-ENV:Body&gt;&#13;
+		&lt;m:ManPointRequestMsg xmlns:m="http://www.huawei.com/bme/cbsinterface/cbs/businessmgrmsg"&gt;&#13;
+			&lt;RequestHeader&gt;&#13;
+				&lt;m0:CommandId&gt;ManPoint&lt;/m0:CommandId&gt;&#13;
+				&lt;m0:Version&gt;1&lt;/m0:Version&gt;&#13;
+				&lt;m0:TransactionId&gt;&lt;/m0:TransactionId&gt;&#13;
+				&lt;m0:SequenceId&gt;1&lt;/m0:SequenceId&gt;&#13;
+				&lt;m0:RequestType&gt;Event&lt;/m0:RequestType&gt;&#13;
+				&lt;m0:SessionEntity&gt;&#13;
+					&lt;m0:Name&gt;ussd_gw&lt;/m0:Name&gt;&#13;
+					&lt;m0:Password&gt;Abc1234&lt;/m0:Password&gt;&#13;
+					&lt;m0:RemoteAddress&gt;127.0.0.1&lt;/m0:RemoteAddress&gt;&#13;
+				&lt;/m0:SessionEntity&gt;&#13;
+				&lt;m0:SerialNo&gt;&lt;/m0:SerialNo&gt;&#13;
+				&lt;m0:Remark&gt;String&lt;/m0:Remark&gt;&#13;
+			&lt;/RequestHeader&gt;&#13;
+			&lt;ManPointRequest&gt;&#13;
+				&lt;m1:SubscriberNo&gt;&lt;/m1:SubscriberNo&gt;&#13;
+				&lt;m1:OperateType&gt;2&lt;/m1:OperateType&gt;&#13;
+				&lt;m1:HandleSubAcct&gt;1&lt;/m1:HandleSubAcct&gt;&#13;
+                                &lt;m1:AdditionalInfo2&gt;&lt;/m1:AdditionalInfo2&gt;&#13;
+			&lt;/ManPointRequest&gt;&#13;
+		&lt;/m:ManPointRequestMsg&gt;&#13;
+	&lt;/SOAP-ENV:Body&gt;&#13;
+&lt;/SOAP-ENV:Envelope&gt;</operationXML>
+          <operationHeaders></operationHeaders>
+          <operationResponse>&lt;response_processing&gt;&#13;
+ &lt;response_element&gt;&#13;
+  &lt;varname&gt;ResultCode&lt;/varname&gt;&#13;
+  &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+  &lt;element&gt;/soapenv:Envelope/soapenv:Body/ManPointResultMsg/ResultHeader/ResultCode&lt;/element&gt;&#13;
+  &lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+  &lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+ &lt;/response_element&gt;&#13;
+ &lt;response_element&gt;&#13;
+  &lt;varname&gt;ResultDesc&lt;/varname&gt;&#13;
+  &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+  &lt;element&gt;/soapenv:Envelope/soapenv:Body/ManPointResultMsg/ResultHeader/ResultDesc&lt;/element&gt;&#13;
+  &lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+  &lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+ &lt;/response_element&gt;&#13;
+&lt;/response_processing&gt;</operationResponse>
+        </Operation>
+        <Operation>
+          <id>12</id>
+          <operationName>BongaReversals</operationName>
+          <operationXML>&lt;soapenv:Envelope&#13;
+    xmlns:soapenv = "http://schemas.xmlsoap.org/soap/envelope/"&#13;
+    xmlns:bus = "http://www.huawei.com/bme/cbsinterface/cbs/businessmgrmsg"&#13;
+    xmlns:com = "http://www.huawei.com/bme/cbsinterface/common"&#13;
+    xmlns:bus1 = "http://www.huawei.com/bme/cbsinterface/cbs/businessmgr"&gt;&#13;
+    &lt;soapenv:Header/&gt;&#13;
+    &lt;soapenv:Body&gt;&#13;
+        &lt;bus:ManPointRequestMsg&gt;&#13;
+            &lt;RequestHeader&gt;&#13;
+                &lt;com:CommandId&gt;ManPoint&lt;/com:CommandId&gt;&#13;
+                &lt;com:Version&gt;1&lt;/com:Version&gt;&#13;
+                &lt;com:TransactionId&gt;1&lt;/com:TransactionId&gt;&#13;
+                &lt;com:SequenceId&gt;1&lt;/com:SequenceId&gt;&#13;
+                &lt;com:RequestType&gt;Event&lt;/com:RequestType&gt;&#13;
+                &lt;com:SessionEntity&gt;&#13;
+                    &lt;com:Name&gt; PSD_User9&lt;/com:Name&gt;&#13;
+                    &lt;com:Password&gt;rN90pOzpyjYMsIzF56RO&lt;/com:Password&gt;&#13;
+                    &lt;com:RemoteAddress&gt;localhost&lt;/com:RemoteAddress&gt;&#13;
+                &lt;/com:SessionEntity&gt;&#13;
+                &lt;com:SerialNo&gt;&lt;/com:SerialNo&gt;&#13;
+           &lt;/RequestHeader&gt;&#13;
+            &lt;ManPointRequest&gt;&#13;
+                &lt;bus1:SubscriberNo&gt;&lt;/bus1:SubscriberNo&gt;&#13;
+                &lt;bus1:OperateType&gt;17&lt;/bus1:OperateType&gt;&#13;
+                 &lt;bus1:SmsNotify&gt;1&lt;/bus1:SmsNotify&gt;&#13;
+                &lt;bus1:SerialNo&gt;&lt;/bus1:SerialNo&gt;&#13;
+                &lt;bus1:AdditionalInfo2&gt;&lt;/bus1:AdditionalInfo2&gt;&#13;
+            &lt;/ManPointRequest&gt;&#13;
+        &lt;/bus:ManPointRequestMsg&gt;&#13;
+    &lt;/soapenv:Body&gt;&#13;
+&lt;/soapenv:Envelope&gt;</operationXML>
+          <operationHeaders></operationHeaders>
+          <operationResponse>&lt;response_processing&gt;&#13;
+&lt;response_element&gt;&#13;
+  &lt;varname&gt;ResultCode&lt;/varname&gt;&#13;
+  &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+  &lt;element&gt;/soapenv:Envelope/soapenv:Body/ManPointResultMsg/ResultHeader/ResultCode&lt;/element&gt;&#13;
+  &lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+  &lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;response_element&gt;&#13;
+  &lt;varname&gt;ResultDesc&lt;/varname&gt;&#13;
+  &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+  &lt;element&gt;/soapenv:Envelope/soapenv:Body/ManPointResultMsg/ResultHeader/ResultDesc&lt;/element&gt;&#13;
+  &lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+  &lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;response_element&gt;&#13;
+  &lt;varname&gt;CurrPointAmount&lt;/varname&gt;&#13;
+  &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+  &lt;element&gt;/soapenv:Envelope/soapenv:Body/ManPointResultMsg/ManPointResult/CurrPointAmount&lt;/element&gt;&#13;
+  &lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+  &lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;/response_processing&gt;</operationResponse>
+        </Operation>
+        <Operation>
+          <id>13</id>
+          <operationName>ChangeSubBasicInfoP</operationName>
+          <operationXML>&lt;soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:bus="http://www.huawei.com/bme/cbsinterface/cbs/businessmgrmsg" xmlns:com="http://www.huawei.com/bme/cbsinterface/common" xmlns:bus1="http://www.huawei.com/bme/cbsinterface/cbs/businessmgr"&gt;&#13;
+   &lt;soapenv:Header/&gt;&#13;
+   &lt;soapenv:Body&gt;&#13;
+      &lt;bus:ChangeSubscriberBasicInforRequestMsg&gt;&#13;
+         &lt;RequestHeader&gt;&#13;
+            &lt;com:CommandId&gt;ChangeSubscriberBasicInfor&lt;/com:CommandId&gt;&#13;
+            &lt;com:Version&gt;1&lt;/com:Version&gt;&#13;
+            &lt;com:TransactionId/&gt;&#13;
+            &lt;com:SequenceId&gt;1&lt;/com:SequenceId&gt;&#13;
+            &lt;com:RequestType&gt;Event&lt;/com:RequestType&gt;&#13;
+            &lt;com:SessionEntity&gt;&#13;
+               &lt;com:Name&gt;ussd_gw&lt;/com:Name&gt;&#13;
+               &lt;com:Password&gt;Abc1234&lt;/com:Password&gt;&#13;
+               &lt;com:RemoteAddress&gt;127.0.0.1&lt;/com:RemoteAddress&gt;&#13;
+            &lt;/com:SessionEntity&gt;&#13;
+            &lt;com:SerialNo&gt;&lt;/com:SerialNo&gt;&#13;
+         &lt;/RequestHeader&gt;&#13;
+         &lt;ChangeSubscriberBasicInforRequest&gt;&#13;
+            &lt;bus1:SubscriberNo&gt;&lt;/bus1:SubscriberNo&gt;&#13;
+            &lt;bus1:SimpleProperty&gt;&#13;
+               &lt;bus1:Id&gt;CanUseMoneyInDataP&lt;/bus1:Id&gt;&#13;
+               &lt;bus1:Value&gt;&lt;/bus1:Value&gt;&#13;
+            &lt;/bus1:SimpleProperty&gt;&#13;
+         &lt;/ChangeSubscriberBasicInforRequest&gt;&#13;
+      &lt;/bus:ChangeSubscriberBasicInforRequestMsg&gt;&#13;
+   &lt;/soapenv:Body&gt;&#13;
+&lt;/soapenv:Envelope&gt;</operationXML>
+          <operationHeaders>SOAPAction: "ChangeSubscriberBasicInfor"</operationHeaders>
+          <operationResponse>&lt;response_processing&gt;&#13;
+ &lt;response_element&gt;&#13;
+  &lt;varname&gt;ResultCode&lt;/varname&gt;&#13;
+  &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+  &lt;element&gt;/soapenv:Envelope/soapenv:Body/ChangeSubscriberBasicInforResultMsg/ResultHeader/ResultCode&lt;/element&gt;&#13;
+  &lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+  &lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+ &lt;/response_element&gt;&#13;
+&lt;/response_processing&gt;</operationResponse>
+        </Operation>
+        <Operation>
+          <id>15</id>
+          <operationName>ChangeSubBasicInfoCG</operationName>
+          <operationXML>&lt;soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:bus="http://www.huawei.com/bme/cbsinterface/cbs/businessmgrmsg" xmlns:com="http://www.huawei.com/bme/cbsinterface/common" xmlns:bus1="http://www.huawei.com/bme/cbsinterface/cbs/businessmgr"&gt;&#13;
+   &lt;soapenv:Header/&gt;&#13;
+   &lt;soapenv:Body&gt;&#13;
+      &lt;bus:ChangeSubscriberBasicInforRequestMsg&gt;&#13;
+         &lt;RequestHeader&gt;&#13;
+            &lt;com:CommandId&gt;ChangeSubscriberBasicInfor&lt;/com:CommandId&gt;&#13;
+            &lt;com:Version&gt;1&lt;/com:Version&gt;&#13;
+            &lt;com:TransactionId/&gt;&#13;
+            &lt;com:SequenceId&gt;1&lt;/com:SequenceId&gt;&#13;
+            &lt;com:RequestType&gt;Event&lt;/com:RequestType&gt;&#13;
+            &lt;com:SessionEntity&gt;&#13;
+               &lt;com:Name&gt;ussd_gw&lt;/com:Name&gt;&#13;
+               &lt;com:Password&gt;Abc1234&lt;/com:Password&gt;&#13;
+               &lt;com:RemoteAddress&gt;127.0.0.1&lt;/com:RemoteAddress&gt;&#13;
+            &lt;/com:SessionEntity&gt;&#13;
+            &lt;com:SerialNo&gt;&lt;/com:SerialNo&gt;&#13;
+         &lt;/RequestHeader&gt;&#13;
+         &lt;ChangeSubscriberBasicInforRequest&gt;&#13;
+            &lt;bus1:SubscriberNo&gt;&lt;/bus1:SubscriberNo&gt;&#13;
+            &lt;bus1:SimpleProperty&gt;&#13;
+               &lt;bus1:Id&gt;USERGROUPID&lt;/bus1:Id&gt;&#13;
+               &lt;bus1:Value&gt;&lt;/bus1:Value&gt;&#13;
+            &lt;/bus1:SimpleProperty&gt;&#13;
+         &lt;/ChangeSubscriberBasicInforRequest&gt;&#13;
+      &lt;/bus:ChangeSubscriberBasicInforRequestMsg&gt;&#13;
+   &lt;/soapenv:Body&gt;&#13;
+&lt;/soapenv:Envelope&gt;</operationXML>
+          <operationHeaders>SOAPAction: "ChangeSubscriberBasicInfor"</operationHeaders>
+          <operationResponse>&lt;response_processing&gt;&#13;
+ &lt;response_element&gt;&#13;
+  &lt;varname&gt;ResultCode&lt;/varname&gt;&#13;
+  &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+  &lt;element&gt;/soapenv:Envelope/soapenv:Body/ChangeSubscriberBasicInforResultMsg/ResultHeader/ResultCode&lt;/element&gt;&#13;
+  &lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+  &lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+ &lt;/response_element&gt;&#13;
+&lt;/response_processing&gt;</operationResponse>
+        </Operation>
+        <Operation>
+          <id>14</id>
+          <operationName>ChangeSubBasicInfoP1</operationName>
+          <operationXML>&lt;soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:bus="http://www.huawei.com/bme/cbsinterface/cbs/businessmgrmsg" xmlns:com="http://www.huawei.com/bme/cbsinterface/common" xmlns:bus1="http://www.huawei.com/bme/cbsinterface/cbs/businessmgr"&gt;&#13;
+   &lt;soapenv:Header/&gt;&#13;
+   &lt;soapenv:Body&gt;&#13;
+      &lt;bus:ChangeSubscriberBasicInforRequestMsg&gt;&#13;
+         &lt;RequestHeader&gt;&#13;
+            &lt;com:CommandId&gt;ChangeSubscriberBasicInfor&lt;/com:CommandId&gt;&#13;
+            &lt;com:Version&gt;1&lt;/com:Version&gt;&#13;
+            &lt;com:TransactionId/&gt;&#13;
+            &lt;com:SequenceId&gt;1&lt;/com:SequenceId&gt;&#13;
+            &lt;com:RequestType&gt;Event&lt;/com:RequestType&gt;&#13;
+            &lt;com:SessionEntity&gt;&#13;
+               &lt;com:Name&gt;ussd_gw&lt;/com:Name&gt;&#13;
+               &lt;com:Password&gt;Abc1234&lt;/com:Password&gt;&#13;
+               &lt;com:RemoteAddress&gt;127.0.0.1&lt;/com:RemoteAddress&gt;&#13;
+            &lt;/com:SessionEntity&gt;&#13;
+            &lt;com:SerialNo&gt;&lt;/com:SerialNo&gt;&#13;
+         &lt;/RequestHeader&gt;&#13;
+         &lt;ChangeSubscriberBasicInforRequest&gt;&#13;
+            &lt;bus1:SubscriberNo&gt;&lt;/bus1:SubscriberNo&gt;&#13;
+            &lt;bus1:SimpleProperty&gt;&#13;
+               &lt;bus1:Id&gt;ETUStagPercent&lt;/bus1:Id&gt;&#13;
+               &lt;bus1:Value&gt;&lt;/bus1:Value&gt;&#13;
+            &lt;/bus1:SimpleProperty&gt;&#13;
+         &lt;/ChangeSubscriberBasicInforRequest&gt;&#13;
+      &lt;/bus:ChangeSubscriberBasicInforRequestMsg&gt;&#13;
+   &lt;/soapenv:Body&gt;&#13;
+&lt;/soapenv:Envelope&gt;</operationXML>
+          <operationHeaders>SOAPAction: "ChangeSubscriberBasicInfor"</operationHeaders>
+          <operationResponse>&lt;response_processing&gt;&#13;
+ &lt;response_element&gt;&#13;
+  &lt;varname&gt;ResultCode&lt;/varname&gt;&#13;
+  &lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+  &lt;element&gt;/soapenv:Envelope/soapenv:Body/ChangeSubscriberBasicInforResultMsg/ResultHeader/ResultCode&lt;/element&gt;&#13;
+  &lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+  &lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+ &lt;/response_element&gt;&#13;
+&lt;/response_processing&gt;</operationResponse>
+        </Operation>
+      </Operations>
+      <Common>
+        <UseSubconnectorPath>N</UseSubconnectorPath>
+        <PreserveWhitespaces>N</PreserveWhitespaces>
+      </Common>
+      <ResponseProcessing>
+        <ResponseHeaders></ResponseHeaders>
+      </ResponseProcessing>
+      <HTTPHeaders>
+        <HTTPHeader>
+          <id>1</id>
+          <enabled>Y</enabled>
+          <header>SOAPAction: "ManPoint"</header>
+        </HTTPHeader>
+      </HTTPHeaders>
+      <IgnoreErrors>
+        <Errors></Errors>
+      </IgnoreErrors>
+      <PostProcessingParams>
+        <PostProcessingResponseType>0</PostProcessingResponseType>
+      </PostProcessingParams>
+      <PostProcessings/>
+      <subconnector>
+        <id>1</id>
+        <enabled>Y</enabled>
+        <URL>http://10.66.38.160:7782/services/CBSInterfaceBusinessMgrService</URL>
+        <NumSessions>200</NumSessions>
+        <KeepAlive>N</KeepAlive>
+        <send_head>Y</send_head>
+        <HTTPMethod>POST</HTTPMethod>
+        <Encoding>curl-style</Encoding>
+        <HTTPVersion>1.1</HTTPVersion>
+        <ProxyURL></ProxyURL>
+        <Auth></Auth>
+        <max_error_responses>10</max_error_responses>
+        <ProcessErrorResponse>N</ProcessErrorResponse>
+        <HTTPTimeout>30</HTTPTimeout>
+        <PostOnlyActionParams>Y</PostOnlyActionParams>
+        <SSLVerifyPeer>N</SSLVerifyPeer>
+        <SSLClientCert></SSLClientCert>
+        <SSLClientKey></SSLClientKey>
+        <SSLClientPassphrase></SSLClientPassphrase>
+        <SSLCACert></SSLCACert>
+      </subconnector>
+      <subconnector>
+        <id>2</id>
+        <enabled>Y</enabled>
+        <URL>http://10.66.38.160:7782/services/CBSInterfaceBusinessMgrService</URL>
+        <NumSessions>200</NumSessions>
+        <KeepAlive>N</KeepAlive>
+        <send_head>Y</send_head>
+        <HTTPMethod>POST</HTTPMethod>
+        <Encoding>curl-style</Encoding>
+        <HTTPVersion>1.1</HTTPVersion>
+        <ProxyURL></ProxyURL>
+        <Auth></Auth>
+        <max_error_responses></max_error_responses>
+        <ProcessErrorResponse>N</ProcessErrorResponse>
+        <HTTPTimeout>30</HTTPTimeout>
+        <PostOnlyActionParams>Y</PostOnlyActionParams>
+        <SSLVerifyPeer>N</SSLVerifyPeer>
+        <SSLClientCert></SSLClientCert>
+        <SSLClientKey></SSLClientKey>
+        <SSLClientPassphrase></SSLClientPassphrase>
+        <SSLCACert></SSLCACert>
+      </subconnector>
+      <subconnector>
+        <id>3</id>
+        <enabled>Y</enabled>
+        <URL>http://10.66.38.160:7782/services/CBSInterfaceBusinessMgrService</URL>
+        <NumSessions>200</NumSessions>
+        <KeepAlive>N</KeepAlive>
+        <send_head>Y</send_head>
+        <HTTPMethod>POST</HTTPMethod>
+        <Encoding>curl-style</Encoding>
+        <HTTPVersion>1.1</HTTPVersion>
+        <ProxyURL></ProxyURL>
+        <Auth></Auth>
+        <max_error_responses></max_error_responses>
+        <ProcessErrorResponse>N</ProcessErrorResponse>
+        <HTTPTimeout>30</HTTPTimeout>
+        <PostOnlyActionParams>Y</PostOnlyActionParams>
+        <SSLVerifyPeer>N</SSLVerifyPeer>
+        <SSLClientCert></SSLClientCert>
+        <SSLClientKey></SSLClientKey>
+        <SSLClientPassphrase></SSLClientPassphrase>
+        <SSLCACert></SSLCACert>
+      </subconnector>
+      <subconnector>
+        <id>4</id>
+        <enabled>Y</enabled>
+        <URL>http://10.66.38.160:7782/services/CBSInterfaceBusinessMgrService</URL>
+        <NumSessions>200</NumSessions>
+        <KeepAlive>N</KeepAlive>
+        <send_head>Y</send_head>
+        <HTTPMethod>POST</HTTPMethod>
+        <Encoding>curl-style</Encoding>
+        <HTTPVersion>1.1</HTTPVersion>
+        <ProxyURL></ProxyURL>
+        <Auth></Auth>
+        <max_error_responses></max_error_responses>
+        <ProcessErrorResponse>N</ProcessErrorResponse>
+        <HTTPTimeout>30</HTTPTimeout>
+        <PostOnlyActionParams>Y</PostOnlyActionParams>
+        <SSLVerifyPeer>N</SSLVerifyPeer>
+        <SSLClientCert></SSLClientCert>
+        <SSLClientKey></SSLClientKey>
+        <SSLClientPassphrase></SSLClientPassphrase>
+        <SSLCACert></SSLCACert>
+      </subconnector>
+      <subconnector>
+        <id>5</id>
+        <enabled>Y</enabled>
+        <URL>http://10.66.38.160:7782/services/CBSInterfaceBusinessMgrService</URL>
+        <NumSessions>200</NumSessions>
+        <KeepAlive>N</KeepAlive>
+        <send_head>Y</send_head>
+        <HTTPMethod>POST</HTTPMethod>
+        <Encoding>curl-style</Encoding>
+        <HTTPVersion>1.1</HTTPVersion>
+        <ProxyURL></ProxyURL>
+        <Auth></Auth>
+        <max_error_responses></max_error_responses>
+        <ProcessErrorResponse>N</ProcessErrorResponse>
+        <HTTPTimeout>30</HTTPTimeout>
+        <PostOnlyActionParams>Y</PostOnlyActionParams>
+        <SSLVerifyPeer>N</SSLVerifyPeer>
+        <SSLClientCert></SSLClientCert>
+        <SSLClientKey></SSLClientKey>
+        <SSLClientPassphrase></SSLClientPassphrase>
+        <SSLCACert></SSLCACert>
+      </subconnector>
+      <subconnector>
+        <id>6</id>
+        <enabled>Y</enabled>
+        <URL>http://10.66.38.160:7782/services/CBSInterfaceBusinessMgrService</URL>
+        <NumSessions>200</NumSessions>
+        <KeepAlive>N</KeepAlive>
+        <send_head>Y</send_head>
+        <HTTPMethod>POST</HTTPMethod>
+        <Encoding>curl-style</Encoding>
+        <HTTPVersion>1.1</HTTPVersion>
+        <ProxyURL></ProxyURL>
+        <Auth></Auth>
+        <max_error_responses></max_error_responses>
+        <ProcessErrorResponse>N</ProcessErrorResponse>
+        <HTTPTimeout>30</HTTPTimeout>
+        <PostOnlyActionParams>Y</PostOnlyActionParams>
+        <SSLVerifyPeer>N</SSLVerifyPeer>
+        <SSLClientCert></SSLClientCert>
+        <SSLClientKey></SSLClientKey>
+        <SSLClientPassphrase></SSLClientPassphrase>
+        <SSLCACert></SSLCACert>
+      </subconnector>
+    </subconnectors>
+  </protocolspecific>
+</connector>

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2007-2016. Opencode Systems Ltd.-->
+<connector>
+  <enabled>Y</enabled>
+  <last_enabled/>
+  <enabled_marker/>
+  <mode>Y</mode>
+  <id>4718</id>
+  <name>MKOPEN</name>
+  <type>SOAP_CLIENT</type>
+  <lastmodified>2016-08-30 19:05:47</lastmodified>
+  <description>MKOPEN</description>
+  <debug_level>1</debug_level>
+  <logdir>/aux1/occonnectors/logs/MKOPEN/</logdir>
+  <hidden_parameters/>
+  <suppressed_alarms/>
+  <fifodir>/opt/occonnectors/run/connector_pipes/</fifodir>
+  <alarmdir>/aux0/alarms/</alarmdir>
+  <statustimeout>10000</statustimeout>
+  <max_status_timeouts>4</max_status_timeouts>
+  <reconnectinterval>60</reconnectinterval>
+  <messageexpiretime>40</messageexpiretime>
+  <dialoginactivitytime>60</dialoginactivitytime>
+  <maxexpireddialogs>1000</maxexpireddialogs>
+  <speed_limit>1000</speed_limit>
+  <speed_limit_conn>1000</speed_limit_conn>
+  <limit_app_requests>10000</limit_app_requests>
+  <pre_congestion_limit>60</pre_congestion_limit>
+  <round_robin_app_requests>N</round_robin_app_requests>
+  <should_reject_app_requests>Y</should_reject_app_requests>
+  <stop_subconn_on_ipc_lost>N</stop_subconn_on_ipc_lost>
+  <encode_special_characters>N</encode_special_characters>
+  <retry_sending_requests>N</retry_sending_requests>
+  <synchronous_logging>N</synchronous_logging>
+  <write_error_log>N</write_error_log>
+  <opcdipc>
+    <accountid>4718</accountid>
+    <hosts>
+      <host>
+        <ipaddress>10.0.0.177</ipaddress>
+        <port>5049</port>
+      </host>
+      <host>
+        <ipaddress>10.0.0.171</ipaddress>
+        <port>5049</port>
+      </host>
+      <host>
+        <ipaddress>10.0.0.173</ipaddress>
+        <port>5049</port>
+      </host>
+      <host>
+        <ipaddress>10.0.0.175</ipaddress>
+        <port>5049</port>
+      </host>
+    <host>
+ <ipaddress>10.0.0.179</ipaddress>
+ <port>5049</port> 
+ </host> 
+ </hosts> 
+    <login>MKOPEN</login>
+    <messageexpiretime>40</messageexpiretime>
+    <password>4718</password>
+    <systemtype>SOAP_CLIENT</systemtype>
+  </opcdipc>
+  <protocolspecific>
+    <subconnectors>
+      <Operations>
+        <Operation>
+          <id>1</id>
+          <operationName>open</operationName>
+          <operationXML>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&#13;
+&lt;soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"&#13;
+       xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&#13;
+       &lt;soapenv:Body&gt;&#13;
+              &lt;accountOpeningRequest xmlns="http://kcbbankgroup.com/MKWsOptInService"&gt;&#13;
+                     &lt;ClientUserName xmlns=""&gt;safcom&lt;/ClientUserName&gt;&#13;
+                     &lt;ClientPassword xmlns=""&gt;safcom123$&lt;/ClientPassword&gt;&#13;
+                     &lt;RequestRefID xmlns=""&gt;&lt;/RequestRefID&gt;&#13;
+                     &lt;MobileNumber xmlns=""&gt;&lt;/MobileNumber&gt;&#13;
+                     &lt;IMSI xmlns=""&gt;NA&lt;/IMSI&gt;&#13;
+                     &lt;TimeStamp xmlns=""&gt;&lt;/TimeStamp&gt;&#13;
+                     &lt;FirstName xmlns=""&gt;&lt;/FirstName&gt;&#13;
+                     &lt;MiddleName xmlns=""&gt;&lt;/MiddleName&gt;&#13;
+                     &lt;LastName xmlns=""&gt;&lt;/LastName&gt;&#13;
+                     &lt;ID_Number xmlns=""&gt;&lt;/ID_Number&gt;&#13;
+                     &lt;Date_Of_Birth xmlns=""&gt;&lt;/Date_Of_Birth&gt;&#13;
+              &lt;/accountOpeningRequest&gt;&#13;
+       &lt;/soapenv:Body&gt;&#13;
+&lt;/soapenv:Envelope&gt;</operationXML>
+          <operationHeaders></operationHeaders>
+          <operationResponse>&lt;response_processing&gt;&#13;
+&lt;response_element&gt;&#13;
+&lt;varname&gt;statusDesc&lt;/varname&gt;&#13;
+&lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+&lt;element&gt;/soap:Envelope/soap:Body/ns2:accountOpeningRequestResponse/ns3:accountOpeningResponse/statusDesc&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;response_element&gt;&#13;
+&lt;varname&gt;statusCode&lt;/varname&gt;&#13;
+&lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+&lt;element&gt;/soap:Envelope/soap:Body/ns2:accountOpeningRequestResponse/ns3:accountOpeningResponse/statusCode&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;/response_processing&gt;</operationResponse>
+        </Operation>
+      </Operations>
+      <Common>
+        <UseSubconnectorPath>N</UseSubconnectorPath>
+        <PreserveWhitespaces>N</PreserveWhitespaces>
+      </Common>
+      <ResponseProcessing>
+        <ResponseHeaders></ResponseHeaders>
+      </ResponseProcessing>
+      <HTTPHeaders/>
+      <IgnoreErrors>
+        <Errors></Errors>
+      </IgnoreErrors>
+      <PostProcessingParams>
+        <PostProcessingResponseType>0</PostProcessingResponseType>
+      </PostProcessingParams>
+      <PostProcessings/>
+      <subconnector>
+        <id>1</id>
+        <enabled>N</enabled>
+        <URL>http://172.16.115.43:8080/DUMAOptIn/AccountOpeningWSSEI</URL>
+        <NumSessions>100</NumSessions>
+        <KeepAlive>Y</KeepAlive>
+        <send_head>N</send_head>
+        <HTTPMethod>POST</HTTPMethod>
+        <Encoding>curl-style</Encoding>
+        <HTTPVersion>1.1</HTTPVersion>
+        <ProxyURL></ProxyURL>
+        <Auth></Auth>
+        <max_error_responses>10</max_error_responses>
+        <ProcessErrorResponse>N</ProcessErrorResponse>
+        <HTTPTimeout>30</HTTPTimeout>
+        <PostOnlyActionParams>Y</PostOnlyActionParams>
+        <SSLVerifyPeer>N</SSLVerifyPeer>
+        <SSLClientCert></SSLClientCert>
+        <SSLClientKey></SSLClientKey>
+        <SSLClientPassphrase></SSLClientPassphrase>
+        <SSLCACert></SSLCACert>
+      </subconnector>
+      <subconnector>
+        <id>2</id>
+        <enabled>Y</enabled>
+        <URL>http://172.16.115.42:8080/DUMAOptInFinal/AccountOpeningWSSEI</URL>
+        <NumSessions>100</NumSessions>
+        <KeepAlive>N</KeepAlive>
+        <send_head>N</send_head>
+        <HTTPMethod>POST</HTTPMethod>
+        <Encoding>curl-style</Encoding>
+        <HTTPVersion>1.1</HTTPVersion>
+        <ProxyURL></ProxyURL>
+        <Auth></Auth>
+        <max_error_responses>10</max_error_responses>
+        <ProcessErrorResponse>N</ProcessErrorResponse>
+        <HTTPTimeout>30</HTTPTimeout>
+        <PostOnlyActionParams>Y</PostOnlyActionParams>
+        <SSLVerifyPeer>N</SSLVerifyPeer>
+        <SSLClientCert></SSLClientCert>
+        <SSLClientKey></SSLClientKey>
+        <SSLClientPassphrase></SSLClientPassphrase>
+        <SSLCACert></SSLCACert>
+      </subconnector>
+    </subconnectors>
+  </protocolspecific>
+</connector>

@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2007-2016. Opencode Systems Ltd.-->
+<connector>
+  <enabled>Y</enabled>
+  <last_enabled/>
+  <enabled_marker/>
+  <mode>Y</mode>
+  <id>4749</id>
+  <name>BUNDLETEST</name>
+  <type>SOAP_CLIENT</type>
+  <lastmodified>2016-08-30 19:08:12</lastmodified>
+  <description>BUNDLETEST</description>
+  <debug_level>1</debug_level>
+  <logdir>/aux1/occonnectors/logs/BUNDLETEST/</logdir>
+  <hidden_parameters/>
+  <suppressed_alarms/>
+  <fifodir>/opt/occonnectors/run/connector_pipes/</fifodir>
+  <alarmdir>/aux0/alarms/</alarmdir>
+  <statustimeout>10000</statustimeout>
+  <max_status_timeouts>4</max_status_timeouts>
+  <reconnectinterval>60</reconnectinterval>
+  <messageexpiretime>40</messageexpiretime>
+  <dialoginactivitytime>60</dialoginactivitytime>
+  <maxexpireddialogs>1000</maxexpireddialogs>
+  <speed_limit>1000</speed_limit>
+  <speed_limit_conn>1000</speed_limit_conn>
+  <limit_app_requests>10000</limit_app_requests>
+  <pre_congestion_limit>60</pre_congestion_limit>
+  <round_robin_app_requests>N</round_robin_app_requests>
+  <should_reject_app_requests>Y</should_reject_app_requests>
+  <stop_subconn_on_ipc_lost>N</stop_subconn_on_ipc_lost>
+  <encode_special_characters>N</encode_special_characters>
+  <retry_sending_requests>N</retry_sending_requests>
+  <synchronous_logging>N</synchronous_logging>
+  <write_error_log>N</write_error_log>
+  <opcdipc>
+    <accountid>4749</accountid>
+    <hosts>
+      <host>
+        <ipaddress>10.0.0.177</ipaddress>
+        <port>5049</port>
+      </host>
+      <host>
+        <ipaddress>10.0.0.171</ipaddress>
+        <port>5049</port>
+      </host>
+      <host>
+        <ipaddress>10.0.0.173</ipaddress>
+        <port>5049</port>
+      </host>
+      <host>
+        <ipaddress>10.0.0.175</ipaddress>
+        <port>5049</port>
+      </host>
+    <host>
+ <ipaddress>10.0.0.179</ipaddress>
+ <port>5049</port> 
+ </host> 
+ </hosts> 
+    <login>BUNDLETEST</login>
+    <messageexpiretime>40</messageexpiretime>
+    <password>4749</password>
+    <systemtype>SOAP_CLIENT</systemtype>
+  </opcdipc>
+  <protocolspecific>
+    <subconnectors>
+      <Operations>
+        <Operation>
+          <id>1</id>
+          <operationName>TEST1</operationName>
+          <operationXML>&lt;soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.codemonster.com/"&gt;&#13;
+   &lt;soapenv:Header/&gt;&#13;
+   &lt;soapenv:Body&gt;&#13;
+      &lt;ws:parseBalances&gt;&#13;
+         &lt;cbsXML&gt;&lt;/cbsXML&gt;&#13;
+         &lt;subscriberType&gt;&lt;/subscriberType&gt;&#13;
+         &lt;accountNumber&gt;&lt;/accountNumber&gt;&#13;
+      &lt;/ws:parseBalances&gt;&#13;
+   &lt;/soapenv:Body&gt;&#13;
+&lt;/soapenv:Envelope&gt;</operationXML>
+          <operationHeaders></operationHeaders>
+          <operationResponse>&lt;response_processing&gt;&#13;
+&lt;response_element&gt;&#13;
+&lt;varname&gt;resultCode&lt;/varname&gt;&#13;
+&lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+&lt;element&gt;/S:Envelope/S:Body/ns2:parseBalancesResponse/parseBalancesResult/resultCode&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;response_element&gt;&#13;
+&lt;varname&gt;smsLength&lt;/varname&gt;&#13;
+&lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+&lt;element&gt;/S:Envelope/S:Body/ns2:parseBalancesResponse/parseBalancesResult/smsLength&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;response_element&gt;&#13;
+&lt;varname&gt;smsMessage&lt;/varname&gt;&#13;
+&lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+&lt;element&gt;/S:Envelope/S:Body/ns2:parseBalancesResponse/parseBalancesResult/smsMessage&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;/response_processing&gt;</operationResponse>
+        </Operation>
+        <Operation>
+          <id>2</id>
+          <operationName>parseDataBalances</operationName>
+          <operationXML>&lt;soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.codemonster.com/"&gt;&#13;
+   &lt;soapenv:Header/&gt;&#13;
+   &lt;soapenv:Body&gt;&#13;
+      &lt;ws:parseDataBalances&gt;&#13;
+         &lt;cbsXML&gt;&lt;/cbsXML&gt;&#13;
+         &lt;subscriberType&gt;&lt;/subscriberType&gt;&#13;
+         &lt;accountNumber&gt;&lt;/accountNumber&gt;&#13;
+      &lt;/ws:parseDataBalances&gt;&#13;
+   &lt;/soapenv:Body&gt;&#13;
+&lt;/soapenv:Envelope&gt;</operationXML>
+          <operationHeaders></operationHeaders>
+          <operationResponse>&lt;response_processing&gt;&#13;
+&lt;response_element&gt;&#13;
+&lt;varname&gt;resultCode&lt;/varname&gt;&#13;
+&lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+&lt;element&gt;/S:Envelope/S:Body/ns2:parseDataBalancesResponse/parseDataBalancesResult/resultCode&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;response_element&gt;&#13;
+&lt;varname&gt;smsLength&lt;/varname&gt;&#13;
+&lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+&lt;element&gt;/S:Envelope/S:Body/ns2:parseDataBalancesResponse/parseDataBalancesResult/smsLength&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;response_element&gt;&#13;
+&lt;varname&gt;smsMessage&lt;/varname&gt;&#13;
+&lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+&lt;element&gt;/S:Envelope/S:Body/ns2:parseDataBalancesResponse/parseDataBalancesResult/smsMessage&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;/response_processing&gt;</operationResponse>
+        </Operation>
+        <Operation>
+          <id>3</id>
+          <operationName>parseFullBalances</operationName>
+          <operationXML>&lt;soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.codemonster.com/"&gt;&#13;
+   &lt;soapenv:Header/&gt;&#13;
+   &lt;soapenv:Body&gt;&#13;
+      &lt;ws:parseFullBalances&gt;&#13;
+         &lt;cbsXML&gt;&lt;/cbsXML&gt;&#13;
+         &lt;subscriberType&gt;&lt;/subscriberType&gt;&#13;
+         &lt;accountNumber&gt;&lt;/accountNumber&gt;&#13;
+      &lt;/ws:parseFullBalances&gt;&#13;
+   &lt;/soapenv:Body&gt;&#13;
+&lt;/soapenv:Envelope&gt;</operationXML>
+          <operationHeaders></operationHeaders>
+          <operationResponse>&lt;response_processing&gt;&#13;
+&lt;response_element&gt;&#13;
+&lt;varname&gt;resultCode&lt;/varname&gt;&#13;
+&lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+&lt;element&gt;/S:Envelope/S:Body/ns2:parseFullBalancesResponse/parseFullBalancesResult/resultCode&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;response_element&gt;&#13;
+&lt;varname&gt;smsLength&lt;/varname&gt;&#13;
+&lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+&lt;element&gt;/S:Envelope/S:Body/ns2:parseFullBalancesResponse/parseFullBalancesResult/smsLength&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;response_element&gt;&#13;
+&lt;varname&gt;smsMessage&lt;/varname&gt;&#13;
+&lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+&lt;element&gt;/S:Envelope/S:Body/ns2:parseFullBalancesResponse/parseFullBalancesResult/smsMessage&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;/response_processing&gt;</operationResponse>
+        </Operation>
+        <Operation>
+          <id>4</id>
+          <operationName>parseKaribuBalances</operationName>
+          <operationXML>&lt;soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.codemonster.com/"&gt;&#13;
+   &lt;soapenv:Header/&gt;&#13;
+   &lt;soapenv:Body&gt;&#13;
+      &lt;ws:parseKaribuBalances&gt;&#13;
+         &lt;cbsXML&gt;&lt;/cbsXML&gt;&#13;
+      &lt;/ws:parseKaribuBalances&gt;&#13;
+   &lt;/soapenv:Body&gt;&#13;
+&lt;/soapenv:Envelope&gt;</operationXML>
+          <operationHeaders></operationHeaders>
+          <operationResponse>&lt;response_processing&gt;&#13;
+&lt;response_element&gt;&#13;
+&lt;varname&gt;resultCode&lt;/varname&gt;&#13;
+&lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+&lt;element&gt;/S:Envelope/S:Body/ns2:parseKaribuBalancesResponse/parseKaribuBalancesResult/resultCode&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;response_element&gt;&#13;
+&lt;varname&gt;smsLength&lt;/varname&gt;&#13;
+&lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+&lt;element&gt;/S:Envelope/S:Body/ns2:parseKaribuBalancesResponse/parseKaribuBalancesResult/smsLength&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;response_element&gt;&#13;
+&lt;varname&gt;smsMessage&lt;/varname&gt;&#13;
+&lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+&lt;element&gt;/S:Envelope/S:Body/ns2:parseKaribuBalancesResponse/parseKaribuBalancesResult/smsMessage&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;/response_processing&gt;</operationResponse>
+        </Operation>
+        <Operation>
+          <id>5</id>
+          <operationName>parseOtherKaribuBalances</operationName>
+          <operationXML>&lt;soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.codemonster.com/"&gt;&#13;
+   &lt;soapenv:Header/&gt;&#13;
+   &lt;soapenv:Body&gt;&#13;
+      &lt;ws:parseOtherKaribuBalances&gt;&#13;
+         &lt;cbsXML&gt;&lt;/cbsXML&gt;&#13;
+      &lt;/ws:parseOtherKaribuBalances&gt;&#13;
+   &lt;/soapenv:Body&gt;&#13;
+&lt;/soapenv:Envelope&gt;</operationXML>
+          <operationHeaders></operationHeaders>
+          <operationResponse>&lt;response_processing&gt;&#13;
+&lt;response_element&gt;&#13;
+&lt;varname&gt;resultCode&lt;/varname&gt;&#13;
+&lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+&lt;element&gt;/S:Envelope/S:Body/ns2:parseOtherKaribuBalancesResponse/parseOtherKaribuBalancesResult/resultCode&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;response_element&gt;&#13;
+&lt;varname&gt;smsLength&lt;/varname&gt;&#13;
+&lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+&lt;element&gt;/S:Envelope/S:Body/ns2:parseOtherKaribuBalancesResponse/parseOtherKaribuBalancesResult/smsLength&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;response_element&gt;&#13;
+&lt;varname&gt;smsMessage&lt;/varname&gt;&#13;
+&lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+&lt;element&gt;/S:Envelope/S:Body/ns2:parseOtherKaribuBalancesResponse/parseOtherKaribuBalancesResult/smsMessage&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;/response_processing&gt;</operationResponse>
+        </Operation>
+      </Operations>
+      <Common>
+        <UseSubconnectorPath>N</UseSubconnectorPath>
+        <PreserveWhitespaces>N</PreserveWhitespaces>
+      </Common>
+      <ResponseProcessing>
+        <ResponseHeaders></ResponseHeaders>
+      </ResponseProcessing>
+      <HTTPHeaders/>
+      <IgnoreErrors>
+        <Errors></Errors>
+      </IgnoreErrors>
+      <PostProcessingParams>
+        <PostProcessingResponseType>0</PostProcessingResponseType>
+      </PostProcessingParams>
+      <PostProcessings/>
+      <subconnector>
+        <id>1</id>
+        <enabled>Y</enabled>
+        <URL>http://10.65.12.40:8080/bundlesParser/BundlesParserManager</URL>
+        <NumSessions>100</NumSessions>
+        <KeepAlive>Y</KeepAlive>
+        <send_head>N</send_head>
+        <HTTPMethod>POST</HTTPMethod>
+        <Encoding>curl-style</Encoding>
+        <HTTPVersion>1.1</HTTPVersion>
+        <ProxyURL></ProxyURL>
+        <Auth></Auth>
+        <max_error_responses>10</max_error_responses>
+        <ProcessErrorResponse>N</ProcessErrorResponse>
+        <HTTPTimeout>30</HTTPTimeout>
+        <PostOnlyActionParams>Y</PostOnlyActionParams>
+        <SSLVerifyPeer>N</SSLVerifyPeer>
+        <SSLClientCert></SSLClientCert>
+        <SSLClientKey></SSLClientKey>
+        <SSLClientPassphrase></SSLClientPassphrase>
+        <SSLCACert></SSLCACert>
+      </subconnector>
+      <subconnector>
+        <id>2</id>
+        <enabled>N</enabled>
+        <URL>http://172.28.200.57:8080/bundlesParser/BundlesParserManager</URL>
+        <NumSessions>100</NumSessions>
+        <KeepAlive>Y</KeepAlive>
+        <send_head>N</send_head>
+        <HTTPMethod>POST</HTTPMethod>
+        <Encoding>curl-style</Encoding>
+        <HTTPVersion>1.1</HTTPVersion>
+        <ProxyURL></ProxyURL>
+        <Auth></Auth>
+        <max_error_responses>10</max_error_responses>
+        <ProcessErrorResponse>N</ProcessErrorResponse>
+        <HTTPTimeout>30</HTTPTimeout>
+        <PostOnlyActionParams>Y</PostOnlyActionParams>
+        <SSLVerifyPeer>N</SSLVerifyPeer>
+        <SSLClientCert></SSLClientCert>
+        <SSLClientKey></SSLClientKey>
+        <SSLClientPassphrase></SSLClientPassphrase>
+        <SSLCACert></SSLCACert>
+      </subconnector>
+    </subconnectors>
+  </protocolspecific>
+</connector>

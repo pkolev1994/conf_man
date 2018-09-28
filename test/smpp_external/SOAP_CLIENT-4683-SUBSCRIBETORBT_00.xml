@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2007-2017. Opencode Systems Ltd.-->
+<connector>
+  <enabled>Y</enabled>
+  <last_enabled/>
+  <enabled_marker/>
+  <mode>Y</mode>
+  <id>4683</id>
+  <name>SUBSCRIBETORBT_00</name>
+  <type>SOAP_CLIENT</type>
+  <lastmodified>2017-11-13 11:49:45</lastmodified>
+  <description>for RBT subscribe</description>
+  <debug_level>3</debug_level>
+  <logdir>/aux1/occonnectors/logs/SUBSCRIBETORBT_00/</logdir>
+  <hidden_parameters/>
+  <suppressed_alarms/>
+  <fifodir>/opt/occonnectors/run/connector_pipes/</fifodir>
+  <alarmdir>/aux0/alarms/</alarmdir>
+  <statustimeout>10000</statustimeout>
+  <max_status_timeouts>4</max_status_timeouts>
+  <reconnectinterval>60</reconnectinterval>
+  <messageexpiretime>40</messageexpiretime>
+  <dialoginactivitytime>60</dialoginactivitytime>
+  <maxexpireddialogs>1000</maxexpireddialogs>
+  <speed_limit>1000</speed_limit>
+  <speed_limit_conn>1000</speed_limit_conn>
+  <limit_app_requests>10000</limit_app_requests>
+  <pre_congestion_limit>60</pre_congestion_limit>
+  <round_robin_app_requests>N</round_robin_app_requests>
+  <should_reject_app_requests>Y</should_reject_app_requests>
+  <stop_subconn_on_ipc_lost>N</stop_subconn_on_ipc_lost>
+  <encode_special_characters>N</encode_special_characters>
+  <retry_sending_requests>N</retry_sending_requests>
+  <synchronous_logging>N</synchronous_logging>
+  <write_error_log>N</write_error_log>
+  <opcdipc>
+    <accountid>4683</accountid>
+    <hosts>
+      <host>
+        <ipaddress>10.0.0.177</ipaddress>
+        <port>5049</port>
+      </host>
+      <host>
+        <ipaddress>10.0.0.171</ipaddress>
+        <port>5049</port>
+      </host>
+      <host>
+        <ipaddress>10.0.0.173</ipaddress>
+        <port>5049</port>
+      </host>
+      <host>
+        <ipaddress>10.0.0.175</ipaddress>
+        <port>5049</port>
+      </host>
+      <host>
+        <ipaddress>10.0.0.179</ipaddress>
+        <port>5049</port>
+      </host>
+    </hosts>
+    <login>SUBSCRIBETORBT_00</login>
+    <messageexpiretime>40</messageexpiretime>
+    <password>4683</password>
+    <systemtype>SOAP_CLIENT</systemtype>
+  </opcdipc>
+  <protocolspecific>
+    <subconnectors>
+      <Operations>
+        <Operation>
+          <id>1</id>
+          <operationName>subscribeToRBT</operationName>
+          <operationXML>&lt;soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:user="http://usermanage.ivas.huawei.com"&gt;&#13;
+   &lt;soapenv:Header /&gt;&#13;
+   &lt;soapenv:Body&gt;&#13;
+      &lt;user:subscribe soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"&gt;&#13;
+         &lt;event xsi:type="even:SubscribeEvt" xmlns:even="http://event.usermanage.ivas.huawei.com"&gt;&#13;
+            &lt;portalAccount xsi:type="xsd:string"&gt;admin&lt;/portalAccount&gt;&#13;
+            &lt;portalPwd xsi:type="xsd:string"&gt;admin&lt;/portalPwd&gt;&#13;
+            &lt;portalType xsi:type="xsd:string"&gt;5&lt;/portalType&gt;&#13;
+            &lt;moduleCode xsi:type="xsd:string" xsi:nil="true"  /&gt;&#13;
+            &lt;role xsi:type="xsd:string"&gt;1&lt;/role&gt;&#13;
+            &lt;roleCode xsi:type="xsd:string"&gt;&lt;/roleCode&gt;&#13;
+            &lt;acceptedID xsi:type="xsd:string" xsi:nil="true"  /&gt;&#13;
+            &lt;city xsi:type="xsd:string" xsi:nil="true"  /&gt;&#13;
+            &lt;couponCode xsi:type="xsd:string" xsi:nil="true"  /&gt;&#13;
+            &lt;dateOfBirth xsi:type="xsd:string" xsi:nil="true" /&gt;&#13;
+            &lt;discountDuration xsi:type="xsd:string" xsi:nil="true" /&gt;&#13;
+            &lt;discountPrice xsi:type="xsd:string" xsi:nil="true" /&gt;&#13;
+            &lt;discountTime xsi:type="xsd:string" xsi:nil="true" /&gt;&#13;
+            &lt;discountUnit xsi:type="xsd:string" xsi:nil="true" /&gt;&#13;
+            &lt;email xsi:type="xsd:string" xsi:nil="true" /&gt;&#13;
+            &lt;firstName xsi:type="xsd:string" xsi:nil="true" /&gt;&#13;
+            &lt;groupID xsi:type="xsd:string" xsi:nil="true" /&gt;&#13;
+            &lt;keyword xsi:type="xsd:string" xsi:nil="true" /&gt;&#13;
+            &lt;languageID xsi:type="xsd:string" xsi:nil="true" /&gt;&#13;
+            &lt;lastName xsi:type="xsd:string" xsi:nil="true" /&gt;&#13;
+            &lt;microChargingFlag xsi:type="xsd:string" xsi:nil="true" /&gt;&#13;
+            &lt;nationality xsi:type="xsd:string" xsi:nil="true" /&gt;&#13;
+            &lt;notifyHLR xsi:type="xsd:string" xsi:nil="true" /&gt;&#13;
+            &lt;phoneNumber xsi:type="xsd:string"&gt;&lt;/phoneNumber&gt;&#13;
+            &lt;pwd xsi:type="xsd:string"&gt;&lt;/pwd&gt;&#13;
+            &lt;recommendNumber xsi:type="xsd:string" xsi:nil="true" /&gt;&#13;
+            &lt;renewalMode xsi:type="xsd:string"  xsi:nil="true" /&gt;&#13;
+            &lt;resourceCode xsi:type="xsd:string" xsi:nil="true" /&gt;&#13;
+            &lt;resourceID xsi:type="xsd:string" xsi:nil="true" /&gt;&#13;
+            &lt;resourceServiceType xsi:type="xsd:string"&gt;1&lt;/resourceServiceType&gt;&#13;
+            &lt;resourceType xsi:type="xsd:string" xsi:nil="true" /&gt;&#13;
+            &lt;serviceID xsi:type="xsd:string" xsi:nil="true" /&gt;&#13;
+            &lt;sex xsi:type="xsd:string"&gt;0&lt;/sex&gt;&#13;
+            &lt;toneDiscount xsi:type="xsd:string"&gt;0&lt;/toneDiscount&gt;&#13;
+            &lt;tonePrice xsi:type="xsd:string" xsi:nil="true" /&gt;&#13;
+            &lt;toneValidDuration xsi:type="xsd:string" xsi:nil="true" /&gt;	&#13;
+            &lt;traceUniqueID xsi:type="xsd:string" xsi:nil="true" /&gt;&#13;
+            &lt;tradeMark xsi:type="xsd:string" xsi:nil="true" /&gt;&#13;
+            &lt;triggerKey xsi:type="xsd:string" xsi:nil="true" /&gt;&#13;
+            &lt;triggerPhonenumber xsi:type="xsd:string" xsi:nil="true" /&gt;&#13;
+            &lt;triggerType xsi:type="xsd:string" xsi:nil="true" /&gt;&#13;
+            &lt;userType xsi:type="xsd:string" xsi:nil="true" /&gt;&#13;
+            &lt;validateCode xsi:type="xsd:string" xsi:nil="true" /&gt;&#13;
+         &lt;/event&gt;&#13;
+      &lt;/user:subscribe&gt;&#13;
+   &lt;/soapenv:Body&gt;&#13;
+&lt;/soapenv:Envelope&gt;</operationXML>
+          <operationHeaders></operationHeaders>
+          <operationResponse>&lt;response_processing&gt;&#13;
+&lt;response_element&gt;&#13;
+&lt;varname&gt;returnCode&lt;/varname&gt;&#13;
+&lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+&lt;element&gt;/soapenv:Envelope/soapenv:Body/multiRef/returnCode&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;/response_processing&gt;</operationResponse>
+        </Operation>
+        <Operation>
+          <id>2</id>
+          <operationName>subscribeToRRBT</operationName>
+          <operationXML>&lt;soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:user="http://usermanage.ivas.huawei.com"&gt;&#13;
+   &lt;soapenv:Header /&gt;&#13;
+   &lt;soapenv:Body&gt;&#13;
+      &lt;user:subscribe soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"&gt;&#13;
+         &lt;event xsi:type="even:SubscribeEvt" xmlns:even="http://event.usermanage.ivas.huawei.com"&gt;&#13;
+            &lt;portalAccount xsi:type="xsd:string"&gt;admin&lt;/portalAccount&gt;&#13;
+            &lt;portalPwd xsi:type="xsd:string"&gt;admin&lt;/portalPwd&gt;&#13;
+            &lt;portalType xsi:type="xsd:string"&gt;5&lt;/portalType&gt;&#13;
+            &lt;moduleCode xsi:type="xsd:string" xsi:nil="true"  /&gt;&#13;
+            &lt;role xsi:type="xsd:string"&gt;1&lt;/role&gt;&#13;
+            &lt;roleCode xsi:type="xsd:string"&gt;&lt;/roleCode&gt;&#13;
+            &lt;acceptedID xsi:type="xsd:string" xsi:nil="true"  /&gt;&#13;
+            &lt;city xsi:type="xsd:string" xsi:nil="true"  /&gt;&#13;
+            &lt;couponCode xsi:type="xsd:string" xsi:nil="true"  /&gt;&#13;
+            &lt;dateOfBirth xsi:type="xsd:string" xsi:nil="true" /&gt;&#13;
+            &lt;discountDuration xsi:type="xsd:string" xsi:nil="true" /&gt;&#13;
+            &lt;discountPrice xsi:type="xsd:string" xsi:nil="true" /&gt;&#13;
+            &lt;discountTime xsi:type="xsd:string" xsi:nil="true" /&gt;&#13;
+            &lt;discountUnit xsi:type="xsd:string" xsi:nil="true" /&gt;&#13;
+            &lt;email xsi:type="xsd:string" xsi:nil="true" /&gt;&#13;
+            &lt;firstName xsi:type="xsd:string" xsi:nil="true" /&gt;&#13;
+            &lt;groupID xsi:type="xsd:string" xsi:nil="true" /&gt;&#13;
+            &lt;keyword xsi:type="xsd:string" xsi:nil="true" /&gt;&#13;
+            &lt;languageID xsi:type="xsd:string" xsi:nil="true" /&gt;&#13;
+            &lt;lastName xsi:type="xsd:string" xsi:nil="true" /&gt;&#13;
+            &lt;microChargingFlag xsi:type="xsd:string" xsi:nil="true" /&gt;&#13;
+            &lt;nationality xsi:type="xsd:string" xsi:nil="true" /&gt;&#13;
+            &lt;notifyHLR xsi:type="xsd:string" xsi:nil="true" /&gt;&#13;
+            &lt;phoneNumber xsi:type="xsd:string"&gt;&lt;/phoneNumber&gt;&#13;
+            &lt;pwd xsi:type="xsd:string"&gt;&lt;/pwd&gt;&#13;
+            &lt;recommendNumber xsi:type="xsd:string" xsi:nil="true" /&gt;&#13;
+            &lt;renewalMode xsi:type="xsd:string"  xsi:nil="true" /&gt;&#13;
+            &lt;resourceCode xsi:type="xsd:string" xsi:nil="true" /&gt;&#13;
+            &lt;resourceID xsi:type="xsd:string" xsi:nil="true" /&gt;&#13;
+            &lt;resourceServiceType xsi:type="xsd:string"&gt;1&lt;/resourceServiceType&gt;&#13;
+            &lt;resourceType xsi:type="xsd:string" xsi:nil="true" /&gt;&#13;
+            &lt;serviceID xsi:type="xsd:string"&gt;11&lt;/serviceID&gt;&#13;
+            &lt;sex xsi:type="xsd:string"&gt;0&lt;/sex&gt;&#13;
+            &lt;toneDiscount xsi:type="xsd:string"&gt;0&lt;/toneDiscount&gt;&#13;
+            &lt;tonePrice xsi:type="xsd:string" xsi:nil="true" /&gt;&#13;
+            &lt;toneValidDuration xsi:type="xsd:string" xsi:nil="true" /&gt;	&#13;
+            &lt;traceUniqueID xsi:type="xsd:string" xsi:nil="true" /&gt;&#13;
+            &lt;tradeMark xsi:type="xsd:string" xsi:nil="true" /&gt;&#13;
+            &lt;triggerKey xsi:type="xsd:string" xsi:nil="true" /&gt;&#13;
+            &lt;triggerPhonenumber xsi:type="xsd:string" xsi:nil="true" /&gt;&#13;
+            &lt;triggerType xsi:type="xsd:string" xsi:nil="true" /&gt;&#13;
+            &lt;userType xsi:type="xsd:string" xsi:nil="true" /&gt;&#13;
+            &lt;validateCode xsi:type="xsd:string" xsi:nil="true" /&gt;&#13;
+         &lt;/event&gt;&#13;
+      &lt;/user:subscribe&gt;&#13;
+   &lt;/soapenv:Body&gt;&#13;
+&lt;/soapenv:Envelope&gt;</operationXML>
+          <operationHeaders></operationHeaders>
+          <operationResponse>&lt;response_processing&gt;&#13;
+&lt;response_element&gt;&#13;
+&lt;varname&gt;returnCode&lt;/varname&gt;&#13;
+&lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+&lt;element&gt;/soapenv:Envelope/soapenv:Body/multiRef/returnCode&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;/response_processing&gt;</operationResponse>
+        </Operation>
+        <Operation>
+          <id>3</id>
+          <operationName>SubscribeToPrayRbt</operationName>
+          <operationXML>&lt;soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:user="http://usermanage.ivas.huawei.com" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"&gt;&#13;
+   &lt;soapenv:Header/&gt;&#13;
+   &lt;soapenv:Body&gt;&#13;
+      &lt;user:subscribe soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"&gt;&#13;
+         &lt;event xsi:type="even:SubscribeEvt" xmlns:even="http://event.usermanage.ivas.huawei.com"&gt;&#13;
+            &lt;portalAccount xsi:type="xsd:string"&gt;admin&lt;/portalAccount&gt;&#13;
+            &lt;portalPwd xsi:type="xsd:string"&gt;admin&lt;/portalPwd&gt;&#13;
+            &lt;portalType xsi:type="xsd:string"&gt;5&lt;/portalType&gt;&#13;
+            &lt;moduleCode xsi:type="xsd:string"&gt;000000&lt;/moduleCode&gt;&#13;
+            &lt;role xsi:type="xsd:string"&gt;1&lt;/role&gt;&#13;
+            &lt;roleCode xsi:type="xsd:string"&gt;&lt;/roleCode&gt;&#13;
+            &lt;acceptedID xsi:type="xsd:string"&gt;&lt;/acceptedID&gt;&#13;
+            &lt;categoryId xsi:type="xsd:string"&gt;&lt;/categoryId&gt;&#13;
+            &lt;city xsi:type="xsd:string"&gt;&lt;/city&gt;&#13;
+            &lt;contentMicroChargeFlag xsi:type="xsd:string"&gt;&lt;/contentMicroChargeFlag&gt;&#13;
+            &lt;couponCode xsi:type="xsd:string"&gt;&lt;/couponCode&gt;&#13;
+            &lt;currentLocal xsi:type="xsd:string"&gt;&lt;/currentLocal&gt;&#13;
+            &lt;dateOfBirth xsi:type="xsd:string"&gt;&lt;/dateOfBirth&gt;&#13;
+            &lt;discountDuration xsi:type="xsd:string"&gt;&lt;/discountDuration&gt;&#13;
+            &lt;discountPrice xsi:type="xsd:string"&gt;&lt;/discountPrice&gt;&#13;
+            &lt;discountTime xsi:type="xsd:string"&gt;&lt;/discountTime&gt;&#13;
+            &lt;discountUnit xsi:type="xsd:string"&gt;&lt;/discountUnit&gt;&#13;
+            &lt;email xsi:type="xsd:string"&gt;&lt;/email&gt;&#13;
+            &lt;firstName xsi:type="xsd:string"&gt;&lt;/firstName&gt;&#13;
+            &lt;groupID xsi:type="xsd:string"&gt;&lt;/groupID&gt;&#13;
+            &lt;keyword xsi:type="xsd:string"&gt;&lt;/keyword&gt;&#13;
+            &lt;languageID xsi:type="xsd:string"&gt;&lt;/languageID&gt;&#13;
+            &lt;lastName xsi:type="xsd:string"&gt;&lt;/lastName&gt;&#13;
+            &lt;microChargingFlag xsi:type="xsd:string"&gt;&lt;/microChargingFlag&gt;&#13;
+            &lt;nationality xsi:type="xsd:string"&gt;&lt;/nationality&gt;&#13;
+            &lt;notifyHLR xsi:type="xsd:string"&gt;&lt;/notifyHLR&gt;&#13;
+            &lt;phoneNumber xsi:type="xsd:string"&gt;&lt;/phoneNumber&gt;&#13;
+            &lt;pwd xsi:type="xsd:string"&gt;&lt;/pwd&gt;&#13;
+            &lt;recommendNumber xsi:type="xsd:string"&gt;&lt;/recommendNumber&gt;&#13;
+            &lt;renewalMode xsi:type="xsd:string"&gt;&lt;/renewalMode&gt;&#13;
+            &lt;resourceCode xsi:type="xsd:string"&gt;&lt;/resourceCode&gt;&#13;
+            &lt;resourceID xsi:type="xsd:string"&gt;&lt;/resourceID&gt;&#13;
+            &lt;resourceServiceType xsi:type="xsd:string"&gt;&lt;/resourceServiceType&gt;&#13;
+            &lt;resourceType xsi:type="xsd:string"&gt;&lt;/resourceType&gt;&#13;
+            &lt;serviceID xsi:type="xsd:string"&gt;6&lt;/serviceID&gt;&#13;
+            &lt;sex xsi:type="xsd:string"&gt;&lt;/sex&gt;&#13;
+            &lt;smAccessCode xsi:type="xsd:string"&gt;&lt;/smAccessCode&gt;&#13;
+            &lt;toneDiscount xsi:type="xsd:string"&gt;&lt;/toneDiscount&gt;&#13;
+            &lt;tonePrice xsi:type="xsd:string"&gt;&lt;/tonePrice&gt;&#13;
+            &lt;toneValidDuration xsi:type="xsd:string"&gt;&lt;/toneValidDuration&gt;&#13;
+            &lt;traceUniqueID xsi:type="xsd:string"&gt;&lt;/traceUniqueID&gt;&#13;
+            &lt;tradeMark xsi:type="xsd:string"&gt;&lt;/tradeMark&gt;&#13;
+            &lt;transactionID xsi:type="xsd:string"&gt;&lt;/transactionID&gt;&#13;
+            &lt;triggerKey xsi:type="xsd:string"&gt;&lt;/triggerKey&gt;&#13;
+            &lt;triggerPhonenumber xsi:type="xsd:string"&gt;&lt;/triggerPhonenumber&gt;&#13;
+            &lt;triggerType xsi:type="xsd:string"&gt;&lt;/triggerType&gt;&#13;
+            &lt;userType xsi:type="xsd:string"&gt;&lt;/userType&gt;&#13;
+            &lt;validateCode xsi:type="xsd:string"&gt;&lt;/validateCode&gt;&#13;
+         &lt;/event&gt;&#13;
+      &lt;/user:subscribe&gt;&#13;
+   &lt;/soapenv:Body&gt;&#13;
+&lt;/soapenv:Envelope&gt;</operationXML>
+          <operationHeaders></operationHeaders>
+          <operationResponse>&lt;response_processing&gt;&#13;
+&lt;response_element&gt;&#13;
+&lt;varname&gt;returnCode&lt;/varname&gt;&#13;
+&lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+&lt;element&gt;/soapenv:Envelope/soapenv:Body/multiRef/returnCode&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;/response_processing&gt;</operationResponse>
+        </Operation>
+        <Operation>
+          <id>4</id>
+          <operationName>EditLocation</operationName>
+          <operationXML>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&#13;
+&lt;soapenv:Body&gt;&#13;
+&lt;ns1:edit soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" xmlns:ns1="http://usermanage.ivas.huawei.com"&gt;&#13;
+&lt;event href="#id0"/&gt;&#13;
+&lt;/ns1:edit&gt;&#13;
+&lt;multiRef id="id0" soapenc:root="0" soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" xsi:type="ns2:EditUserEvt" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:ns2="http://event.usermanage.ivas.huawei.com"&gt;&#13;
+&lt;bgTone xsi:type="soapenc:string" xsi:nil="true"/&gt;&#13;
+&lt;brandChangeMode xsi:type="soapenc:string" xsi:nil="true"/&gt;   &#13;
+         &lt;city xsi:type="soapenc:string" xsi:nil="true"/&gt;&#13;
+         &lt;currentLocal xsi:type="soapenc:string"&gt;&lt;/currentLocal&gt;&#13;
+         &lt;dateOfBirth xsi:type="soapenc:string" xsi:nil="true"/&gt;&#13;
+         &lt;email xsi:type="soapenc:string" xsi:nil="true"/&gt;&#13;
+         &lt;firstName xsi:type="soapenc:string" xsi:nil="true"/&gt;&#13;
+         &lt;idCard xsi:type="soapenc:string" xsi:nil="true"/&gt;&#13;
+         &lt;isUseCopy xsi:type="soapenc:string" xsi:nil="true"/&gt;&#13;
+         &lt;languageID xsi:type="soapenc:string" xsi:nil="true"/&gt;&#13;
+         &lt;lastName xsi:type="soapenc:string" xsi:nil="true"/&gt;&#13;
+         &lt;localID xsi:type="soapenc:string" xsi:nil="true"/&gt;&#13;
+         &lt;moduleCode xsi:type="soapenc:string" xsi:nil="true"/&gt;&#13;
+         &lt;moodModeID xsi:type="soapenc:string" xsi:nil="true"/&gt;&#13;
+         &lt;name xsi:type="soapenc:string" xsi:nil="true"/&gt;&#13;
+         &lt;nationality xsi:type="soapenc:string" xsi:nil="true"/&gt;&#13;
+         &lt;newPwd xsi:type="soapenc:string" xsi:nil="true"/&gt;&#13;
+         &lt;notifyOss xsi:type="soapenc:string" xsi:nil="true"/&gt;&#13;
+         &lt;oldPwd xsi:type="soapenc:string" xsi:nil="true"/&gt;&#13;
+         &lt;phoneNumber xsi:type="soapenc:string"&gt;&lt;/phoneNumber&gt;&#13;
+         &lt;playMode xsi:type="soapenc:string" xsi:nil="true"/&gt;&#13;
+         &lt;portalAccount xsi:type="soapenc:string"&gt;admin&lt;/portalAccount&gt;&#13;
+         &lt;portalPwd xsi:type="soapenc:string"&gt;admin&lt;/portalPwd&gt;&#13;
+         &lt;portalType xsi:type="soapenc:string"&gt;5&lt;/portalType&gt;&#13;
+         &lt;preNoticeFlag xsi:type="soapenc:string" xsi:nil="true"/&gt;&#13;
+         &lt;productFlag xsi:type="soapenc:string" xsi:nil="true"/&gt;&#13;
+         &lt;renewMode xsi:type="soapenc:string" xsi:nil="true"/&gt;&#13;
+         &lt;role xsi:type="soapenc:string"&gt;1&lt;/role&gt;&#13;
+         &lt;roleCode xsi:type="soapenc:string"&gt;&lt;/roleCode&gt;&#13;
+         &lt;serviceID xsi:type="soapenc:string" xsi:nil="true"/&gt;&#13;
+         &lt;sex xsi:type="soapenc:string" xsi:nil="true"/&gt;&#13;
+         &lt;subCosID xsi:type="soapenc:string" xsi:nil="true"/&gt;&#13;
+         &lt;subtype xsi:type="soapenc:string" xsi:nil="true"/&gt;&#13;
+         &lt;tradeMark xsi:type="soapenc:string" xsi:nil="true"/&gt;&#13;
+         &lt;transactionID xsi:type="soapenc:string" xsi:nil="true"/&gt;&#13;
+         &lt;type xsi:type="soapenc:string" xsi:nil="true"/&gt;&#13;
+   &lt;/multiRef&gt;&#13;
+ &lt;/soapenv:Body&gt;&#13;
+&lt;/soapenv:Envelope&gt;</operationXML>
+          <operationHeaders></operationHeaders>
+          <operationResponse>&lt;response_processing&gt;&#13;
+&lt;response_element&gt;&#13;
+&lt;varname&gt;retCode&lt;/varname&gt;&#13;
+&lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+&lt;element&gt;/soapenv:Envelope/soapenv:Body/multiRef/returnCode&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;/response_processing&gt;</operationResponse>
+        </Operation>
+        <Operation>
+          <id>6</id>
+          <operationName>UnsubscribeAllTunes</operationName>
+          <operationXML>&lt;soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:user="http://usermanage.ivas.huawei.com"&gt;&#13;
+   &lt;soapenv:Header/&gt;&#13;
+   &lt;soapenv:Body&gt;&#13;
+      &lt;user:unSubscribe soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"&gt;&#13;
+         &lt;event xsi:type="even:UnSubscribeEvt" xmlns:even="http://event.usermanage.ivas.huawei.com"&gt;&#13;
+            &lt;portalAccount xsi:type="xsd:string"&gt;admin&lt;/portalAccount&gt;&#13;
+            &lt;portalPwd xsi:type="xsd:string"&gt;admin&lt;/portalPwd&gt;&#13;
+            &lt;portalType xsi:type="xsd:string"&gt;5&lt;/portalType&gt;&#13;
+            &lt;moduleCode xsi:type="xsd:string"/&gt;&#13;
+            &lt;role xsi:type="xsd:string"&gt;1&lt;/role&gt;&#13;
+            &lt;roleCode xsi:type="xsd:string"&gt;&lt;/roleCode&gt;&#13;
+            &lt;deleteFlag xsi:type="xsd:string"/&gt;&#13;
+            &lt;notifyHLR xsi:type="xsd:string"/&gt;&#13;
+            &lt;phoneNumber xsi:type="xsd:string"&gt;&lt;/phoneNumber&gt;&#13;
+            &lt;serviceFlag xsi:type="xsd:string"/&gt;&#13;
+         &lt;/event&gt;&#13;
+      &lt;/user:unSubscribe&gt;&#13;
+   &lt;/soapenv:Body&gt;&#13;
+&lt;/soapenv:Envelope&gt;</operationXML>
+          <operationHeaders></operationHeaders>
+          <operationResponse>&lt;response_processing&gt;&#13;
+&lt;response_element&gt;&#13;
+&lt;varname&gt;returnCode&lt;/varname&gt;&#13;
+&lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+&lt;element&gt;/soapenv:Envelope/soapenv:Body/multiRef/returnCode&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;/response_processing&gt;</operationResponse>
+        </Operation>
+      </Operations>
+      <Common>
+        <UseSubconnectorPath>N</UseSubconnectorPath>
+        <PreserveWhitespaces>N</PreserveWhitespaces>
+      </Common>
+      <ResponseProcessing>
+        <ResponseHeaders></ResponseHeaders>
+      </ResponseProcessing>
+      <HTTPHeaders/>
+      <IgnoreErrors>
+        <Errors></Errors>
+      </IgnoreErrors>
+      <PostProcessingParams>
+        <PostProcessingResponseType>0</PostProcessingResponseType>
+      </PostProcessingParams>
+      <PostProcessings/>
+      <subconnector>
+        <id>1</id>
+        <enabled>N</enabled>
+        <URL>http://10.65.10.35:10040/jboss-net/services/UserManage</URL>
+        <NumSessions>100</NumSessions>
+        <KeepAlive>Y</KeepAlive>
+        <send_head>N</send_head>
+        <HTTPMethod>POST</HTTPMethod>
+        <Encoding>curl-style</Encoding>
+        <HTTPVersion>1.1</HTTPVersion>
+        <ProxyURL></ProxyURL>
+        <Auth></Auth>
+        <max_error_responses>10</max_error_responses>
+        <ProcessErrorResponse>N</ProcessErrorResponse>
+        <HTTPTimeout>60</HTTPTimeout>
+        <PostOnlyActionParams>Y</PostOnlyActionParams>
+        <SSLVerifyPeer>N</SSLVerifyPeer>
+        <SSLClientCert></SSLClientCert>
+        <SSLClientKey></SSLClientKey>
+        <SSLClientPassphrase></SSLClientPassphrase>
+        <SSLCACert></SSLCACert>
+      </subconnector>
+      <subconnector>
+        <id>2</id>
+        <enabled>Y</enabled>
+        <URL>http://10.65.10.35:10040/jboss-net/services/UserManage</URL>
+        <NumSessions>100</NumSessions>
+        <KeepAlive>Y</KeepAlive>
+        <send_head>N</send_head>
+        <HTTPMethod>POST</HTTPMethod>
+        <Encoding>curl-style</Encoding>
+        <HTTPVersion>1.1</HTTPVersion>
+        <ProxyURL></ProxyURL>
+        <Auth></Auth>
+        <max_error_responses>10</max_error_responses>
+        <ProcessErrorResponse>N</ProcessErrorResponse>
+        <HTTPTimeout>60</HTTPTimeout>
+        <PostOnlyActionParams>Y</PostOnlyActionParams>
+        <SSLVerifyPeer>N</SSLVerifyPeer>
+        <SSLClientCert></SSLClientCert>
+        <SSLClientKey></SSLClientKey>
+        <SSLClientPassphrase></SSLClientPassphrase>
+        <SSLCACert></SSLCACert>
+      </subconnector>
+      <subconnector>
+        <id>3</id>
+        <enabled>N</enabled>
+        <URL>http://10.65.10.35:10040/jboss-net/services/UserManage</URL>
+        <NumSessions>100</NumSessions>
+        <KeepAlive>Y</KeepAlive>
+        <send_head>N</send_head>
+        <HTTPMethod>POST</HTTPMethod>
+        <Encoding>curl-style</Encoding>
+        <HTTPVersion>1.1</HTTPVersion>
+        <ProxyURL></ProxyURL>
+        <Auth></Auth>
+        <max_error_responses>10</max_error_responses>
+        <ProcessErrorResponse>N</ProcessErrorResponse>
+        <HTTPTimeout>60</HTTPTimeout>
+        <PostOnlyActionParams>Y</PostOnlyActionParams>
+        <SSLVerifyPeer>N</SSLVerifyPeer>
+        <SSLClientCert></SSLClientCert>
+        <SSLClientKey></SSLClientKey>
+        <SSLClientPassphrase></SSLClientPassphrase>
+        <SSLCACert></SSLCACert>
+      </subconnector>
+      <subconnector>
+        <id>4</id>
+        <enabled>N</enabled>
+        <URL>http://10.65.10.35:10040/jboss-net/services/UserManage</URL>
+        <NumSessions>100</NumSessions>
+        <KeepAlive>Y</KeepAlive>
+        <send_head>N</send_head>
+        <HTTPMethod>POST</HTTPMethod>
+        <Encoding>curl-style</Encoding>
+        <HTTPVersion>1.1</HTTPVersion>
+        <ProxyURL></ProxyURL>
+        <Auth></Auth>
+        <max_error_responses>10</max_error_responses>
+        <ProcessErrorResponse>N</ProcessErrorResponse>
+        <HTTPTimeout>60</HTTPTimeout>
+        <PostOnlyActionParams>Y</PostOnlyActionParams>
+        <SSLVerifyPeer>N</SSLVerifyPeer>
+        <SSLClientCert></SSLClientCert>
+        <SSLClientKey></SSLClientKey>
+        <SSLClientPassphrase></SSLClientPassphrase>
+        <SSLCACert></SSLCACert>
+      </subconnector>
+    </subconnectors>
+  </protocolspecific>
+</connector>

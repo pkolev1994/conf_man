@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2007-2017. Opencode Systems Ltd.-->
+<connector>
+  <enabled>N</enabled>
+  <last_enabled/>
+  <enabled_marker/>
+  <mode>Y</mode>
+  <id>4962</id>
+  <name>SDP_SUBSCRIPTION_VIA_USSD_00</name>
+  <type>SOAP_CLIENT</type>
+  <lastmodified>2017-04-07 15:27:41</lastmodified>
+  <description>FAFANUKA_SDP_SUBSCRIPTION</description>
+  <debug_level>4</debug_level>
+  <logdir>/aux1/occonnectors/logs/SDP_SUBSCRIPTION_VIA_USSD_00/</logdir>
+  <hidden_parameters/>
+  <suppressed_alarms/>
+  <fifodir>/opt/occonnectors/run/connector_pipes/</fifodir>
+  <alarmdir>/aux0/alarms/</alarmdir>
+  <statustimeout>10000</statustimeout>
+  <max_status_timeouts>4</max_status_timeouts>
+  <reconnectinterval>60</reconnectinterval>
+  <messageexpiretime>40</messageexpiretime>
+  <dialoginactivitytime>60</dialoginactivitytime>
+  <maxexpireddialogs>1000</maxexpireddialogs>
+  <speed_limit>1000</speed_limit>
+  <speed_limit_conn>1000</speed_limit_conn>
+  <limit_app_requests>10000</limit_app_requests>
+  <pre_congestion_limit>60</pre_congestion_limit>
+  <round_robin_app_requests>N</round_robin_app_requests>
+  <should_reject_app_requests>Y</should_reject_app_requests>
+  <stop_subconn_on_ipc_lost>N</stop_subconn_on_ipc_lost>
+  <encode_special_characters>N</encode_special_characters>
+  <retry_sending_requests>N</retry_sending_requests>
+  <synchronous_logging>N</synchronous_logging>
+  <write_error_log>N</write_error_log>
+  <opcdipc>
+    <accountid>4962</accountid>
+    <hosts>
+      <host>
+        <ipaddress>10.0.0.177</ipaddress>
+        <port>5049</port>
+      </host>
+      <host>
+        <ipaddress>10.0.0.177</ipaddress>
+        <port>5049</port>
+      </host>
+      <host>
+        <ipaddress>10.0.0.173</ipaddress>
+        <port>5049</port>
+      </host>
+      <host>
+        <ipaddress>10.0.0.175</ipaddress>
+        <port>5049</port>
+      </host>
+    <host>
+ <ipaddress>10.0.0.179</ipaddress>
+ <port>5049</port> 
+ </host> 
+ </hosts> 
+    <login>SDP_SUBSCRIPTION_VIA_USSD_00</login>
+    <messageexpiretime>40</messageexpiretime>
+    <password>4962</password>
+    <systemtype>SOAP_CLIENT</systemtype>
+  </opcdipc>
+  <protocolspecific>
+    <subconnectors>
+      <Operations>
+        <Operation>
+          <id>1</id>
+          <operationName>subscribe</operationName>
+          <operationXML>&lt;soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"&gt;&#13;
+   &lt;soapenv:Header&gt;&#13;
+      &lt;RequestSOAPHeader xmlns="http://www.huawei.com.cn/schema/common/v2_1"&gt;&#13;
+         &lt;spId&gt;601923&lt;/spId&gt;&#13;
+         &lt;spPassword&gt;f0bce6aa5d378d75e22a2e93a798bfa1&lt;/spPassword&gt;&#13;
+         &lt;timeStamp&gt;20140625132230&lt;/timeStamp&gt;&#13;
+         &lt;OA&gt;&lt;/OA&gt;&#13;
+         &lt;FA&gt;&lt;/FA&gt;&#13;
+         &lt;transactionId&gt;&lt;/transactionId&gt;&#13;
+      &lt;/RequestSOAPHeader&gt;&#13;
+   &lt;/soapenv:Header&gt;&#13;
+   &lt;soapenv:Body&gt;&#13;
+      &lt;subscribeProductRequest xmlns="http://www.csapi.org/schema/parlayx/subscribe/manage/v1_0/local"&gt;&#13;
+         &lt;subscribeProductReq&gt;&#13;
+            &lt;userID xmlns=""&gt;&#13;
+               &lt;ID&gt;&lt;/ID&gt;&#13;
+               &lt;type&gt;&lt;/type&gt;&#13;
+            &lt;/userID&gt;&#13;
+            &lt;subInfo xmlns=""&gt;&#13;
+               &lt;productID&gt;&lt;/productID&gt;&#13;
+               &lt;channelID&gt;2&lt;/channelID&gt;&#13;
+               &lt;extensionInfo&gt;&#13;
+                  &lt;namedParameters&gt;&#13;
+                     &lt;key&gt;SubType&lt;/key&gt;&#13;
+                     &lt;value&gt;0&lt;/value&gt;&#13;
+                  &lt;/namedParameters&gt;&#13;
+               &lt;/extensionInfo&gt;&#13;
+            &lt;/subInfo&gt;&#13;
+         &lt;/subscribeProductReq&gt;&#13;
+      &lt;/subscribeProductRequest&gt;&#13;
+   &lt;/soapenv:Body&gt;&#13;
+&lt;/soapenv:Envelope&gt;</operationXML>
+          <operationHeaders></operationHeaders>
+          <operationResponse>&lt;response_processing&gt;&#13;
+&lt;response_element&gt;&#13;
+&lt;varname&gt;RespCode&lt;/varname&gt;&#13;
+&lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+&lt;element&gt;/soapenv:Envelope/soapenv:Body/ns1:subscribeProductResponse/ns1:subscribeProductRsp/result&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;/response_processing&gt;</operationResponse>
+        </Operation>
+        <Operation>
+          <id>2</id>
+          <operationName>Unsubscribe</operationName>
+          <operationXML>&lt;soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v2="http://www.huawei.com.cn/schema/common/v2_1" xmlns:loc="http://www.csapi.org/schema/parlayx/subscribe/manage/v1_0/local"&gt;</operationXML>
+          <operationHeaders></operationHeaders>
+          <operationResponse>&lt;response_processing&gt;&#13;
+&lt;response_element&gt;&#13;
+&lt;varname&gt;RespCode&lt;/varname&gt;&#13;
+&lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+&lt;element&gt;/soapenv:Envelope/soapenv:Body/ns1:unSubscribeProductResponse/ns1:unSubscribeProductRsp/result&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;/response_processing&gt;</operationResponse>
+        </Operation>
+        <Operation>
+          <id>3</id>
+          <operationName>dmsubscribe</operationName>
+          <operationXML>&lt;soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"&gt;&#13;
+   &lt;soapenv:Header&gt;&#13;
+      &lt;RequestSOAPHeader xmlns="http://www.huawei.com.cn/schema/common/v2_1"&gt;&#13;
+         &lt;spId&gt;601946&lt;/spId&gt;&#13;
+         &lt;spPassword&gt;12d0bc85d0296cd6d84852d9978c76a5&lt;/spPassword&gt;&#13;
+         &lt;timeStamp&gt;20170331124544&lt;/timeStamp&gt;&#13;
+         &lt;OA&gt;&lt;/OA&gt;&#13;
+         &lt;FA&gt;&lt;/FA&gt;&#13;
+         &lt;transactionId&gt;&lt;/transactionId&gt;&#13;
+      &lt;/RequestSOAPHeader&gt;&#13;
+   &lt;/soapenv:Header&gt;&#13;
+   &lt;soapenv:Body&gt;&#13;
+      &lt;subscribeProductRequest xmlns="http://www.csapi.org/schema/parlayx/subscribe/manage/v1_0/local"&gt;&#13;
+         &lt;subscribeProductReq&gt;&#13;
+            &lt;userID xmlns=""&gt;&#13;
+               &lt;ID&gt;&lt;/ID&gt;&#13;
+               &lt;type&gt;&lt;/type&gt;&#13;
+            &lt;/userID&gt;&#13;
+            &lt;subInfo xmlns=""&gt;&#13;
+               &lt;productID&gt;&lt;/productID&gt;&#13;
+               &lt;channelID&gt;2&lt;/channelID&gt;&#13;
+               &lt;extensionInfo&gt;&#13;
+                  &lt;namedParameters&gt;&#13;
+                     &lt;key&gt;SubType&lt;/key&gt;&#13;
+                     &lt;value&gt;0&lt;/value&gt;&#13;
+                  &lt;/namedParameters&gt;&#13;
+               &lt;/extensionInfo&gt;&#13;
+            &lt;/subInfo&gt;&#13;
+         &lt;/subscribeProductReq&gt;&#13;
+      &lt;/subscribeProductRequest&gt;&#13;
+   &lt;/soapenv:Body&gt;&#13;
+&lt;/soapenv:Envelope&gt;</operationXML>
+          <operationHeaders></operationHeaders>
+          <operationResponse>&lt;response_processing&gt;&#13;
+&lt;response_element&gt;&#13;
+&lt;varname&gt;RespCode&lt;/varname&gt;&#13;
+&lt;nexturl&gt;&lt;/nexturl&gt;&#13;
+&lt;element&gt;/soapenv:Envelope/soapenv:Body/ns1:subscribeProductResponse/ns1:subscribeProductRsp/result&lt;/element&gt;&#13;
+&lt;action&gt;VARIABLE&lt;/action&gt;&#13;
+&lt;actionparam&gt;&lt;/actionparam&gt;&#13;
+&lt;/response_element&gt;&#13;
+&lt;/response_processing&gt;</operationResponse>
+        </Operation>
+      </Operations>
+      <Common>
+        <UseSubconnectorPath>N</UseSubconnectorPath>
+        <PreserveWhitespaces>N</PreserveWhitespaces>
+      </Common>
+      <ResponseProcessing>
+        <ResponseHeaders></ResponseHeaders>
+      </ResponseProcessing>
+      <HTTPHeaders/>
+      <IgnoreErrors>
+        <Errors></Errors>
+      </IgnoreErrors>
+      <PostProcessingParams>
+        <PostProcessingResponseType>0</PostProcessingResponseType>
+      </PostProcessingParams>
+      <PostProcessings/>
+      <subconnector>
+        <id>1</id>
+        <enabled>N</enabled>
+        <URL>http://10.66.49.198:8310/SubscribeManageService/services/SubscribeManage</URL>
+        <NumSessions>100</NumSessions>
+        <KeepAlive>Y</KeepAlive>
+        <send_head>N</send_head>
+        <HTTPMethod>POST</HTTPMethod>
+        <Encoding>curl-style</Encoding>
+        <HTTPVersion>1.1</HTTPVersion>
+        <ProxyURL></ProxyURL>
+        <Auth></Auth>
+        <max_error_responses>10</max_error_responses>
+        <ProcessErrorResponse>N</ProcessErrorResponse>
+        <HTTPTimeout>30</HTTPTimeout>
+        <PostOnlyActionParams>Y</PostOnlyActionParams>
+        <SSLVerifyPeer>N</SSLVerifyPeer>
+        <SSLClientCert></SSLClientCert>
+        <SSLClientKey></SSLClientKey>
+        <SSLClientPassphrase></SSLClientPassphrase>
+        <SSLCACert></SSLCACert>
+      </subconnector>
+      <subconnector>
+        <id>2</id>
+        <enabled>Y</enabled>
+        <URL>http://10.66.49.147:8310/SubscribeManageService/services/SubscribeManage</URL>
+        <NumSessions>100</NumSessions>
+        <KeepAlive>Y</KeepAlive>
+        <send_head>N</send_head>
+        <HTTPMethod>POST</HTTPMethod>
+        <Encoding>curl-style</Encoding>
+        <HTTPVersion>1.1</HTTPVersion>
+        <ProxyURL></ProxyURL>
+        <Auth></Auth>
+        <max_error_responses>10</max_error_responses>
+        <ProcessErrorResponse>N</ProcessErrorResponse>
+        <HTTPTimeout>30</HTTPTimeout>
+        <PostOnlyActionParams>Y</PostOnlyActionParams>
+        <SSLVerifyPeer>N</SSLVerifyPeer>
+        <SSLClientCert></SSLClientCert>
+        <SSLClientKey></SSLClientKey>
+        <SSLClientPassphrase></SSLClientPassphrase>
+        <SSLCACert></SSLCACert>
+      </subconnector>
+    </subconnectors>
+  </protocolspecific>
+</connector>
