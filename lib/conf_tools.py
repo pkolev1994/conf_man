@@ -12,17 +12,19 @@ def update_conf_json(json_file, key, value, state):
 	data = json.load(jsonFile) # Read the JSON into the buffer
 	jsonFile.close() # Close the JSON file
 
+	print("Key => {}\t Value => {}\t State =>{}".format(key, value, state))
 
-	if state is 'add':
+	if state == 'add':
 		if key is 'available_servers' or key is 'swarm_servers':
 			data[key].append(value)
 		else:
 			data[key] = value
-	elif state is 'remove':
+	elif state == 'remove':
 		if key is 'available_servers' or key is 'swarm_servers':
 			data[key].remove(value)
 		else:
-			data[key] = value		
+			# data[key] = value
+			del(data[key])		
 	## Save our changes to JSON file
 
 	jsonFile = open(json_file, "w+")

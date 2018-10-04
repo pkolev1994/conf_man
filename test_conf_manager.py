@@ -14,7 +14,7 @@ def main():
 	conf_manager = None
 	container_type = None
 	hostname = None
-	hostname = "br_11"
+	hostname = "http_conn_11"
 	etcd_manager = EtcdManagement()
 	# if re.search(r'conn', socket.gethostname(), re.I|re.S):
 	if re.search(r'conn', hostname, re.I|re.S):
@@ -35,11 +35,17 @@ def main():
 		if container_type == 'connector' and hostname == "smpp":
 			new_browsers = conf_manager.get_new_browsers(literal_eval(platform_status))
 			new_ussd_gws = conf_manager.get_new_ussd_gws(literal_eval(platform_status))
+			browsers_for_remove = conf_manager.remove_browsers(literal_eval(platform_status))
+			ussd_gws_for_remove = conf_manager.remove_ussd_gws(literal_eval(platform_status))
 			conf_manager.update_configs(browsers = new_browsers, ussd_gws = new_ussd_gws)
+			conf_manager.update_configs_remove(browsers = browsers_for_remove, ussd_gws = ussd_gws_for_remove)
 			conf_manager.check_config_status()
 		elif container_type == 'connector':
 			new_browsers = conf_manager.get_new_browsers(literal_eval(platform_status))
+			browsers_for_remove = conf_manager.remove_browsers(literal_eval(platform_status))
+			print("BR for remove => {}".format(browsers_for_remove))
 			conf_manager.update_configs(browsers = new_browsers)
+			conf_manager.update_configs_remove(browsers = browsers_for_remove)
 			conf_manager.check_config_status()
 		elif container_type == 'browser':
 			conf_manager.check_config_status()

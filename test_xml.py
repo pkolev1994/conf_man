@@ -35,13 +35,18 @@ print(opcdipc)
 hosts = root.find('opcdipc').find('hosts')
 print(hosts)
 host = root.find('opcdipc').find('hosts').find('host')
+for host in hosts:
+	print("HH => {}".format(host.find('ipaddress').text))
+	if host.find('ipaddress').text == '127.0.0.1':
+		print("YEAH")
+		hosts.remove(host)
+tree.write('/home/pkolev/Git/occonfman/HTTP_CLIENT-14565-HTTP_CI_LOAD_TEST.xml')
+# bks = ["book_title_1", "book_title_2", "book_title_3"]
+# for bk in bks:
+#    new_book = copy.deepcopy(host)
+#    new_book.find('ipaddress').text = bk
+#    hosts.append(new_book)
 
-bks = ["book_title_1", "book_title_2", "book_title_3"]
-for bk in bks:
-   new_book = copy.deepcopy(host)
-   new_book.find('ipaddress').text = bk
-   hosts.append(new_book)
+# tree.write("aaaaa.xml")
 
-tree.write("aaaaa.xml")
-
-print(et.tostring(root))
+# print(et.tostring(root))

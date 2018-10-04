@@ -70,15 +70,17 @@ class ConnManager():
 			new_browsers(dict)
 		"""
 		loaded_json = parse_conf_json(self.conf_manager_file)
+		del(loaded_json['md5'])
 		new_browsers = {}
 
 		for container_name in loaded_json.keys():
-			flag = False
-			for host in platform_status.keys():
-				if container_name in platform_status[host]['br']:
-					flag = True
-			if not flag:
-				new_browsers[container_name] = loaded_json[container_name]
+			if re.search("br", container_name, re.I|re.S):
+				flag = False
+				for host in platform_status.keys():
+					if container_name in platform_status[host]['br']:
+						flag = True
+				if not flag:
+					new_browsers[container_name] = loaded_json[container_name]
 
 		return new_browsers
 
@@ -116,16 +118,18 @@ class ConnManager():
 			ussd_gws(dict)
 		"""
 		loaded_json = parse_conf_json(self.conf_manager_file)
+		del(loaded_json['md5'])
 		ussd_gws = {}
 		
 		for container_name in loaded_json.keys():
-			flag = False
-			for host in platform_status.keys():
-				# if container_name in platform_status[host]['ussd_gw']:
-				if container_name in platform_status[host]['ipgw']:
-					flag = True
-			if not flag:
-				ussd_gws[container_name] = loaded_json[container_name]
+			if re.search("ipgw", container_name, re.I|re.S):
+				flag = False
+				for host in platform_status.keys():
+					# if container_name in platform_status[host]['ussd_gw']:
+					if container_name in platform_status[host]['ipgw']:
+						flag = True
+				if not flag:
+					ussd_gws[container_name] = loaded_json[container_name]
 
 		return ussd_gws
 
@@ -169,53 +173,56 @@ class ConnManager():
 
 		# print("XML FILES => {}".format(xml_files))
 		# print("XML FILES 2 => {}".format(xml_files_2))
-		# # print("Browsers => {}".format(browsers))
+		# print("Browsers => {}".format(browsers))
 		# print("USSDGW => {}".format(ussd_gws))
 		if browsers:
-			for xml in xml_files:
-				try:
-					tree = ET.parse(xml)
-					root = tree.getroot()
-					for hostname in browsers.keys():
+			for hostname in browsers.keys():
+				flag = True
+				for xml in xml_files:
+					try:
+						tree = ET.parse(xml)
+						root = tree.getroot()
 						hosts = root.find('opcdipc').find('hosts')
 						host = root.find('opcdipc').find('hosts').find('host')
 						new_host = copy.deepcopy(host)
 						new_host.find('ipaddress').text = browsers[hostname]
 						hosts.append(new_host)
-						update_conf_json(json_file = self.conf_manager_file, \
-										state= 'add', \
-										key= hostname, \
-										value=browsers[hostname])
 						tree.write(xml)
-				except:
-					print("ERROR, {} file can't be updated for some reason".format(xml))
+					except:
+						flag = False
+						print("ERROR, {} file can't be updated for some reason".format(xml))
+						print("{} won't be added from conf_manager.json and won't be added from {}".format(hostname, xml))	
 
-			for xml in xml_files_2:
-				try:
-					tree = ET.parse(xml)
-					root = tree.getroot()
-					for hostname in browsers.keys():
+				for xml in xml_files_2:
+					try:
+						tree = ET.parse(xml)
+						root = tree.getroot()
 						ipc = root.find('connection_ccb').find('config').find('ipc')
 						connection = root.find('connection_ccb').find('config').find('ipc').find('connection')
 						new_connection = copy.deepcopy(connection)
 						new_connection.find('ip').text = browsers[hostname]
 						ipc.append(new_host)
-						update_conf_json(json_file = self.conf_manager_file, \
-										state= 'add', \
-										key= hostname, \
-										value=browsers[hostname])
 						tree.write(xml)
-				except:
-					print("ERROR, {} file can't be updated for some reason".format(xml))
+					except:
+						flag = False
+						print("ERROR, {} file can't be updated for some reason".format(xml))
+						print("{} won't be added from conf_manager.json and won't be added from {}".format(hostname, xml))	
+
+				if flag:
+					update_conf_json(json_file = self.conf_manager_file, \
+									state= 'add', \
+									key= hostname, \
+									value=browsers[hostname])
 
 
 		if ussd_gws:
-			for xml in xml_files:
-				increment_id = 0
-				try:
-					tree = ET.parse(xml)
-					root = tree.getroot()
-					for hostname in ussd_gws.keys():
+			for hostname in ussd_gws.keys():
+				flag = True
+				for xml in xml_files:
+					increment_id = 0
+					try:
+						tree = ET.parse(xml)
+						root = tree.getroot()
 						conn_type = root.find('protocolspecific'). \
 									find('subconnectors'). \
 									find('subconnector'). \
@@ -248,13 +255,106 @@ class ConnManager():
 							new_smpp_client.find('id').text = str(max_id) 
 							smpp_clients.append(new_smpp_client)
 							# print("After append")
-							update_conf_json(json_file = self.conf_manager_file, \
-											state= 'add', \
-											key= hostname, \
-											value=ussd_gws[hostname])
 							tree.write(xml)
-				except:
-					print("ERROR, {} file can't be updated for some reason".format(xml))
+					except:
+						print("ERROR, {} file can't be updated for some reason".format(xml))
+
+				if flag:
+					update_conf_json(json_file = self.conf_manager_file, \
+									state= 'add', \
+									key= hostname, \
+									value=ussd_gws[hostname])
+
+
+
+
+	def update_configs_remove(self, browsers = None, ussd_gws = None):
+		"""
+		Added browsers in http connector
+		config
+		Args:
+			browsers(dict)
+		Returns:
+			None
+		"""
+		xml_files, xml_files_2 = self.get_xml_files()
+
+		# print("XML FILES => {}".format(xml_files))
+		# print("XML FILES 2 => {}".format(xml_files_2))
+		# # print("Browsers => {}".format(browsers))
+		# print("USSDGW => {}".format(ussd_gws))
+		if browsers:
+			for hostname in browsers.keys():
+				flag = True
+				for xml in xml_files:
+					try:		
+						tree = ET.parse(xml)
+						root = tree.getroot()
+						hosts = root.find('opcdipc').find('hosts')
+						for host in hosts:
+							if host.find('ipaddress').text == browsers[hostname]:
+								hosts.remove(host)
+						tree.write(xml)
+					except:
+						flag = False
+						print("ERROR, {} file can't be updated for some reason!".format(xml))
+						print("{} won't be removed from conf_manager.json and won't be deleted from {}".format(hostname, xml))
+				for xml in xml_files_2:
+					try:
+						tree = ET.parse(xml)
+						root = tree.getroot()
+						ipc = root.find('connection_ccb').find('config').find('ipc')
+						for ip in ipc:
+							if ip.find('connection').text == browsers[hostname]:
+								ipc.remove(ip)								
+						tree.write(xml)
+					except:
+						flag = False
+						print("ERROR 2 , {} file can't be updated for some reason".format(xml))
+						print("{} won't be removed from conf_manager.json and won't be deleted from {}".format(hostname, xml))
+
+				if flag:
+					update_conf_json(json_file = self.conf_manager_file, \
+									state= 'remove', \
+									key= hostname, \
+									value=browsers[hostname])
+
+
+		if ussd_gws:
+			for hostname in ussd_gws.keys():
+				flag = True
+				for xml in xml_files:
+					increment_id = 0
+					try:
+						tree = ET.parse(xml)
+						root = tree.getroot()
+						conn_type = root.find('protocolspecific'). \
+										find('subconnectors'). \
+										find('subconnector'). \
+										find('commonparams'). \
+										find('ConnType').text
+
+						if conn_type == '2':
+							smpp_clients = root.find('protocolspecific'). \
+												find('subconnectors'). \
+												find('subconnector'). \
+												find('SMPPClients')
+
+							for smpp_client in smpp_clients:
+								if smpp_client.find('IP').text == ussd_gws[hostname]:
+									smpp_clients.remove(smpp_client)
+							tree.write(xml)
+					except:
+						flag = False
+						print("ERROR, {} file can't be updated for some reason".format(xml))
+						print("{} won't be removed from conf_manager.json and won't be deleted from {}".format(hostname, xml))
+
+				if flag:
+					update_conf_json(json_file = self.conf_manager_file, \
+									state= 'remove', \
+									key= hostname, \
+									value=ussd_gws[hostname])
+
 
 	def check_config_status(self):
 		"""
