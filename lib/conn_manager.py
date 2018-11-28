@@ -1,21 +1,27 @@
-import xml.etree.ElementTree as ET
+#!/usr/bin/python3.6
 from os import listdir
-from os.path import isfile, join
+from os.path import isfile
+from os.path import join
 import re
-import copy
-import json
 import os
-import socket
+import datetime
+from ast import literal_eval
+
 ###custom libs
-from lib.etcd_client import EtcdManagement
-from lib.conf_tools import update_conf_json
-from lib.conf_tools import parse_conf_json
+from lib.conf_manager import ConfManager
+sys.path.append('/aux0/customer/containers/ocpytools/lib/')
 from lib.conf_tools import md5
+from lib.conf_tools import md5_file
+from lib.conf_tools import write_file
+from lib.conf_tools import hash_md5
 
 
 
+class ConnManager(ConfManager):
+	"""
+	ConnManager class
+	"""
 
-class ConnManager():
 
 	def __init__(self):
 		"""
@@ -25,363 +31,206 @@ class ConnManager():
 		Returns:
 			None
 		"""
+		super().__init__()
+		self.looking_browser = "{}_br".format(self.micro_platform)
+		self.looking_gw = "{}".format(self.config_type)
 		self.conf_dir = "/aux0/customer/connectors/external/"
 		self.conf_dir_2 = "/aux0/customer/cross_plugin/"
-		self.conf_manager_file = "/home/pkolev/Containers/conf_manager/conf_manager.json"
-		# self.connector_type= re.search(r'(.*?)\_conn', socket.gethostname(), re.I|re.S).group(1)
-	#####for testing on host to show that works 
-		self.connector_type= re.search(r'(.*?$)', socket.gethostname(), re.I|re.S).group(1)
-		if self.connector_type == 'g3':
-			self.connector_type = "smpp"
-	#####for testing on host to show that works 
 
 
-		# self.conf_dir = "/home/pkolev/Git/occonfman/test/test_external/"
-		# self.conf_manager_file = "http_conn_manager.json"
 
-	def get_new_browsers(self, platform_status):
+	def etcd_file_updating(self, file_string, filename):
 		"""
-		Parse the platform status from etcd
-		and compare it according the connector file
+		Update key value in etcd structure
+		in its hostname directory
 		Args:
-			platform_status(dict)
+			file_string(str)
+			filename(str)
 		Returns:
-			new_browsers(dict)
+			None
 		"""
-		loaded_json = parse_conf_json(self.conf_manager_file)
-		new_browsers = {}
-		for host in platform_status.keys():
-			for application in platform_status[host]:
-				# print("App => {}".format(application))
-				if application == 'br':
-					for container_name in platform_status[host][application]:
-						if container_name not in loaded_json:
-							new_browsers[container_name] = platform_status[host][application][container_name]
-		return new_browsers
-
-
-	def remove_browsers(self, platform_status):
-		"""
-		Parse the platform status from etcd
-		and compare it according the connector file
-		Args:
-			platform_status(dict)
-		Returns:
-			new_browsers(dict)
-		"""
-		loaded_json = parse_conf_json(self.conf_manager_file)
-		del(loaded_json['md5'])
-		new_browsers = {}
-
-		for container_name in loaded_json.keys():
-			if re.search("br", container_name, re.I|re.S):
-				flag = False
-				for host in platform_status.keys():
-					if container_name in platform_status[host]['br']:
-						flag = True
-				if not flag:
-					new_browsers[container_name] = loaded_json[container_name]
-
-		return new_browsers
-
-
-
-	def get_new_ussd_gws(self, platform_status):
-		"""
-		Parse the platform status from etcd
-		and compare it according the connector file
-		Args:
-			platform_status(dict)
-		Returns:
-			ussd_gws(dict)
-		"""
-		loaded_json = parse_conf_json(self.conf_manager_file)
-		ussd_gws = {}
-		for host in platform_status.keys():
-			for application in platform_status[host]:
-				# print("App => {}".format(application))
-				# if application == 'ussd_gw':
-				if application == 'ipgw':
-					for container_name in platform_status[host][application]:
-						if container_name not in loaded_json:
-							ussd_gws[container_name] = platform_status[host][application][container_name]
-		return ussd_gws
-
-
-	def remove_ussd_gws(self, platform_status):
-		"""
-		Parse the platform status from etcd
-		and compare it according the connector file
-		Args:
-			platform_status(dict)
-		Returns:
-			ussd_gws(dict)
-		"""
-		loaded_json = parse_conf_json(self.conf_manager_file)
-		del(loaded_json['md5'])
-		ussd_gws = {}
-		
-		for container_name in loaded_json.keys():
-			if re.search("ipgw", container_name, re.I|re.S):
-				flag = False
-				for host in platform_status.keys():
-					# if container_name in platform_status[host]['ussd_gw']:
-					if container_name in platform_status[host]['ipgw']:
-						flag = True
-				if not flag:
-					ussd_gws[container_name] = loaded_json[container_name]
-
-		return ussd_gws
+		super().etcd_file_updating(file_string, filename)
 
 
 	def get_xml_files(self):
 		"""
-		Get all xml files and returns
-		only xml filenames that consist 'http'
+		Get all xml files from self.conf_dir,
+	 	self.conf_dir_2 and returns
+		only xml filenames that consists
+		self.connector_type
 		Args:
 			None
 		Returns:
 			xml_files(list)
 		"""
+
+#### for conf_dir
+		connector_type = re.search(r"(.*?)\_conn", self.config_type, re.I|re.S).group(1)
 		xml_files = []
 		all_xml_files = [f for f in listdir(self.conf_dir) if isfile(join(self.conf_dir, f))]
 		for xml in all_xml_files:
-			if re.search(r"{}".format(self.connector_type), xml, re.I|re.S):
+			if re.search(r"{}".format(connector_type), xml, re.I|re.S):
 				xml_files.append("{}{}".format(self.conf_dir, xml))
 
 #### for conf_dir_2
 		xml_files_2 = []
 		all_xml_files = [f for f in listdir(self.conf_dir_2) if isfile(join(self.conf_dir_2, f))]
 		for xml in all_xml_files:
-			if re.search(r"{}".format(self.connector_type), xml, re.I|re.S):
-				# print("Type => {} XML => {}".format(self.connector_type, xml))
+			if re.search(r"{}".format(connector_type), xml, re.I|re.S):
+				# print("Type => {} XML => {}".format(connector_type, xml))
 				xml_files_2.append("{}{}".format(self.conf_dir_2, xml))
 
 		return xml_files, xml_files_2
 
 
-	def update_configs(self, browsers = None, ussd_gws = None):
-		"""
-		Added browsers in http connector
-		config
-		Args:
-			browsers(dict)
-		Returns:
-			None
-		"""
-		xml_files, xml_files_2 = self.get_xml_files()
-
-		# print("XML FILES => {}".format(xml_files))
-		# print("XML FILES 2 => {}".format(xml_files_2))
-		# print("Browsers => {}".format(browsers))
-		# print("USSDGW => {}".format(ussd_gws))
-		if browsers:
-			for hostname in browsers.keys():
-				flag = True
-				for xml in xml_files:
-					try:
-						tree = ET.parse(xml)
-						root = tree.getroot()
-						hosts = root.find('opcdipc').find('hosts')
-						host = root.find('opcdipc').find('hosts').find('host')
-						new_host = copy.deepcopy(host)
-						new_host.find('ipaddress').text = browsers[hostname]
-						hosts.append(new_host)
-						tree.write(xml)
-					except:
-						flag = False
-						print("ERROR, {} file can't be updated for some reason".format(xml))
-						print("{} won't be added from conf_manager.json and won't be added from {}".format(hostname, xml))	
-
-				for xml in xml_files_2:
-					try:
-						tree = ET.parse(xml)
-						root = tree.getroot()
-						ipc = root.find('connection_ccb').find('config').find('ipc')
-						connection = root.find('connection_ccb').find('config').find('ipc').find('connection')
-						new_connection = copy.deepcopy(connection)
-						new_connection.find('ip').text = browsers[hostname]
-						ipc.append(new_host)
-						tree.write(xml)
-					except:
-						flag = False
-						print("ERROR, {} file can't be updated for some reason".format(xml))
-						print("{} won't be added from conf_manager.json and won't be added from {}".format(hostname, xml))	
-
-				if flag:
-					update_conf_json(json_file = self.conf_manager_file, \
-									state= 'add', \
-									key= hostname, \
-									value=browsers[hostname])
-
-
-		if ussd_gws:
-			for hostname in ussd_gws.keys():
-				flag = True
-				for xml in xml_files:
-					increment_id = 0
-					try:
-						tree = ET.parse(xml)
-						root = tree.getroot()
-						conn_type = root.find('protocolspecific'). \
-									find('subconnectors'). \
-									find('subconnector'). \
-									find('commonparams'). \
-									find('ConnType').text
-						if conn_type == '2':
-							smpp_clients = root.find('protocolspecific'). \
-								find('subconnectors'). \
-								find('subconnector'). \
-								find('SMPPClients')
-							smpp_client = root.find('protocolspecific'). \
-								find('subconnectors'). \
-								find('subconnector'). \
-								find('SMPPClients'). \
-								find('SMPPClient')
-
-							all_smpp = root.find('protocolspecific'). \
-								find('subconnectors'). \
-								find('subconnector'). \
-								find('SMPPClients'). \
-								findall('SMPPClient')
-							id_ll = []
-							for client in all_smpp:
-								# print("Client => {}".format(client))
-								id_ll.append(int(client.find('id').text))
-							max_id = max(id_ll) + 1
-							# print("MAx id => {}".format(max_id))
-							new_smpp_client = copy.deepcopy(smpp_client)
-							new_smpp_client.find('IP').text = ussd_gws[hostname]
-							new_smpp_client.find('id').text = str(max_id) 
-							smpp_clients.append(new_smpp_client)
-							# print("After append")
-							tree.write(xml)
-					except:
-						print("ERROR, {} file can't be updated for some reason".format(xml))
-
-				if flag:
-					update_conf_json(json_file = self.conf_manager_file, \
-									state= 'add', \
-									key= hostname, \
-									value=ussd_gws[hostname])
-
-
-
-
-	def update_configs_remove(self, browsers = None, ussd_gws = None):
-		"""
-		Added browsers in http connector
-		config
-		Args:
-			browsers(dict)
-		Returns:
-			None
-		"""
-		xml_files, xml_files_2 = self.get_xml_files()
-
-		# print("XML FILES => {}".format(xml_files))
-		# print("XML FILES 2 => {}".format(xml_files_2))
-		# # print("Browsers => {}".format(browsers))
-		# print("USSDGW => {}".format(ussd_gws))
-		if browsers:
-			for hostname in browsers.keys():
-				flag = True
-				for xml in xml_files:
-					try:		
-						tree = ET.parse(xml)
-						root = tree.getroot()
-						hosts = root.find('opcdipc').find('hosts')
-						for host in hosts:
-							if host.find('ipaddress').text == browsers[hostname]:
-								hosts.remove(host)
-						tree.write(xml)
-					except:
-						flag = False
-						print("ERROR, {} file can't be updated for some reason!".format(xml))
-						print("{} won't be removed from conf_manager.json and won't be deleted from {}".format(hostname, xml))
-				for xml in xml_files_2:
-					try:
-						tree = ET.parse(xml)
-						root = tree.getroot()
-						ipc = root.find('connection_ccb').find('config').find('ipc')
-						for ip in ipc:
-							if ip.find('connection').text == browsers[hostname]:
-								ipc.remove(ip)								
-						tree.write(xml)
-					except:
-						flag = False
-						print("ERROR 2 , {} file can't be updated for some reason".format(xml))
-						print("{} won't be removed from conf_manager.json and won't be deleted from {}".format(hostname, xml))
-
-				if flag:
-					update_conf_json(json_file = self.conf_manager_file, \
-									state= 'remove', \
-									key= hostname, \
-									value=browsers[hostname])
-
-
-		if ussd_gws:
-			for hostname in ussd_gws.keys():
-				flag = True
-				for xml in xml_files:
-					increment_id = 0
-					try:
-						tree = ET.parse(xml)
-						root = tree.getroot()
-						conn_type = root.find('protocolspecific'). \
-										find('subconnectors'). \
-										find('subconnector'). \
-										find('commonparams'). \
-										find('ConnType').text
-
-						if conn_type == '2':
-							smpp_clients = root.find('protocolspecific'). \
-												find('subconnectors'). \
-												find('subconnector'). \
-												find('SMPPClients')
-
-							for smpp_client in smpp_clients:
-								if smpp_client.find('IP').text == ussd_gws[hostname]:
-									smpp_clients.remove(smpp_client)
-							tree.write(xml)
-					except:
-						flag = False
-						print("ERROR, {} file can't be updated for some reason".format(xml))
-						print("{} won't be removed from conf_manager.json and won't be deleted from {}".format(hostname, xml))
-
-				if flag:
-					update_conf_json(json_file = self.conf_manager_file, \
-									state= 'remove', \
-									key= hostname, \
-									value=ussd_gws[hostname])
-
 
 	def check_config_status(self):
 		"""
-		Makes md5 of curr config and 
-		and diff it with the  md5 from
-		self.conf_manager_file
 		Args:
 			None
 		Returns:
 			None
 		"""
+
 		xmls_1, xmls_2 = self.get_xml_files()
 		xmls = xmls_1 + xmls_2
-		loaded_md5_conf = parse_conf_json(self.conf_manager_file)["md5"]
-		curr_md5_conf = md5(xmls)
-		if loaded_md5_conf != curr_md5_conf:
-			update_conf_json(json_file = self.conf_manager_file, \
-				state= 'add', \
-				key= 'md5', \
-				value=curr_md5_conf)
-			self.reload()
-			print("Connectors are restarted!!!")
+
+		connector_type = re.search(r"^.*?\_.*?\_(.*?)\_", self.config_type, re.I|re.S).group(1)
+		etcd_config = self.etcd_manager.get_etcd_config()
+		if self.etcd_manager.CheckExistAppType(self.config_type):
+			confs = etcd_config["platform"][self.config_type]["general"]["confs"]
+		else:
+			return
+		if not confs:
+			curr_md5_conf = "Nothing"
+			return
+		else:
+			curr_md5_conf = md5(confs)
+
+		if self.loaded_json["md5"] != curr_md5_conf:
+			flag = True
+			ids = etcd_config["platform"][self.config_type]["general"]["ids"]
+			for config_name in confs:
+				taken_id = None
+				if re.search(r"{}".format(connector_type), config_name, re.I|re.S):
+					for id_xml in ids.keys():
+						if re.search(r"{}\.(\d+)".format(config_name), id_xml, re.I|re.S):
+							taken_id = re.search(r"{}\.(\d+)". \
+										format(config_name), id_xml, re.I|re.S).group(1)
+					flag_id = "success"
+					browsers = self.get_specific_apps(self.looking_browser)
+					try:
+						account_id = re.search(r".*?\-(.*?)\-", config_name, re.I|re.S).group(1)
+						login = re.search(r".*?\-.*?\-(.*?)\.xml", config_name, re.I|re.S).group(1)
+						system_type = re.search(r"(^.*?)\-", config_name, re.I|re.S).group(1)
+
+						host_xml = self.generate_xml_browsers_external(browsers)
+						generated_external_xml = re.sub(r"(?is)<hosts>.*?<\/hosts>", \
+														 "<hosts>{}</hosts>". \
+													format(host_xml), confs[config_name])
+						######################## cross part
+						cross_xml = self.generate_xml_browsers_cross(browsers,  \
+																	account_id, login, system_type)
+						cross_name = "{}.xml".format(login)
+						generated_cross_xml = re.sub(r"(?is)<ipc>.*?<\/ipc>", "<ipc>{}</ipc>". \
+														format(cross_xml), confs[cross_name])						
+						####marker logic
+						r = re.compile(r"\$\{([^\}]+)\}")
+						host_specific_markers = r.findall(confs[config_name])
+						flag_marker = False
+						for marker in host_specific_markers:
+							taken_key = self.etcd_manager.read_key( \
+											"/platform/orchestrator/marker_{}".format(marker))
+							markers_dict = literal_eval(taken_key)
+							if self.hostname in markers_dict:
+								match_point = "\${" + marker + "}"
+								generated_external_xml = re.sub(r"(?is){}".format(match_point), \
+																str(markers_dict[self.hostname]), \
+																generated_external_xml)
+						####marker logic
+
+						self.write_etcd_and_file(generated_external_xml, config_name)
+						self.write_etcd_and_file(generated_cross_xml, config_name)
+
+						if not self.reload(login):
+							flag_id = "failed"
+					######################### cross part
+					except:
+						flag_id = "failed"
+						print("ERROR,ConfManager in {} can't update etcd for some reason !!!". \
+							format(self.hostname))
+					self.loaded_json["md5"] = curr_md5_conf
+					self.loaded_json["md5_br"] = md5(browsers)
+					self.etcd_manager.write(new_key="/platform/statuses/{}/{}".format( \
+													self.hostname, config_name) , \
+										value= "{{id: {}, timestamp: {}, status: {}}}". \
+												format(taken_id, \
+														datetime.datetime.now(), \
+														flag_id))					
+
+
+	def check_platform_status(self):
+
+		platform_state = self.etcd_manager.get_platform_status()
+		new_md5_state = hash_md5(platform_state)
+		if self.loaded_json['platform_state'] != new_md5_state:
+			browsers = self.get_specific_apps(self.looking_browser)
+			if self.diff_browsers(browsers):
+				connector_type = re.search(r"^.*?\_.*?\_(.*?)\_", \
+											self.config_type, re.I|re.S).group(1)
+				etcd_config = self.etcd_manager.get_etcd_config()
+				if self.etcd_manager.CheckExistAppType(self.config_type):
+					confs = etcd_config["platform"][self.config_type]["general"]["confs"]
+				else:
+					return
+				for config_name in confs:
+					if re.search(r"{}".format(connector_type), config_name, re.I|re.S):
+						flag_id = "success"
+						try:
+							account_id = re.search(r".*?\-(.*?)\-", config_name, re.I|re.S).group(1)
+							login = re.search(r".*?\-.*?\-(.*?)\.xml", config_name, re.I|re.S).group(1)
+							system_type = re.search(r"(^.*?)\-", config_name, re.I|re.S).group(1)
+
+							host_xml = self.generate_xml_browsers_external(browsers)
+							generated_external_xml = re.sub(r"(?is)<hosts>.*?<\/hosts>", "<hosts>{}</hosts>". \
+															format(host_xml), confs[config_name])
+
+							######################## cross part
+							cross_xml = self.generate_xml_browsers_cross( \
+													browsers, account_id, login, system_type)
+							cross_name = "{}.xml".format(login)
+							generated_cross_xml = re.sub(r"(?is)<ipc>.*?<\/ipc>", "<ipc>{}</ipc>". \
+															format(cross_xml), confs[cross_name])
+							####marker logic
+							r = re.compile(r"\$\{([^\}]+)\}")
+							host_specific_markers = r.findall(confs[config_name])
+							flag_marker = False
+							for marker in host_specific_markers:
+								taken_key = self.etcd_manager.read_key( \
+												"/platform/orchestrator/marker_{}".format(marker))
+								markers_dict = literal_eval(taken_key)
+								if self.hostname in markers_dict:
+									match_point = "\${" + marker + "}"
+									generated_external_xml = re.sub(r"(?is){}".format(match_point), \
+																str(markers_dict[self.hostname]), \
+																generated_external_xml)
+							####marker logic
+							self.write_etcd_and_file(generated_external_xml, config_name)
+							self.write_etcd_and_file(generated_cross_xml, config_name)
+							if not self.reload:
+								flag_id = "failed"
+						######################## cross part
+						except:
+							flag_id = "failed"
+							print("ERROR,ConfManager in {} can't update etcd for some reason !!!". \
+								format(self.hostname))
+
+						self.loaded_json['platform_state'] = new_md5_state
 
 
 
 	@staticmethod
-	def reload():
+	def reload(conn_name = None):
 		"""
 		Reloads application
 		Args:
@@ -389,4 +238,9 @@ class ConnManager():
 		Returns:
 			None
 		"""
-		os.system("occonnectors restart")
+		if conn_name:
+			output = os.popen("occonnectors restart {}".format(conn_name)).read()
+			return False
+		else:
+			output = os.popen("occonnectors restart").read()
+			return False
