@@ -1,5 +1,4 @@
-#!/usr/bin/python3.6
-import xml.etree.ElementTree as ET
+#!/usr/bin/python3.4
 from os import listdir
 from os.path import isfile, join
 from ast import literal_eval
@@ -13,8 +12,9 @@ import sys
 ###custom libs
 
 sys.path.append('/aux0/customer/containers/ocpytools/lib/')
-from lib.etcd_client import EtcdManagement
-from lib.conf_tools import *
+from logger import Logger
+from etcd_client import EtcdManagement
+from conf_tools import *
 
 
 class ConfManager():
@@ -28,17 +28,9 @@ class ConfManager():
 			None
 		"""
 		self.loaded_json = {"md5": "", "platform_state": "", "md5_gw": "", "md5_br": ""}
-		self.a = 124234
 		self.etcd_manager = EtcdManagement()
 		self.local_configs = local_configs
 		self.hostname = socket.gethostname()
-		# self.hostname = "smsc_http_conn_112"
-		self.hostname = "ussdc_br_11"
-		self.hostname = "mca_br_11"
-		self.hostname = "kzl_br_2221"
-		# self.hostname = "smsc_conn_http_client_100"
-		self.hostname = "smsc_gw_sip_5"
-
 
 		self.micro_platform = re.search(r'(.*?)\_', self.hostname, re.I|re.S).group(1)
 		self.config_type = re.search(r'(.*?)\_\d+', self.hostname, re.I|re.S).group(1)
@@ -66,8 +58,13 @@ class ConfManager():
 		Returns:
 			None
 		"""
+		logger = Logger(filename = "occonfman", \
+						logger_name = "ConfManager initializing_etcd_config", \
+						dirname="/aux1/occonfman/logs/")
+
 		etcd_config = self.etcd_manager.get_etcd_config()
 		confs = etcd_config["platform"][self.config_type]["general"]["confs"]
+		logger.info("Initializing etcd configs in the etcd config tree of {}".format(self.hostname))
 		for config_name in confs.keys():
 			self.etcd_manager.write \
 				(new_key = "/platform/{}/{}/confs/{}".format( \
@@ -75,6 +72,7 @@ class ConfManager():
 				self.hostname, \
 				config_name), \
 				value = confs[config_name])
+		logger.clear_handler()
 
 
 	def etcd_file_updating(self, file_string, filename):
@@ -116,14 +114,38 @@ class ConfManager():
 			None
 		"""
 
-
-		xmls = [f for f in listdir(self.conf_dir) if isfile(join(self.conf_dir, f))]
+##### old
+		# logger = Logger(filename = "occonfman", \
+		# 				logger_name = "ConfManager check_config_status", \
+		# 				dirname="/aux1/occonfman/logs/")
+		# logger.info("Checking config_status ...")
+		# xmls = [f for f in listdir(self.conf_dir) if isfile(join(self.conf_dir, f))]
+		# etcd_config = self.etcd_manager.get_etcd_config()
+		# confs = etcd_config["platform"][self.config_type]["general"]["confs"]
+		# if not confs:
+		# 	curr_md5_conf = "Nothing"
+		# else:
+		# 	curr_md5_conf = md5(confs)
+##### old
+################################new way
+		logger = Logger(filename = "occonfman", \
+						logger_name = "ConfManager check_config_status", \
+						dirname="/aux1/occonfman/logs/")
+		logger.info("Checking config status ...")
 		etcd_config = self.etcd_manager.get_etcd_config()
-		confs = etcd_config["platform"][self.config_type]["general"]["confs"]
+		if self.etcd_manager.CheckExistAppType(self.config_type):
+			logger.info("There is already exists {} config type in etcd".format(self.config_type))
+			confs = etcd_config["platform"][self.config_type]["general"]["confs"]
+		else:
+			logger.clear_handler()
+			return
 		if not confs:
 			curr_md5_conf = "Nothing"
+			logger.clear_handler()
+			return
 		else:
 			curr_md5_conf = md5(confs)
+################################new way
 		if self.loaded_json["md5"] != curr_md5_conf:
 			flag = True
 			ids = etcd_config["platform"][self.config_type]["general"]["ids"]
@@ -164,32 +186,34 @@ class ConfManager():
 											text = confs[config_name])
 					except:
 						flag_id = "failed"
+					logger.info("Writing status in etcd /platform/statuses/{}/{} and generating the new file".format( \
+												self.hostname, config_name))
 					self.write_etcd_and_file(confs[config_name], config_name)
 					self.etcd_manager.write(new_key="/platform/statuses/{}/{}".format( \
 													self.hostname, config_name) , \
-										value= "{{id: {}, timestamp: {}, status: {}}}". \
+										value= '{{"id": "{}", "timestamp": "{}", "status": "{}"}}'. \
 												format(taken_id, \
 														datetime.datetime.now(), \
 														flag_id))
 			except:
 				flag = False
-				print("ERROR,ConfManager in {} can't update etcd for some reason !!!". \
+				logger.error("ERROR,ConfManager in {} can't update etcd for some reason !!!". \
 						format(self.hostname))
 			if flag:
 				self.loaded_json["md5"] = curr_md5_conf
 				self.reload()
 
+		logger.clear_handler()
 
 
 
 	def get_specific_apps(self, app):
 		"""
-		get specific microplatform browsers
-		and diff them with the previous state
+		get specific microplatform app
 		Args:
-			None
+			app(str)
 		Returns:
-			bool()
+			app_containers(dict)
 		"""
 
 
@@ -204,37 +228,61 @@ class ConfManager():
 
 	def diff_browsers(self, br_containers):		
 
+		logger = Logger(filename = "occonfman", \
+						logger_name = "ConfManager diff_browsers", \
+						dirname="/aux1/occonfman/logs/")
+
 		if md5(br_containers) != self.loaded_json["md5_br"]:
 			self.loaded_json["md5_br"] = md5(br_containers)
+			logger.info("There is a different browser state in the platform now!")
+			logger.clear_handler()
 			return True
 		else:
+			logger.info("No change in browser state of the platform!")
+			logger.clear_handler()
 			return False
 
 
 
 	def diff_gws(self, gw_containers):		
 
+		logger = Logger(filename = "occonfman", \
+						logger_name = "ConfManager diff_gws", \
+						dirname="/aux1/occonfman/logs/")
+
 		if md5(br_containers) != self.loaded_json["md5_gw"]:
 			self.loaded_json["md5_gw"] = md5(br_containers)
+			logger.info("There is a different gws state in the platform now!")
+			logger.clear_handler()
 			return True
 		else:
+			logger.info("No change in gws state of the platform!")
+			logger.clear_handler()
 			return False
 
 
 	def generate_xml_browsers_external(self, br_containers):
 
+		logger = Logger(filename = "occonfman", \
+						logger_name = "ConfManager generate_xml_browsers_external", \
+						dirname="/aux1/occonfman/logs/")
 		xml = ""
 		for br in br_containers:
 			xml += """<host>
 			        <ipaddress>{}</ipaddress>
 			        <port>5049</port>
 			      </host>\n""".format(br)
+
+		logger.info("Generating external browsers config section")
+		logger.clear_handler()
 		return xml
 
 
 	def generate_xml_browsers_cross(self, br_containers, account_id, login, system_type):
 
-
+		logger = Logger(filename = "occonfman", \
+						logger_name = "ConfManager generate_xml_browsers_cross", \
+						dirname="/aux1/occonfman/logs/")
 
 		xml = ""
 		for br in br_containers:
@@ -252,13 +300,16 @@ class ConfManager():
 				     							login, \
 				     							account_id,
 				     							system_type)
-
+		logger.info("Generating cross browsers config section")
+		logger.clear_handler()
 		return xml
 
 
 	def generate_cfg_cross_plugin(self, br_containers, account_id, login, system_type):
 
-
+		logger = Logger(filename = "occonfman", \
+						logger_name = "ConfManager generate_cfg_cross_plugin", \
+						dirname="/aux1/occonfman/logs/")
 
 		xml = ""
 		for br in br_containers:
@@ -277,11 +328,23 @@ class ConfManager():
 				     							account_id,
 				     							system_type)
 
+		logger.info("Generating cfg cross_plugin config section")
+		logger.clear_handler()
 		return xml
 
 
 
 	def write_etcd_and_file(self, file_str, conf_name):
+
+		logger = Logger(filename = "occonfman", \
+						logger_name = "ConfManager write_etcd_and_file", \
+						dirname="/aux1/occonfman/logs/")
+
+		logger.info("Writing value at etcd Key => /platform/{}/{}/confs/{}". \
+															format(self.config_type, \
+																	self.hostname, \
+																	 conf_name))
+		logger.clear_handler()
 
 		self.etcd_manager.write(new_key = "/platform/{}/{}/confs/{}".format(self.config_type, \
 																				self.hostname, \

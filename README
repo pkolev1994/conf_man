@@ -1,0 +1,7 @@
+TO DO LIST:
+1. Method CheckKeyPerAppType to be added to EtcdManagement(will check for keys in ALL dir for specific app_type accepted as input param, returns true/false) <b>done</b>
+2. Method to read file content and return it - done
+3. Method for reading the statuses from etcd /platform/statuses, should be in EtcdManagement class => Done
+	3.1.Method that calls 3 is implemented in kvsManager class (get_config_statuses)
+4. Locking mechanism for writing keys in etcd ?
+5. KVS manager will first write new/changed config key/values and only then increment the IDS. Conf Manager will first check for a new ID(bigger than last known ID), then get the config key/value. This will ensure that latest configs are always available for ConfMan.

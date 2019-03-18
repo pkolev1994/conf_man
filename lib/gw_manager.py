@@ -1,4 +1,4 @@
-#!/usr/bin/python3.6
+#!/usr/bin/python3.4
 
 import os
 import re
@@ -6,9 +6,10 @@ import sys
 from ast import literal_eval
 
 ###custom libs
+sys.path.append('/aux0/customer/containers/occonfman/')
 from lib.conf_manager import ConfManager
 sys.path.append('/aux0/customer/containers/ocpytools/lib/')
-from lib.conf_tools import *
+from conf_tools import *
 
 
 class GwManager(ConfManager):
@@ -57,6 +58,12 @@ class GwManager(ConfManager):
 
 	def check_platform_status(self):
 
+
+		logger = Logger(filename = "occonfman", \
+						logger_name = "GwManager check_platform_status", \
+						dirname="/aux1/occonfman/logs/")
+		logger.info("Checking platform status ...")
+
 		platform_state = self.etcd_manager.get_platform_status()
 		new_md5_state = hash_md5(platform_state)
 		if self.loaded_json['platform_state'] != new_md5_state:
@@ -80,6 +87,8 @@ class GwManager(ConfManager):
 							cross_cfg = self.generate_cfg_cross_plugin(browsers, account_id, login, system_type)
 							generated_cfg = re.sub(r"(?is)<ipc>.*?<\/ipc>", "<ipc>{}</ipc>". \
 											format(cross_cfg), confs[config_name])
+							logger.info("Generating cfg => {}, with account_id => {}, login => {}, system_type => {}". \
+										format(config_name, account_id, login, system_type))							
 							r = re.compile(r"\$\{([^\}]+)\}")
 							host_specific_markers = r.findall(confs[config_name])
 							flag_marker = False
@@ -88,19 +97,23 @@ class GwManager(ConfManager):
 									"/platform/orchestrator/marker_{}".format(marker))
 								markers_dict = literal_eval(taken_key)
 								if self.hostname in markers_dict:
+									logger.info("{} is in the markers list and all markers will be replaced in the configs!". \
+												format(self.hostname))
 									match_point = "\${" + marker + "}"
 									generated_cfg = re.sub(r"{}".format(match_point), \
 										str(markers_dict[self.hostname]), generated_cfg)
 							self.write_etcd_and_file(generated_cfg, config_name)
+							logger.info("At hostname [{}] writing etcd configs [{}] and generating the new file ".format( \
+																	self.hostname, config_name))
 							self.reload()
 						else:
 							self.reload()
 					except:
-						print("ERROR,ConfManager in {} can't update etcd for some reason !!!". \
+						logger.error("ERROR,ConfManager in {} can't update etcd for some reason !!!". \
 							format(self.hostname))
 
 					self.loaded_json['platform_state'] = new_md5_state	
-
+		logger.clear_handler()
 
 
 	@staticmethod
@@ -113,4 +126,10 @@ class GwManager(ConfManager):
 		Returns:
 			None
 		"""
-		os.system("cross_plugin restart")
+		logger = Logger(filename = "occonfman", \
+				logger_name = "GwManager reload()", \
+				dirname="/aux1/occonfman/logs/")
+		logger.info("Restarting gw ...")
+		logger.clear_handler()
+		os.system("/opt/cross_plugin/cross_plugin.sh stop")
+		os.system("/opt/cross_plugin/cross_plugin.sh start")

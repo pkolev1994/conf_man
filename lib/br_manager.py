@@ -1,9 +1,11 @@
-#!/usr/bin/python3.6
+#!/usr/bin/python3.4
 import os
+import sys
 
 ###custom libs
 from lib.conf_manager import ConfManager
-
+sys.path.append('/aux0/customer/containers/ocpytools/lib/')
+from logger import Logger
 
 
 class BrowserManager(ConfManager):
@@ -47,6 +49,10 @@ class BrowserManager(ConfManager):
 		super().check_config_status()
 
 
+	def check_platform_status(self):
+		pass
+
+		
 	@staticmethod
 	def reload():
 		"""
@@ -56,5 +62,9 @@ class BrowserManager(ConfManager):
 		Returns:
 			None
 		"""
+		logger = Logger(filename = "occonfman", \
+				logger_name = "BrowserManager reload()", \
+				dirname="/aux1/occonfman/logs/")
+		logger.info("Restarting ocbrowser ...")
+		logger.clear_handler()
 		os.system("ocbrowser restart")
-		print("Ocbrowser is reloaded !!!")
