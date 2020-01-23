@@ -1,7 +1,7 @@
 Summary: Opencode Config Manager
 Name: occonfman
-Version: 1.0.1
-Release: 16%{?dist}%{?ocrel}
+Version: 1.0.2
+Release: 1%{?dist}%{?ocrel}
 BuildArch: noarch
 URL: http://www.opencode.com
 License: Commercial
@@ -16,7 +16,7 @@ Opencode conf manager
 
 GIT commit
 
-Contact: hristo.slavov@opencode.com
+Contact: petar.kolev@opencode.com, hristo.slavov@opencode.com, niki.lilov@opencode.com
 
 %prep
 %setup -q

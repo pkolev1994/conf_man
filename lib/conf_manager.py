@@ -27,11 +27,11 @@ class ConfManager():
 		Returns:
 			None
 		"""
-		self.loaded_json = {"md5": "", "platform_state": "", "md5_gw": "", "md5_br": ""}
+		self.loaded_json = {"md5": "", "platform_state": "", "md5_gw": "",\
+							 "md5_br": "", "md5_nodes_xml": ""}
 		self.etcd_manager = EtcdManagement()
 		self.local_configs = local_configs
 		self.hostname = socket.gethostname()
-
 		self.micro_platform = re.search(r'(.*?)\_', self.hostname, re.I|re.S).group(1)
 		self.config_type = re.search(r'(.*?)\_\d+', self.hostname, re.I|re.S).group(1)
 		if self.local_configs:
@@ -85,7 +85,6 @@ class ConfManager():
 		Returns:
 			None
 		"""
-		# self.etcd_manager = EtcdManagement()
 		self.etcd_manager.write( \
 			new_key = "/platform/{}/{}/confs/{}". \
 						format(self.config_type, self.hostname, filename), \
@@ -175,9 +174,11 @@ class ConfManager():
 				for config_name in confs:
 					taken_id = None
 					for id_xml in ids.keys():
-						if re.search(r"{}\.(\d+)".format(config_name), id_xml, re.I|re.S):
-							taken_id = re.search(r"{}\.(\d+)". \
-										format(config_name), id_xml, re.I|re.S).group(1)
+						###change 09.01.2019
+						if re.search(r"{}".format(config_name), id_xml, re.I|re.S):
+							taken_id = ids[id_xml]
+							logger.info("The id given from the web is => {}".format(taken_id))
+						###change 09.01.2019
 					flag_id = "success"
 					try:
 						extract_dict = {config_name: confs[config_name]}
@@ -352,3 +353,28 @@ class ConfManager():
 									value= "{}".format(file_str))
 		write_file(filename = "{}{}".format(self.conf_dir, conf_name), \
 					text = file_str)
+
+
+	def check_nodes_xml(self):
+		"""
+		Looks and generates new nodes.xml
+		in the container if there is a 
+		change in etcd_key /platform/orchestrator/nodes_xml
+		Args:
+			None
+		Returns:
+			None
+		"""
+		logger = Logger(filename = "occonfman", \
+						logger_name = "ConfManager check_nodes_xml", \
+						dirname="/aux1/occonfman/logs/")
+
+		nodes_xml = self.etcd_manager.read_key("/platform/orchestrator/nodes_xml")
+		new_md5_nodes_xml = hash_md5(nodes_xml)
+		if self.loaded_json['md5_nodes_xml'] != new_md5_nodes_xml:
+			logger.info("There is a change in nodes.xml!")
+			write_file(filename = "/aux0/customer/platform/nodes.xml", text = nodes_xml)	
+<<<<<<< HEAD
+=======
+			self.loaded_json["md5_nodes_xml"] = new_md5_nodes_xml
+>>>>>>> origin/T103171
